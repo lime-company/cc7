@@ -21,5 +21,6 @@
 #include <cc7/Endian.h>
 #include <cc7/ByteArray.h>
 #include <cc7/Utilities.h>
+#include <cc7/Base32.h>
 #include <cc7/Base64.h>
 #include <cc7/HexString.h>

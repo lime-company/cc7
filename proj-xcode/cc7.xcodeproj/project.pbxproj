@@ -26,6 +26,8 @@
 		BF9FFBC71CE3B94D006CAA74 /* HexString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC61CE3B94D006CAA74 /* HexString.cpp */; };
 		BF9FFBCA1CE3BF08006CAA74 /* cc7Base64Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC91CE3BF08006CAA74 /* cc7Base64Tests.cpp */; };
 		BF9FFBCC1CE3C172006CAA74 /* cc7HexStringTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBCB1CE3C172006CAA74 /* cc7HexStringTests.cpp */; };
+		BFABCD70214C087700A9221F /* Base32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFABCD6F214C087700A9221F /* Base32.cpp */; };
+		BFABCD742150036A00A9221F /* cc7Base32Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFABCD732150036A00A9221F /* cc7Base32Tests.cpp */; };
 		BFB493D41CE750EC00F8D81B /* JSONReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493D21CE750EC00F8D81B /* JSONReader.cpp */; };
 		BFB493D71CE75C7F00F8D81B /* JSONValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493D61CE75C7F00F8D81B /* JSONValue.cpp */; };
 		BFB493D91CE7769500F8D81B /* tt7JSONReaderTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493D81CE7769500F8D81B /* tt7JSONReaderTests.cpp */; };
@@ -121,6 +123,9 @@
 		BF9FFBC81CE3B962006CAA74 /* HexString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HexString.h; sourceTree = "<group>"; };
 		BF9FFBC91CE3BF08006CAA74 /* cc7Base64Tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cc7Base64Tests.cpp; sourceTree = "<group>"; };
 		BF9FFBCB1CE3C172006CAA74 /* cc7HexStringTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cc7HexStringTests.cpp; sourceTree = "<group>"; };
+		BFABCD6E214C07F400A9221F /* Base32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Base32.h; sourceTree = "<group>"; };
+		BFABCD6F214C087700A9221F /* Base32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Base32.cpp; sourceTree = "<group>"; };
+		BFABCD732150036A00A9221F /* cc7Base32Tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cc7Base32Tests.cpp; sourceTree = "<group>"; };
 		BFB1A6B41CB5937800B2D172 /* libcc7-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcc7-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB1A6C31CB594BF00B2D172 /* DebugFeatures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugFeatures.h; sourceTree = "<group>"; };
 		BFB1A6C51CB594BF00B2D172 /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
@@ -328,6 +333,7 @@
 				BF1C7BBE1CE0CE9300C4399E /* cc7PlatformTests.cpp */,
 				BF498AC91CDDD7ED00D7E904 /* cc7ByteArrayTests.cpp */,
 				BF498ACB1CDDD80700D7E904 /* cc7ByteRangeTests.cpp */,
+				BFABCD732150036A00A9221F /* cc7Base32Tests.cpp */,
 				BF9FFBC91CE3BF08006CAA74 /* cc7Base64Tests.cpp */,
 				BF9FFBCB1CE3C172006CAA74 /* cc7HexStringTests.cpp */,
 			);
@@ -368,6 +374,7 @@
 				BFE174061CC96D3600039466 /* DebugFeatures.cpp */,
 				BF4B4A861CB93B8B00BF2C9D /* ByteRange.cpp */,
 				BF388B621CC62CF700DEC1AE /* ByteArray.cpp */,
+				BFABCD6F214C087700A9221F /* Base32.cpp */,
 				BF9FFBC41CE3AEFE006CAA74 /* Base64.cpp */,
 				BF9FFBC61CE3B94D006CAA74 /* HexString.cpp */,
 			);
@@ -446,6 +453,7 @@
 				BF388B611CC62C0F00DEC1AE /* ByteArray.h */,
 				BF388B841CC68E6500DEC1AE /* Utilities.h */,
 				BF388B851CC68FAA00DEC1AE /* Endian.h */,
+				BFABCD6E214C07F400A9221F /* Base32.h */,
 				BF9FFBC31CE3ADB3006CAA74 /* Base64.h */,
 				BF9FFBC81CE3B962006CAA74 /* HexString.h */,
 			);
@@ -825,6 +833,7 @@
 				BF498AB71CDCC24F00D7E904 /* EmbeddedTestsList.cpp in Sources */,
 				BF3068521CC91E56002FD3BC /* TestManager.cpp in Sources */,
 				BFB494071CE900E500F8D81B /* g_baseFiles.cpp in Sources */,
+				BFABCD742150036A00A9221F /* cc7Base32Tests.cpp in Sources */,
 				BF1C7BBF1CE0CE9300C4399E /* cc7PlatformTests.cpp in Sources */,
 				BF498ACA1CDDD7ED00D7E904 /* cc7ByteArrayTests.cpp in Sources */,
 				BFC5254E1CDBC985002E653C /* PerformanceTimerApple.cpp in Sources */,
@@ -850,6 +859,7 @@
 				BF9FFBC51CE3AEFE006CAA74 /* Base64.cpp in Sources */,
 				BF9FFBC71CE3B94D006CAA74 /* HexString.cpp in Sources */,
 				BFE174041CC9664500039466 /* PlatformApple.mm in Sources */,
+				BFABCD70214C087700A9221F /* Base32.cpp in Sources */,
 				BF4B4A881CB93B8B00BF2C9D /* ByteRange.cpp in Sources */,
 				BF79F0181D04BFB7004653A1 /* ObjcHelper.mm in Sources */,
 				BFE174071CC96D3600039466 /* DebugFeatures.cpp in Sources */,

@@ -50,6 +50,7 @@ LOCAL_SRC_FILES := \
 	cc7/DebugFeatures.cpp \
 	cc7/ByteRange.cpp \
 	cc7/ByteArray.cpp \
+	cc7/Base32.cpp \
 	cc7/Base64.cpp \
 	cc7/HexString.cpp
 
@@ -106,6 +107,7 @@ LOCAL_SRC_FILES += \
 # Unit tests (CC7)
 LOCAL_SRC_FILES += \
 	cc7tests/tests/EmbeddedTestsList.cpp \
+	cc7tests/tests/cc7base/cc7Base32Tests.cpp \
 	cc7tests/tests/cc7base/cc7Base64Tests.cpp \
 	cc7tests/tests/cc7base/cc7ByteArrayTests.cpp \
 	cc7tests/tests/cc7base/cc7ByteRangeTests.cpp \

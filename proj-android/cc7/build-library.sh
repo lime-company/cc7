@@ -75,6 +75,8 @@ case $BUILD_TYPE in
 		;;
 esac
 
+${TOP}/../../openssl-build/fetch.sh android
+
 echo "---------------------------------------------------"
 echo "NDK-BUILD"
 echo "---------------------------------------------------"

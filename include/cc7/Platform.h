@@ -70,6 +70,7 @@
 	#endif
 	#include "TargetConditionals.h"
 	// Switch between iOS & OSX & Others...
+	#define CC7_APPLE
 	#if TARGET_OS_IPHONE == 1 && TARGET_OS_IOS == 1
 		#define CC7_IOS
 	#elif TARGET_OS_OSX == 1
@@ -201,7 +202,7 @@
 	//
 	CC7_EXTERN_C int CC7AssertImpl(int condition, const char * file, int line, const char * format, ...);
 
-	#ifdef CC7_IOS
+	#ifdef CC7_APPLE
 		#if	TARGET_CPU_ARM == 1
 			// 32 bit ARM
 			#define CC7_BREAKPOINT() __asm__ volatile ("bkpt 0");
@@ -224,7 +225,7 @@
 			#define CC7_BREAKPOINT()
 			//
 		#endif
-	#endif // CC7_IOS
+	#endif // CC7_APPLE
 
 	#ifdef CC7_ANDROID
 		#define CC7_BREAKPOINT()

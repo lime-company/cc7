@@ -43,30 +43,18 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BF498AA11CDCBE8300D7E904"
-               BuildableName = "CC7TestsWrapper.xctest"
-               BlueprintName = "CC7TestsWrapper"
+               BuildableName = "CC7TestsWrapper-ios.xctest"
+               BlueprintName = "CC7TestsWrapper-ios"
                ReferencedContainer = "container:cc7.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF498AA11CDCBE8300D7E904"
-               BuildableName = "CC7TestsWrapper.xctest"
-               BlueprintName = "CC7TestsWrapper"
-               ReferencedContainer = "container:cc7.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -76,11 +64,21 @@
             ReferencedContainer = "container:cc7.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BF498AA11CDCBE8300D7E904"
+               BuildableName = "CC7TestsWrapper-ios.xctest"
+               BlueprintName = "CC7TestsWrapper-ios"
+               ReferencedContainer = "container:cc7.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -98,8 +96,6 @@
             ReferencedContainer = "container:cc7.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

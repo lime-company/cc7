@@ -19,10 +19,11 @@ LOCAL_PATH:= $(call my-dir)
 # -------------------------------------------------------------------------
 # Prebuilt OpenSSL crypto library
 # -------------------------------------------------------------------------
+
 include $(CLEAR_VARS)
 LOCAL_MODULE          	:= openssl_crypto
-LOCAL_SRC_FILES			:= ../openssl/android/lib/$(TARGET_ARCH_ABI)/libcrypto.a
-LOCAL_EXPORT_C_INCLUDES	:= ../openssl/android/include
+LOCAL_SRC_FILES			:= ../openssl-lib/android/lib/$(TARGET_ARCH_ABI)/libcrypto.a
+LOCAL_EXPORT_C_INCLUDES	:= ../openssl-lib/android/include
 include $(PREBUILT_STATIC_LIBRARY)
 
 # -------------------------------------------------------------------------
@@ -42,7 +43,7 @@ LOCAL_STATIC_LIBRARIES	:= openssl_crypto
 
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../include \
-	$(LOCAL_PATH)/../openssl/android/include \
+	$(LOCAL_PATH)/../openssl-lib/android/include \
 	$(LOCAL_PATH)/cc7
 
 # Multiplatform sources
@@ -78,7 +79,7 @@ LOCAL_STATIC_LIBRARIES	:= cc7
 
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../include \
-	$(LOCAL_PATH)/../openssl/android/include \
+	$(LOCAL_PATH)/../openssl-lib/android/include \
 	$(LOCAL_PATH)/cc7tests
 
 # Testing core
@@ -103,7 +104,6 @@ LOCAL_SRC_FILES += \
 	cc7tests/tests/cc7base/tt7Testception.cpp \
 	cc7tests/tests/cc7base/tt7JSONReaderTests.cpp
 
-
 # Unit tests (CC7)
 LOCAL_SRC_FILES += \
 	cc7tests/tests/EmbeddedTestsList.cpp \
@@ -113,6 +113,10 @@ LOCAL_SRC_FILES += \
 	cc7tests/tests/cc7base/cc7ByteRangeTests.cpp \
 	cc7tests/tests/cc7base/cc7HexStringTests.cpp \
 	cc7tests/tests/cc7base/cc7PlatformTests.cpp
+
+# Unit tests (OpenSSL)
+LOCAL_SRC_FILES += \
+	cc7tests/tests/openssl/cc7OpenSSLIntegration.cpp
 
 # Generated files
 LOCAL_SRC_FILES += \

@@ -23,3 +23,5 @@ APP_STL := c++_static
 # probably also validate platforms, supported by the OpenSSL build system.
 #
 APP_ABI := armeabi-v7a arm64-v8a x86 x86_64
+
+APP_PLATFORM := android-21

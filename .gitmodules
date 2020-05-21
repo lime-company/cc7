@@ -1,3 +1,0 @@
-[submodule "openssl"]
-	path = openssl
-	url = https://github.com/wultra/openssl-libs.git

@@ -1,3 +1,7 @@
+# Binary files, folder with precompiled library
+*.gz
+openssl-lib/
+
 # osx image file
 .DS_Store
 

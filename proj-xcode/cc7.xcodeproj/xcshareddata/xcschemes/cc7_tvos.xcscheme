@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1140"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BFB1A6B31CB5937800B2D172"
-               BuildableName = "libcc7-ios.a"
-               BlueprintName = "cc7-ios"
+               BlueprintIdentifier = "BFFE8A9F2449B4F80032821F"
+               BuildableName = "libcc7-tvos.a"
+               BlueprintName = "cc7-tvos"
                ReferencedContainer = "container:cc7.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF30682D1CC91B20002FD3BC"
-               BuildableName = "libcc7tests-ios.a"
-               BlueprintName = "cc7tests-ios"
+               BlueprintIdentifier = "BFFE8AB02449B53C0032821F"
+               BuildableName = "libcc7tests-tvos.a"
+               BlueprintName = "cc7tests-tvos"
                ReferencedContainer = "container:cc7.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF498AA11CDCBE8300D7E904"
-               BuildableName = "CC7TestsWrapper.xctest"
-               BlueprintName = "CC7TestsWrapper"
+               BlueprintIdentifier = "BFFE8AD42449B5820032821F"
+               BuildableName = "CC7TestsWrapper-tvos.xctest"
+               BlueprintName = "CC7TestsWrapper-tvos"
                ReferencedContainer = "container:cc7.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -60,24 +60,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF498AA11CDCBE8300D7E904"
-               BuildableName = "CC7TestsWrapper.xctest"
-               BlueprintName = "CC7TestsWrapper"
+               BlueprintIdentifier = "BFFE8AD42449B5820032821F"
+               BuildableName = "CC7TestsWrapper-tvos.xctest"
+               BlueprintName = "CC7TestsWrapper-tvos"
                ReferencedContainer = "container:cc7.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BFB1A6B31CB5937800B2D172"
-            BuildableName = "libcc7-ios.a"
-            BlueprintName = "cc7-ios"
-            ReferencedContainer = "container:cc7.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -89,17 +78,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BFB1A6B31CB5937800B2D172"
-            BuildableName = "libcc7-ios.a"
-            BlueprintName = "cc7-ios"
-            ReferencedContainer = "container:cc7.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -110,9 +88,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BFB1A6B31CB5937800B2D172"
-            BuildableName = "libcc7-ios.a"
-            BlueprintName = "cc7-ios"
+            BlueprintIdentifier = "BFFE8A9F2449B4F80032821F"
+            BuildableName = "libcc7-tvos.a"
+            BlueprintName = "cc7-tvos"
             ReferencedContainer = "container:cc7.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

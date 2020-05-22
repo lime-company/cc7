@@ -19,7 +19,7 @@ REQUIRE_COMMAND plutil
 # -----------------------------------------------------------------------------
 function BUILD_APPLE
 {
-	local TMP_PATH="${TOP}/apple"
+	local TMP_PATH="${TOP}/tmp/apple"
 	local BUILD_LOG=$TMP_PATH/Build.log
 	local LIB_NAME="openssl"
 	
@@ -70,7 +70,7 @@ function BUILD_APPLE
 	LOG "Final cleanup..."
 	
 	unset OPENSSL_LOCAL_CONFIG_DIR
-	$RM -rf "${TOP}/apple"	
+	$RM -rf "${TMP_PATH}"	
 }
 
 # -----------------------------------------------------------------------------
@@ -209,6 +209,9 @@ function BUILD_APPLE_FAT_FRAMEWORK
     else
         $CP ${LIBS[0]} "$OUT_PATH/$OUT_NAME"
     fi
+	if otool -l "$OUT_PATH/$OUT_NAME" | grep __bitcode >/dev/null; then
+		LOG "  + library contains Bitcode"
+	fi
 	
 	# Make proper Info.plist
 	sed -e "s/%MIN_OS_VERSION%/$MIN_OS_VERSION/g" "${TOP}/assets/apple/Info-template.plist" > "$OUT_PATH/Info.plist"

@@ -16,7 +16,7 @@ fi
 # -----------------------------------------------------------------------------
 function BUILD_ANDROID
 {
-	local TMP_PATH="${TOP}/android"
+	local TMP_PATH="${TOP}/tmp/android"
 	local BUILD_LOG=$TMP_PATH/Build.log
 	
 	LOG_LINE
@@ -63,7 +63,7 @@ function BUILD_ANDROID
 	
 	for ABI in ${ANDROID_ARCHITECTURES}
 	do
-		BUILD_ANDROID_ARCH $ABI $NDK_DIR
+		BUILD_ANDROID_ARCH $ABI "${TMP_PATH}"
 	done
 	# Make platform switch header
 	BUILD_ANDROID_PLATFORM_SWITCH "${OPENSSL_DEST_ANDROID}/include"
@@ -80,7 +80,7 @@ function BUILD_ANDROID
 	# ----
 	POP_DIR 
 	LOG "Final cleanup..."
-	$RM -rf "${TOP}/android"
+	$RM -rf "${TMP_PATH}"
 	
 	# Restore previous PATH content
 	export PATH="$KEEP_PATH"
@@ -91,11 +91,12 @@ function BUILD_ANDROID
 # 
 # Parameters:
 #   $1   - architecture ABI name (e.g. x86, armeabi, etc...)
+#   $2   - path to temporary folder
 # -----------------------------------------------------------------------------
 function BUILD_ANDROID_ARCH
 {
 	local ABI=$1
-	local TMP_PATH="${TOP}/android/${ABI}"
+	local TMP_PATH="$2/${ABI}"
 	local SRC_PATH="${TMP_PATH}/src"
 	local BUILD_LOG="${TMP_PATH}/Build.log"
 	

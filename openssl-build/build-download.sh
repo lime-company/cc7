@@ -29,7 +29,7 @@ function DOWNLOAD_OPENSSL
 	LOG "Downloading ${OPENSSL_ARCHIVE_FILE} ..."
 	
 	$MD ${OPENSSL_DEST}
-	curl ${CURL_OPTIONS} -s ${OPENSSL_ARCHIVE_URL} > "${OPENSSL_ARCHIVE_LOCAL_PATH}"
+	curl ${CURL_OPTIONS} -sL ${OPENSSL_ARCHIVE_URL} > "${OPENSSL_ARCHIVE_LOCAL_PATH}"
 	
 	LOG "Validating downloaded file ..."
 	if [ x$(VALIDATE_DOWNLOADED_OPENSSL) != x1 ]; then

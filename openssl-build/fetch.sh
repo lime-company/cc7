@@ -108,8 +108,10 @@ function FETCH_ARCHIVE
 	if [ ! -f "${DEST}" ]; then
 		# The destination file doesn't exist. Try to download it from the remote site.
 		LOG "$INDENT Downloading precompiled archive $(basename ${DEST})..."
+		DEBUG_LOG "   - URL  : ${URL}"
+		DEBUG_LOG "   - dest : ${DEST}"
 		$MD $(dirname $DEST)
-		curl ${CURL_OPTIONS} -s ${URL} > "${DEST}"
+		curl ${CURL_OPTIONS} -sL ${URL} > "${DEST}"
 		if [ ! -f "${DEST}" ]; then
 			FAILURE "$INDENT Failed to download precompiled archive from URL: $URL"
 		fi

@@ -59,7 +59,7 @@ function LOAD_ARCHIVE_INFO_FILE
 	local info_path="$2"
 	if [ -f "${info_path}" ]; then
 		source "${info_path}"
-		if [ -e ${OPENSSL_PREBUILD_VERSION} ] || [ -e ${OPENSSL_PREBUILD_HASH} ]; then
+		if [ -z ${OPENSSL_PREBUILD_VERSION} ] || [ -z ${OPENSSL_PREBUILD_HASH} ]; then
 			FAILURE "Package info file has no content: ${info_path}"
 		fi
 	else

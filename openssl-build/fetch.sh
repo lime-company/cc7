@@ -84,7 +84,7 @@ function FETCH_ARCHIVE
 		# Info file is present. This means that precompiled lib is already 
 		# extracted at destination folder. We have to check version and hash.
 		source ${INFO}
-		if [ ! -e ${OPENSSL_PREBUILD_VERSION} ] && [ ! -e ${OPENSSL_PREBUILD_HASH} ]; then
+		if [ ! -z ${OPENSSL_PREBUILD_VERSION} ] && [ ! -z ${OPENSSL_PREBUILD_HASH} ]; then
 			if [ ${OPENSSL_PREBUILD_VERSION} == ${OPENSSL_VERSION} ] && [ ${OPENSSL_PREBUILD_HASH} == ${HASH} ]; then
 				LOG "$INDENT Library is prepared at: $(dirname ${INFO})"
 				return 0

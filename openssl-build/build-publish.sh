@@ -84,14 +84,14 @@ function LOAD_FETCH_CONFIG
 {	
 	DEBUG_LOG "Loading config-fetch.sh ..."
 	
-	if [ ! -e $OPENSSL_FETCH_VERSION ] && [ "$OPENSSL_FETCH_VERSION" == "${OPENSSL_VERSION}" ]; then
+	if [ ! -z $OPENSSL_FETCH_VERSION ] && [ "$OPENSSL_FETCH_VERSION" == "${OPENSSL_VERSION}" ]; then
 		DEBUG_LOG "File config-fetch.sh is already loaded."
 		return 0
 	fi
 	
 	if [ -f "${TOP}/config-fetch.sh" ]; then
 		source "${TOP}/config-fetch.sh"	
-		if [ -e $OPENSSL_FETCH_VERSION ] || [ "$OPENSSL_FETCH_VERSION" != "${OPENSSL_VERSION}" ]; then
+		if [ -z $OPENSSL_FETCH_VERSION ] || [ "$OPENSSL_FETCH_VERSION" != "${OPENSSL_VERSION}" ]; then
 			DEFAULT_FETCH_CONFIG
 		fi
 	else
@@ -106,7 +106,7 @@ function SAVE_FETCH_CONFIG
 {
 	DEBUG_LOG "Saving config-fetch.sh ..."
 	
-	if [ -e $OPENSSL_FETCH_VERSION ] || [ "$OPENSSL_FETCH_VERSION" != "${OPENSSL_VERSION}" ]; then
+	if [ -z $OPENSSL_FETCH_VERSION ] || [ "$OPENSSL_FETCH_VERSION" != "${OPENSSL_VERSION}" ]; then
 		DEFAULT_FETCH_CONFIG
 	fi
 	

@@ -3,17 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		BF1C7BBF1CE0CE9300C4399E /* cc7PlatformTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1C7BBE1CE0CE9300C4399E /* cc7PlatformTests.cpp */; };
-		BF22BDFA247698FB00029A38 /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF22BDF7247698D300029A38 /* openssl.xcframework */; };
-		BF22BDFB2476990500029A38 /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF22BDF7247698D300029A38 /* openssl.xcframework */; };
 		BF22BDFD2476995A00029A38 /* cc7OpenSSLIntegration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF22BDFC2476995A00029A38 /* cc7OpenSSLIntegration.cpp */; };
 		BF22BDFE2476995A00029A38 /* cc7OpenSSLIntegration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF22BDFC2476995A00029A38 /* cc7OpenSSLIntegration.cpp */; };
-		BF22BE0124769C0900029A38 /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF22BDF7247698D300029A38 /* openssl.xcframework */; };
-		BF22BE0224769C1000029A38 /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF22BDF7247698D300029A38 /* openssl.xcframework */; };
 		BF30683A1CC91BA6002FD3BC /* libcc7-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB1A6B41CB5937800B2D172 /* libcc7-ios.a */; };
 		BF3068521CC91E56002FD3BC /* TestManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3068511CC91E56002FD3BC /* TestManager.cpp */; };
 		BF3068551CC91EE4002FD3BC /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3068541CC91EE4002FD3BC /* UnitTest.cpp */; };
@@ -153,7 +149,6 @@
 		BF0D67EF1CE63DF90070D853 /* PrefixCC7.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixCC7.pch; sourceTree = "<group>"; };
 		BF0D67F01CE63EDA0070D853 /* PrefixCC7Tests.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixCC7Tests.pch; sourceTree = "<group>"; };
 		BF1C7BBE1CE0CE9300C4399E /* cc7PlatformTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cc7PlatformTests.cpp; sourceTree = "<group>"; };
-		BF22BDF22476987400029A38 /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openssl.xcframework; path = "../openssl-lib/apple/openssl.xcframework"; sourceTree = "<group>"; };
 		BF22BDF7247698D300029A38 /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = openssl.xcframework; sourceTree = "<group>"; };
 		BF22BDFC2476995A00029A38 /* cc7OpenSSLIntegration.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cc7OpenSSLIntegration.cpp; sourceTree = "<group>"; };
 		BF2723621D340ED700020395 /* JniHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JniHelper.h; sourceTree = "<group>"; };
@@ -258,7 +253,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF22BE0124769C0900029A38 /* openssl.xcframework in Frameworks */,
 				BF498AA71CDCBE8400D7E904 /* libcc7tests-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,7 +261,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF22BDFA247698FB00029A38 /* openssl.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +268,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF22BDFB2476990500029A38 /* openssl.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +283,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF22BE0224769C1000029A38 /* openssl.xcframework in Frameworks */,
 				BFFE8AE12449B59D0032821F /* libcc7tests-tvos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,7 +644,6 @@
 		BFFE8AD22449B5520032821F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BF22BDF22476987400029A38 /* openssl.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -701,7 +691,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFB1A6BD1CB5937800B2D172 /* Build configuration list for PBXNativeTarget "cc7-ios" */;
 			buildPhases = (
-				BF0602CC245305F600A389EB /* ShellScript */,
+				BF0602CC245305F600A389EB /* [CC7] Prepare OpenSSL */,
 				BFB1A6B01CB5937800B2D172 /* Sources */,
 				BFB1A6B11CB5937800B2D172 /* Frameworks */,
 				BFB1A6B21CB5937800B2D172 /* CopyFiles */,
@@ -719,7 +709,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFFE8AAC2449B4F80032821F /* Build configuration list for PBXNativeTarget "cc7-tvos" */;
 			buildPhases = (
-				BF0602CD245306F100A389EB /* ShellScript */,
+				BF0602CD245306F100A389EB /* [CC7] Prepare OpenSSL */,
 				BFFE8AA02449B4F80032821F /* Sources */,
 				BFFE8AA92449B4F80032821F /* Frameworks */,
 				BFFE8AAB2449B4F80032821F /* CopyFiles */,
@@ -781,9 +771,13 @@
 				TargetAttributes = {
 					BF498AA11CDCBE8300D7E904 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = KTT9G859MR;
 					};
 					BFB1A6B31CB5937800B2D172 = {
 						CreatedOnToolsVersion = 7.3;
+					};
+					BFFE8AD42449B5820032821F = {
+						DevelopmentTeam = KTT9G859MR;
 					};
 				};
 			};
@@ -828,7 +822,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BF0602CC245305F600A389EB /* ShellScript */ = {
+		BF0602CC245305F600A389EB /* [CC7] Prepare OpenSSL */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -837,15 +831,16 @@
 			);
 			inputPaths = (
 			);
+			name = "[CC7] Prepare OpenSSL";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Fetch precompiled openssl.xcframework\n\"${PROJECT_DIR}/../openssl-build/fetch.sh\" apple\n";
+			shellScript = "# Fetch precompiled openssl.xcframework\n\"${PROJECT_DIR}/../openssl-build/fetch.sh\" apple\n# Prepare platform / architecture specific framework\n\"${PROJECT_DIR}/../openssl-build/xcbuild-helper.sh\" \"${EFFECTIVE_PLATFORM_NAME}\" \"${BUILT_PRODUCTS_DIR}\"\n";
 		};
-		BF0602CD245306F100A389EB /* ShellScript */ = {
+		BF0602CD245306F100A389EB /* [CC7] Prepare OpenSSL */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -854,13 +849,14 @@
 			);
 			inputPaths = (
 			);
+			name = "[CC7] Prepare OpenSSL";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Fetch precompiled openssl.xcframework\n\"${PROJECT_DIR}/../openssl-build/fetch.sh\" apple\n";
+			shellScript = "# Fetch precompiled openssl.xcframework\n\"${PROJECT_DIR}/../openssl-build/fetch.sh\" apple\n# Prepare platform / architecture specific framework\n\"${PROJECT_DIR}/../openssl-build/xcbuild-helper.sh\" \"${EFFECTIVE_PLATFORM_NAME}\" \"${BUILT_PRODUCTS_DIR}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1024,11 +1020,12 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KTT9G859MR;
 				INFOPLIST_FILE = CC7TestsWrapper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					openssl,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.cc7.lib.CC7TestsWrapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1042,11 +1039,12 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KTT9G859MR;
 				INFOPLIST_FILE = CC7TestsWrapper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					openssl,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.cc7.lib.CC7TestsWrapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1169,7 +1167,11 @@
 			buildSettings = {
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7/platform/apple/PrefixCC7.pch";
 				GCC_WARN_PEDANTIC = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					openssl,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1182,7 +1184,11 @@
 			buildSettings = {
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7/platform/apple/PrefixCC7.pch";
 				GCC_WARN_PEDANTIC = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					openssl,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1195,7 +1201,11 @@
 			buildSettings = {
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7/platform/apple/PrefixCC7.pch";
 				GCC_WARN_PEDANTIC = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					openssl,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1207,7 +1217,11 @@
 			buildSettings = {
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7/platform/apple/PrefixCC7.pch";
 				GCC_WARN_PEDANTIC = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					openssl,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1241,11 +1255,12 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KTT9G859MR;
 				INFOPLIST_FILE = CC7TestsWrapper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					openssl,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.cc7.lib.CC7TestsWrapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1259,11 +1274,12 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KTT9G859MR;
 				INFOPLIST_FILE = CC7TestsWrapper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					openssl,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.cc7.lib.CC7TestsWrapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";

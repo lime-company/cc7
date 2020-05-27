@@ -113,10 +113,12 @@ function FETCH_ARCHIVE
 		$MD $(dirname $DEST)
 		curl ${CURL_OPTIONS} -sL ${URL} > "${DEST}"
 		if [ ! -f "${DEST}" ]; then
+			$RM -rf "${DEST_DIR}"
 			FAILURE "$INDENT Failed to download precompiled archive from URL: $URL"
 		fi
 		if [ $(SHA256 "${DEST}") != ${HASH} ]; then
 			$RM "${DEST}"
+			$RM -rf "${DEST_DIR}"
 			FAILURE "$INDENT Downloaded precompiled OpenSSL archive is corrupted. URL: $URL"
 		fi
 	fi

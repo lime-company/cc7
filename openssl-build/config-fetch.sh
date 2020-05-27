@@ -5,6 +5,6 @@
 
 OPENSSL_FETCH_VERSION='1.1.1g'
 OPENSSL_FETCH_ANDROID_URL='https://github.com/wultra/cc7/releases/download/0.2.0/openssl-1.1.1g-android.tar.gz'
-OPENSSL_FETCH_ANDROID_HASH='c6e3a963fdcac358e3c38be7bb0aab35a16fc2ec8f66d6e1202dabbf5fa1deed'
+OPENSSL_FETCH_ANDROID_HASH='c9598eeb803f37db88e07d3ba25409b004b5a25a91665b44c74fb3259c79e439'
 OPENSSL_FETCH_APPLE_URL='https://github.com/wultra/cc7/releases/download/0.2.0/openssl-1.1.1g-apple.tar.gz'
-OPENSSL_FETCH_APPLE_HASH='63ea460f9b57f73e3f9cfa442fd3cc8546de7041b714051d4e13e8acdda2a38d'
+OPENSSL_FETCH_APPLE_HASH='889e5926d8f6d09841c7a5c6ad7fcca9bffd171d2e7348a9bad02a556d008af6'

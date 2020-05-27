@@ -11,8 +11,8 @@ fi
 # -----------------------------------------------------------------------------
 function PUBLISH_COMMIT_CHANGES
 {
-	local release_url="https://github.com/wultra/cc7/releases/${CC7_VERSION}"
-	
+	local release_url="${CC7_RELEASE_URL}/${CC7_VERSION}"
+
 	LOG "Commiting all chages..."
 	
 	SAVE_FETCH_CONFIG
@@ -40,6 +40,8 @@ function PUBLISH_ARCHIVE
 	local info_path=
 	local platform=
 	local hash=
+	local BASE_URL="${CC7_RELEASE_URL}/download"
+	
 	case "$archive" in
 		*-apple.tar.gz) 
 			info_path="${OPENSSL_DEST_APPLE_INFO}"
@@ -67,8 +69,10 @@ function PUBLISH_ARCHIVE
 	
 	hash=${OPENSSL_PREBUILD_HASH}
 	if [ $platform == 'Apple' ]; then
+		OPENSSL_FETCH_APPLE_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_FILE}"
 		OPENSSL_FETCH_APPLE_HASH=$hash
 	else
+		OPENSSL_FETCH_ANDROID_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_ANDROID_FILE}"
 		OPENSSL_FETCH_ANDROID_HASH=$hash
 	fi
 
@@ -134,7 +138,7 @@ function DEFAULT_FETCH_CONFIG
 {
 	DEBUG_LOG "Setting default values for config-fetch.sh ..."
 	
-	local BASE_URL="https://github.com/wultra/cc7/releases/download"
+	local BASE_URL="${CC7_RELEASE_URL}/download"
 	OPENSSL_FETCH_VERSION="${OPENSSL_VERSION}"
 	OPENSSL_FETCH_ANDROID_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_ANDROID_FILE}"
 	OPENSSL_FETCH_ANDROID_HASH=''

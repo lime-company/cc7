@@ -39,3 +39,4 @@ ANDROID_API_LEVEL="21"
 # Other params
 
 BUILD_JOBS_COUNT=$(getconf _NPROCESSORS_ONLN)
+CC7_RELEASE_URL="https://github.com/wultra/cc7/releases"

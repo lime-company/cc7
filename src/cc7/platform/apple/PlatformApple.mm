@@ -70,3 +70,16 @@ namespace debug
 } // cc7::debug
 } // cc7
 #endif //ENABLE_CC7_LOG
+
+/*
+ This is a dummy global variable that workarounds a bug in the latest "strip" tool,
+ that treats empty object as already stripped. The PlatformApple.o object is empty
+ due to a conditional compilation. The problem happen only during "Archive" phase
+ of Xcode build, and leads to mysterious warning:
+ 
+ .../usr/bin/strip: warning: input object file already stripped: .../usr/local/lib/libcc7-ios.a(PlatformApple.o)
+ 
+ What is interesting is that such warning happens only for x86_64 architecture
+ (e.g. for Catalyst and all simulators)
+ */
+int cc7_input_object_already_stripped_warning_workaround = 0;

@@ -146,7 +146,7 @@ function FETCH_CLEANUP
 {
 	# Remove 'openssl' folder that might contain a content of detached submodule
 	if [ -d "${TOP}/../openssl" ]; then
-		$MD -r "${TOP}/../openssl"
+		$RM -r "${TOP}/../openssl"
 	fi 
 }
 

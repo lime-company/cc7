@@ -139,6 +139,17 @@ function FETCH_ARCHIVE
 	LOG "$INDENT Library is prepared at: $(dirname ${INFO})"
 }
 
+# -----------------------------------------------------------------------------
+# FETCH_CLEANUP perform various cleanup tasks related to fetch operation. 
+# -----------------------------------------------------------------------------
+function FETCH_CLEANUP
+{
+	# Remove 'openssl' folder that might contain a content of detached submodule
+	if [ -d "${TOP}/../openssl" ]; then
+		$MD -r "${TOP}/../openssl"
+	fi 
+}
+
 ###############################################################################
 # Script's main execution starts here...
 # -----------------------------------------------------------------------------
@@ -195,6 +206,8 @@ ACQUIRE_LOCK "${FETCH_LOCK}" 60
 LOG_LINE
 [[ x${DO_ANDROID} == x1 ]] && FETCH_ARCHIVE android
 [[ x${DO_APPLE}   == x1 ]] && FETCH_ARCHIVE apple
+
+FETCH_CLEANUP
 
 # -----------------------------------------------------------------------------
 REMOVE_LOCK "${FETCH_LOCK}"

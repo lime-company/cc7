@@ -51,6 +51,8 @@ function BUILD_APPLE
 	do
 		BUILD_APPLE_FAT_FRAMEWORK ${PLATFORM} ${LIB_NAME} "${TMP_PATH}"
 	done
+	# We still have to support a FAT static library for older mobile SDKs
+	BUILD_APPLE_STATIC_LIB ${LIB_NAME} "${TMP_PATH}" "${BUILD_LOG}" libcrypto.a
 	# Build final XCFramework
 	BUILD_APPLE_XC_FRAMEWORK ${LIB_NAME} "${TMP_PATH}" "${BUILD_LOG}"
 
@@ -235,7 +237,7 @@ function BUILD_APPLE_XC_FRAMEWORK
 	local LIB_NAME="$1"
 	local TMP_PATH="$2"
 	local BUILD_LOG="$3"
-	local FW_PATH="$OPENSSL_DEST_APPLE/$LIB_NAME.xcframework"
+	local FW_PATH="${OPENSSL_DEST_APPLE}/${LIB_NAME}.xcframework"
 	local JSON_INFO="${OPENSSL_DEST_APPLE}/Info.json"
 	local FILT_INFO="${OPENSSL_DEST_APPLE}/Info-filtered.json"
 	local DST_HEADERS="${OPENSSL_DEST_APPLE}/include"
@@ -247,7 +249,7 @@ function BUILD_APPLE_XC_FRAMEWORK
     for ARG in ${APPLE_FW_ALL[@]}; do
         XCFW_ARGS+="-framework ${ARG} "
     done
-	$MD ${OPENSSL_DEST_APPLE}
+	$MD "${OPENSSL_DEST_APPLE}"
     xcodebuild -create-xcframework $XCFW_ARGS -output "${FW_PATH}" >> ${BUILD_LOG} 2>&1
 	
 	LOG "Preparing Xcode build helper script..."
@@ -324,6 +326,50 @@ function BUILD_APPLE_XC_FRAMEWORK
 	
 	# Cleanup
 	$RM "${JSON_INFO}" "${FILT_INFO}"
+}
+
+# -----------------------------------------------------------------------------
+# BUILD_APPLE_STATIC_LIB builds a final static FAT library that contains
+# all iOS architectures (e.g. ARM & x86).
+#
+# Parameters:
+#   $1   - static library name (e.g. openssl)
+#   $2   - path to temporary folder
+#   $3   - path to top-level build log
+#   $4   - output static lib name (e.g. libcrypto.a)
+# -----------------------------------------------------------------------------
+function BUILD_APPLE_STATIC_LIB
+{
+	local LIB_NAME="$1"
+	local TMP_PATH="$2"
+	local BUILD_LOG="$3"
+	local OUT_LIB="${OPENSSL_DEST_APPLE}/$4"
+	
+	local IOS='iOS'
+	local SIM='iOS_Simulator'
+	local MIN_OS_VERSION=$(BUILD_APPLE_SDK_MIN_VERSION ${IOS})
+	
+	LOG "Building ${IOS}+${SIM} (${MIN_OS_VERSION}+) static FAT library..."
+	
+	# Look for iOS and Simulator library
+	local LIBS=()
+	for TARGET in ${APPLE_TARGETS};	do
+		local TARGET_PLATFORM=$(BUILD_APPLE_FAT_NAME $TARGET)
+		if [ ${TARGET_PLATFORM} == ${IOS} ] || [ ${TARGET_PLATFORM} == ${SIM} ]; then
+			LIBS+=("$TMP_PATH/$TARGET/openssl.tmp/${LIB_NAME}.a")
+		fi
+	done
+	
+	# Make FAT library from that two platforms.
+    if [[ ${#LIBS[@]} -lt 2 ]]; then
+        FAILURE "Failed to collect libs for ${IOS} and ${SIM} targets."
+    fi
+	
+	lipo -create ${LIBS[@]} -output "${OUT_LIB}"
+
+	if otool -l "${OUT_LIB}" | grep __bitcode >/dev/null; then
+		LOG "  + library contains Bitcode"
+	fi
 }
 
 # -----------------------------------------------------------------------------

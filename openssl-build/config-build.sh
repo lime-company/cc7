@@ -33,7 +33,8 @@ APPLE_OSX_MIN_SDK="10.11"
 # Android specific
 
 ANDROID_ARCHITECTURES="armeabi-v7a arm64-v8a x86 x86_64" 
-ANDROID_API_LEVEL="21"
+ANDROID_API_LEVEL_32="19"
+ANDROID_API_LEVEL_64="21"	# 64-bit archs were introduced in API lvl 21
 
 # -----------------------------------------------------------------------------
 # Other params

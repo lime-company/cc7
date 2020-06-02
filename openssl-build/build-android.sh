@@ -101,6 +101,7 @@ function BUILD_ANDROID_ARCH
 	local BUILD_LOG="${TMP_PATH}/Build.log"
 	
 	local BUILD_TARGET=$(BUILD_ANDROID_TARGET $ABI)
+	local ANDROID_API_LEVEL=$(BUILD_ANDROID_API_LEVEL $ABI)
 	
 	LOG_LINE
 	LOG "Building  $ABI  (target: $BUILD_TARGET)"
@@ -175,15 +176,9 @@ function BUILD_ANDROID_TOOLCHAIN_PATH
 	local HOST_INFO=`uname -a`
 	local HOST_PLATFORM=""
 	case ${HOST_INFO} in
-		Darwin*)
-			HOST_PLATFORM="darwin-x86_64"
-			;;
-		Linux*)
-    		HOST_PLATFORM="linux-x86_64"
-			;;
-		*)
-			FAILURE "Unable to determine toolchain for current operating system."
-			;;
+		Darwin*)	HOST_PLATFORM="darwin-x86_64" ;;
+		Linux*)		HOST_PLATFORM="linux-x86_64" ;;
+		*) FAILURE "Unable to determine toolchain for current operating system." ;;
 	esac
 	echo "$NDK_DIR/toolchains/llvm/prebuilt/${HOST_PLATFORM}/bin"
 }
@@ -197,20 +192,27 @@ function BUILD_ANDROID_TOOLCHAIN_PATH
 function BUILD_ANDROID_TARGET
 {
 	case $1 in
-		armeabi-v7a)
-			echo "android-arm -march=armv7-a"
-			;;
-		arm64-v8a)
-			echo "android-arm64"
-			;;
-		x86)
-			echo "android-x86"
-			;;
-		x86_64)
-			echo "android-x86_64"
-			;;
-		*)
-			FAILURE "Unable to determine target for architecture $1"
+		armeabi-v7a)	echo "android-arm -march=armv7-a" ;;
+		arm64-v8a)		echo "android-arm64" ;;
+		x86)			echo "android-x86" ;;
+		x86_64)			echo "android-x86_64" ;;
+		*) FAILURE "Unable to determine target for architecture $1" ;;
+	esac
+}
+
+# -----------------------------------------------------------------------------
+# BUILD_ANDROID_API_LEVEL translates ABI architecture into minimum Android SDK
+# API level.
+#
+# Parameters:
+#   $1   - ABI architecture
+# -----------------------------------------------------------------------------
+function BUILD_ANDROID_API_LEVEL
+{
+	case $1 in
+		armeabi-v7a | x86)	echo ${ANDROID_API_LEVEL_32} ;;
+		arm64-v8a | x86_64)	echo ${ANDROID_API_LEVEL_64} ;;
+		*) FAILURE "Unable to determine API-level for architecture $1" ;;
 	esac
 }
 

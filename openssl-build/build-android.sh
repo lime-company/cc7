@@ -134,22 +134,30 @@ function BUILD_ANDROID_ARCH
 	LOG "Configuring library..."
 	
 	echo "### Configure" > ${BUILD_LOG}
+	
+	set +e
 	./Configure \
 		${BUILD_TARGET} \
 		-D__ANDROID_API__=${ANDROID_API_LEVEL} \
 		${OPENSSL_CONF_PARAMS} \
 		>> ${BUILD_LOG} 2>&1
+
+	if [ $? -ne 0 ]; then
+		tail -20 ${BUILD_LOG}
+		LOG_LINE
+		FAILURE "Configure script did fail"
+	fi
 	
 	LOG "Building library..."
 	
 	echo "### make" >> ${BUILD_LOG}
-	set +e
+
 	make -j$BUILD_JOBS_COUNT >> ${BUILD_LOG} 2>&1	
 	set -e
 	
 	if [ ! -f "libcrypto.a" ]; then
-		LOG_LINE
 		tail -20 ${BUILD_LOG}
+		LOG_LINE
 		FAILURE "Build did not produce final library"
 	fi
 	

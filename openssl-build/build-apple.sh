@@ -133,21 +133,28 @@ function BUILD_APPLE_TARGET
 	export CROSS_MIN_VERSION=$MIN_OS_VERSION
 	export SDKVERSION=`xcrun -sdk $SDK --show-sdk-version`
 	
+	set +e
 	./Configure \
 		${TARGET} \
 		${OPENSSL_CONF_PARAMS} \
 		>> ${BUILD_LOG} 2>&1
 	
+	if [ $? -ne 0 ]; then
+		tail -20 ${BUILD_LOG}
+		LOG_LINE
+		FAILURE "Configure script did fail"
+	fi
+	
 	LOG "Building library..."
 	
 	echo "### make" >> ${BUILD_LOG}
-	set +e
+	
 	make -j$BUILD_JOBS_COUNT >> ${BUILD_LOG} 2>&1	
 	set -e
 	
 	if [ ! -f "libcrypto.a" ]; then
-		LOG_LINE
 		tail -20 ${BUILD_LOG}
+		LOG_LINE
 		FAILURE "Build did not produce final library"
 	fi
 	

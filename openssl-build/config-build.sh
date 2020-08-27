@@ -22,7 +22,7 @@ APPLE_PLATFORMS="iOS iOS_Simulator macOS_Catalyst tvOS tvOS_Simulator"
 APPLE_TARGETS="ios-sim-cross-i386 ios-sim-cross-x86_64 ios-cross-armv7 ios-cross-armv7s ios64-cross-arm64 ios64-cross-arm64e mac-catalyst-x86_64 tvos-sim-cross-x86_64 tvos64-cross-arm64"
 
 # Minimum system versions
-APPLE_IOS_MIN_SDK="8.0"
+APPLE_IOS_MIN_SDK="9.0"
 APPLE_TVOS_MIN_SDK="9.0"
 APPLE_CATALYST_MIN_SDK="10.15"
 APPLE_WATCHOS_MIN_SDK="2.0"

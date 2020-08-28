@@ -67,7 +67,7 @@ function BUILD_APPLE
 		BUILD_APPLE_FAT_FRAMEWORK ${PLATFORM} ${LIB_NAME} "${TMP_PATH}"
 	done
 	# We still have to support a FAT static library for older mobile SDKs
-	BUILD_APPLE_STATIC_LIB ${LIB_NAME} "${TMP_PATH}" "${BUILD_LOG}" libcrypto.a
+	[[ x$APPLE_LEGACY_LIB == x1 ]] && BUILD_APPLE_STATIC_LIB ${LIB_NAME} "${TMP_PATH}" "${BUILD_LOG}" libcrypto.a
 	# Build final XCFramework
 	BUILD_APPLE_XC_FRAMEWORK ${LIB_NAME} "${TMP_PATH}" "${BUILD_LOG}"
 
@@ -435,6 +435,8 @@ function BUILD_APPLE_PLATFORM_SWITCH
 	    case "${PLATFORM_CONF}" in
 			*_macos64-x86_64.h)
 				IF_CONDITION="TARGET_OS_OSX && TARGET_CPU_X86_64" ;;
+			*_macos64-arm64.h)
+				IF_CONDITION="TARGET_OS_OSX && TARGET_CPU_ARM64" ;;
 			*_ios-sim-cross-x86_64.h)
 				IF_CONDITION="TARGET_OS_IOS && TARGET_OS_SIMULATOR && TARGET_CPU_X86_64" ;;
 			*_ios-sim-cross-i386.h)
@@ -459,6 +461,8 @@ function BUILD_APPLE_PLATFORM_SWITCH
 				IF_CONDITION="TARGET_OS_SIMULATOR && TARGET_CPU_X86 || TARGET_OS_EMBEDDED" ;;
 			*_mac-catalyst-x86_64.h)
 				IF_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_X86_64" ;;
+			*_mac-catalyst-arm64.h)
+				IF_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_ARM64" ;;
 			*)
 				FAILURE "Unexpected platform config header: $PLATFORM_CONF"
 				;;

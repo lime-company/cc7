@@ -37,37 +37,6 @@
 		BF498ACA1CDDD7ED00D7E904 /* cc7ByteArrayTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498AC91CDDD7ED00D7E904 /* cc7ByteArrayTests.cpp */; };
 		BF498ACD1CDDDABE00D7E904 /* cc7ByteRangeTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498ACB1CDDD80700D7E904 /* cc7ByteRangeTests.cpp */; };
 		BF4B4A881CB93B8B00BF2C9D /* ByteRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF4B4A861CB93B8B00BF2C9D /* ByteRange.cpp */; };
-		BF734A4B248523F3001F46BA /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC41CE3AEFE006CAA74 /* Base64.cpp */; };
-		BF734A4C248523F3001F46BA /* HexString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC61CE3B94D006CAA74 /* HexString.cpp */; };
-		BF734A4D248523F3001F46BA /* PlatformApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFE174021CC9664500039466 /* PlatformApple.mm */; };
-		BF734A4E248523F3001F46BA /* Base32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFABCD6F214C087700A9221F /* Base32.cpp */; };
-		BF734A4F248523F3001F46BA /* ByteRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF4B4A861CB93B8B00BF2C9D /* ByteRange.cpp */; };
-		BF734A50248523F3001F46BA /* ObjcHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF79F0171D04BFB7004653A1 /* ObjcHelper.mm */; };
-		BF734A51248523F3001F46BA /* DebugFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFE174061CC96D3600039466 /* DebugFeatures.cpp */; };
-		BF734A52248523F3001F46BA /* ByteArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF388B621CC62CF700DEC1AE /* ByteArray.cpp */; };
-		BF734A5D24852487001F46BA /* cc7Base64Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC91CE3BF08006CAA74 /* cc7Base64Tests.cpp */; };
-		BF734A5E24852487001F46BA /* PerformanceTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFC5254A1CDBC887002E653C /* PerformanceTimer.cpp */; };
-		BF734A5F24852487001F46BA /* TestLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3068571CC95503002FD3BC /* TestLog.cpp */; };
-		BF734A6024852487001F46BA /* cc7OpenSSLIntegration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF22BDFC2476995A00029A38 /* cc7OpenSSLIntegration.cpp */; };
-		BF734A6124852487001F46BA /* tt7Testception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498AB91CDD065B00D7E904 /* tt7Testception.cpp */; };
-		BF734A6224852487001F46BA /* TestFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493FE1CE8E74600F8D81B /* TestFile.cpp */; };
-		BF734A6324852487001F46BA /* tt7JSONReaderTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493D81CE7769500F8D81B /* tt7JSONReaderTests.cpp */; };
-		BF734A6424852487001F46BA /* TestResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB494021CE8E7C600F8D81B /* TestResource.cpp */; };
-		BF734A6524852487001F46BA /* cc7HexStringTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBCB1CE3C172006CAA74 /* cc7HexStringTests.cpp */; };
-		BF734A6624852487001F46BA /* JSONValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493D61CE75C7F00F8D81B /* JSONValue.cpp */; };
-		BF734A6724852487001F46BA /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498A991CDBD4F600D7E904 /* StringUtils.cpp */; };
-		BF734A6824852487001F46BA /* EmbeddedTestsList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498AB61CDCC24F00D7E904 /* EmbeddedTestsList.cpp */; };
-		BF734A6924852487001F46BA /* TestManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3068511CC91E56002FD3BC /* TestManager.cpp */; };
-		BF734A6A24852487001F46BA /* g_baseFiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB494041CE900E500F8D81B /* g_baseFiles.cpp */; };
-		BF734A6B24852487001F46BA /* cc7Base32Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFABCD732150036A00A9221F /* cc7Base32Tests.cpp */; };
-		BF734A6C24852487001F46BA /* cc7PlatformTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1C7BBE1CE0CE9300C4399E /* cc7PlatformTests.cpp */; };
-		BF734A6D24852487001F46BA /* cc7ByteArrayTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498AC91CDDD7ED00D7E904 /* cc7ByteArrayTests.cpp */; };
-		BF734A6E24852487001F46BA /* PerformanceTimerApple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFC5254D1CDBC985002E653C /* PerformanceTimerApple.cpp */; };
-		BF734A6F24852487001F46BA /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3068541CC91EE4002FD3BC /* UnitTest.cpp */; };
-		BF734A7024852487001F46BA /* cc7ByteRangeTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498ACB1CDDD80700D7E904 /* cc7ByteRangeTests.cpp */; };
-		BF734A7124852487001F46BA /* TestDirectory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB494001CE8E79400F8D81B /* TestDirectory.cpp */; };
-		BF734A7224852487001F46BA /* JSONReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493D21CE750EC00F8D81B /* JSONReader.cpp */; };
-		BF734A7C248524B2001F46BA /* libcc7-legacy-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF734A58248523F3001F46BA /* libcc7-legacy-ios.a */; };
 		BF79F0181D04BFB7004653A1 /* ObjcHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF79F0171D04BFB7004653A1 /* ObjcHelper.mm */; };
 		BF9FFBC51CE3AEFE006CAA74 /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC41CE3AEFE006CAA74 /* Base64.cpp */; };
 		BF9FFBC71CE3B94D006CAA74 /* HexString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC61CE3B94D006CAA74 /* HexString.cpp */; };
@@ -135,13 +104,6 @@
 			remoteGlobalIDString = BF30682D1CC91B20002FD3BC;
 			remoteInfo = "cc7tests-ios";
 		};
-		BF734A7A248524A5001F46BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFB1A6AC1CB5937800B2D172 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF734A48248523F3001F46BA;
-			remoteInfo = "cc7-legacy-ios";
-		};
 		BF734A992485263F001F46BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFB1A6AC1CB5937800B2D172 /* Project object */;
@@ -150,13 +112,6 @@
 			remoteInfo = OpenSSL;
 		};
 		BF734A9B24852644001F46BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFB1A6AC1CB5937800B2D172 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF734A94248525E9001F46BA;
-			remoteInfo = OpenSSL;
-		};
-		BF734A9D2485264D001F46BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFB1A6AC1CB5937800B2D172 /* Project object */;
 			proxyType = 1;
@@ -181,24 +136,6 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BF3068331CC91B20002FD3BC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF734A54248523F3001F46BA /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF734A7524852487001F46BA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -272,8 +209,6 @@
 		BF4B4AB41CC6BF6100BF2C9D /* CC7.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CC7.h; sourceTree = "<group>"; };
 		BF71B3E31D5AB5D800ABE831 /* README.jni.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.jni.txt; sourceTree = "<group>"; };
 		BF71B3E41D5AB95700ABE831 /* Android.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Android.mk; sourceTree = "<group>"; };
-		BF734A58248523F3001F46BA /* libcc7-legacy-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcc7-legacy-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF734A7924852487001F46BA /* libcc7tests-legacy-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcc7tests-legacy-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF79F0161D04BD32004653A1 /* ObjcHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcHelper.h; sourceTree = "<group>"; };
 		BF79F0171D04BFB7004653A1 /* ObjcHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjcHelper.mm; sourceTree = "<group>"; };
 		BF9FFBC31CE3ADB3006CAA74 /* Base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
@@ -346,21 +281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF498AA71CDCBE8400D7E904 /* libcc7tests-ios.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF734A53248523F3001F46BA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF734A7324852487001F46BA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF734A7C248524B2001F46BA /* libcc7-legacy-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,8 +473,6 @@
 				BFFE8AAF2449B4F80032821F /* libcc7-tvos.a */,
 				BFFE8ACF2449B53C0032821F /* libcc7tests-tvos.a */,
 				BFFE8ADF2449B5820032821F /* CC7TestsWrapper-tvos.xctest */,
-				BF734A58248523F3001F46BA /* libcc7-legacy-ios.a */,
-				BF734A7924852487001F46BA /* libcc7tests-legacy-ios.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -778,42 +696,6 @@
 			productReference = BF498AA21CDCBE8300D7E904 /* CC7TestsWrapper-ios.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BF734A48248523F3001F46BA /* cc7-legacy-ios */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF734A55248523F3001F46BA /* Build configuration list for PBXNativeTarget "cc7-legacy-ios" */;
-			buildPhases = (
-				BF734A4A248523F3001F46BA /* Sources */,
-				BF734A53248523F3001F46BA /* Frameworks */,
-				BF734A54248523F3001F46BA /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BF734A9E2485264D001F46BA /* PBXTargetDependency */,
-			);
-			name = "cc7-legacy-ios";
-			productName = cc7;
-			productReference = BF734A58248523F3001F46BA /* libcc7-legacy-ios.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		BF734A5924852487001F46BA /* cc7tests-legacy-ios */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF734A7624852487001F46BA /* Build configuration list for PBXNativeTarget "cc7tests-legacy-ios" */;
-			buildPhases = (
-				BF734A5C24852487001F46BA /* Sources */,
-				BF734A7324852487001F46BA /* Frameworks */,
-				BF734A7524852487001F46BA /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BF734A7B248524A5001F46BA /* PBXTargetDependency */,
-			);
-			name = "cc7tests-legacy-ios";
-			productName = cc7;
-			productReference = BF734A7924852487001F46BA /* libcc7tests-legacy-ios.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		BFB1A6B31CB5937800B2D172 /* cc7-ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFB1A6BD1CB5937800B2D172 /* Build configuration list for PBXNativeTarget "cc7-ios" */;
@@ -895,7 +777,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Juraj Ďurech";
 				TargetAttributes = {
 					BF498AA11CDCBE8300D7E904 = {
@@ -930,10 +812,8 @@
 			targets = (
 				BFB1A6B31CB5937800B2D172 /* cc7-ios */,
 				BFFE8A9F2449B4F80032821F /* cc7-tvos */,
-				BF734A48248523F3001F46BA /* cc7-legacy-ios */,
 				BF30682D1CC91B20002FD3BC /* cc7tests-ios */,
 				BFFE8AB02449B53C0032821F /* cc7tests-tvos */,
-				BF734A5924852487001F46BA /* cc7tests-legacy-ios */,
 				BF498AA11CDCBE8300D7E904 /* CC7TestsWrapper-ios */,
 				BFFE8AD42449B5820032821F /* CC7TestsWrapper-tvos */,
 				BF734A94248525E9001F46BA /* OpenSSL */,
@@ -1053,50 +933,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF734A4A248523F3001F46BA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF734A4B248523F3001F46BA /* Base64.cpp in Sources */,
-				BF734A4C248523F3001F46BA /* HexString.cpp in Sources */,
-				BF734A4D248523F3001F46BA /* PlatformApple.mm in Sources */,
-				BF734A4E248523F3001F46BA /* Base32.cpp in Sources */,
-				BF734A4F248523F3001F46BA /* ByteRange.cpp in Sources */,
-				BF734A50248523F3001F46BA /* ObjcHelper.mm in Sources */,
-				BF734A51248523F3001F46BA /* DebugFeatures.cpp in Sources */,
-				BF734A52248523F3001F46BA /* ByteArray.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF734A5C24852487001F46BA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF734A5D24852487001F46BA /* cc7Base64Tests.cpp in Sources */,
-				BF734A5E24852487001F46BA /* PerformanceTimer.cpp in Sources */,
-				BF734A5F24852487001F46BA /* TestLog.cpp in Sources */,
-				BF734A6024852487001F46BA /* cc7OpenSSLIntegration.cpp in Sources */,
-				BF734A6124852487001F46BA /* tt7Testception.cpp in Sources */,
-				BF734A6224852487001F46BA /* TestFile.cpp in Sources */,
-				BF734A6324852487001F46BA /* tt7JSONReaderTests.cpp in Sources */,
-				BF734A6424852487001F46BA /* TestResource.cpp in Sources */,
-				BF734A6524852487001F46BA /* cc7HexStringTests.cpp in Sources */,
-				BF734A6624852487001F46BA /* JSONValue.cpp in Sources */,
-				BF734A6724852487001F46BA /* StringUtils.cpp in Sources */,
-				BF734A6824852487001F46BA /* EmbeddedTestsList.cpp in Sources */,
-				BF734A6924852487001F46BA /* TestManager.cpp in Sources */,
-				BF734A6A24852487001F46BA /* g_baseFiles.cpp in Sources */,
-				BF734A6B24852487001F46BA /* cc7Base32Tests.cpp in Sources */,
-				BF734A6C24852487001F46BA /* cc7PlatformTests.cpp in Sources */,
-				BF734A6D24852487001F46BA /* cc7ByteArrayTests.cpp in Sources */,
-				BF734A6E24852487001F46BA /* PerformanceTimerApple.cpp in Sources */,
-				BF734A6F24852487001F46BA /* UnitTest.cpp in Sources */,
-				BF734A7024852487001F46BA /* cc7ByteRangeTests.cpp in Sources */,
-				BF734A7124852487001F46BA /* TestDirectory.cpp in Sources */,
-				BF734A7224852487001F46BA /* JSONReader.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFB1A6B01CB5937800B2D172 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1177,11 +1013,6 @@
 			target = BF30682D1CC91B20002FD3BC /* cc7tests-ios */;
 			targetProxy = BF498AA81CDCBE8400D7E904 /* PBXContainerItemProxy */;
 		};
-		BF734A7B248524A5001F46BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BF734A48248523F3001F46BA /* cc7-legacy-ios */;
-			targetProxy = BF734A7A248524A5001F46BA /* PBXContainerItemProxy */;
-		};
 		BF734A9A2485263F001F46BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BF734A94248525E9001F46BA /* OpenSSL */;
@@ -1191,11 +1022,6 @@
 			isa = PBXTargetDependency;
 			target = BF734A94248525E9001F46BA /* OpenSSL */;
 			targetProxy = BF734A9B24852644001F46BA /* PBXContainerItemProxy */;
-		};
-		BF734A9E2485264D001F46BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BF734A94248525E9001F46BA /* OpenSSL */;
-			targetProxy = BF734A9D2485264D001F46BA /* PBXContainerItemProxy */;
 		};
 		BFFE8AD12449B5490032821F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1271,64 +1097,6 @@
 			};
 			name = Release;
 		};
-		BF734A56248523F3001F46BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7/platform/apple/PrefixCC7.pch";
-				GCC_WARN_PEDANTIC = YES;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../openssl-lib/apple";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-lcrypto",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		BF734A57248523F3001F46BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7/platform/apple/PrefixCC7.pch";
-				GCC_WARN_PEDANTIC = YES;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../openssl-lib/apple";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-lcrypto",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		BF734A7724852487001F46BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7tests/platform/PrefixCC7Tests.pch";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		BF734A7824852487001F46BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7tests/platform/PrefixCC7Tests.pch";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		BF734A96248525E9001F46BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1371,6 +1139,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1430,6 +1199,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1601,24 +1371,6 @@
 			buildConfigurations = (
 				BF498AAA1CDCBE8400D7E904 /* Debug */,
 				BF498AAB1CDCBE8400D7E904 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BF734A55248523F3001F46BA /* Build configuration list for PBXNativeTarget "cc7-legacy-ios" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF734A56248523F3001F46BA /* Debug */,
-				BF734A57248523F3001F46BA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BF734A7624852487001F46BA /* Build configuration list for PBXNativeTarget "cc7tests-legacy-ios" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF734A7724852487001F46BA /* Debug */,
-				BF734A7824852487001F46BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

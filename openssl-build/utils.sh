@@ -96,6 +96,7 @@ function SAVE_ARCHIVE_INFO_FILE
 	local info_path=
 	case $archive in
 		*-apple.tar.gz) info_path="${OPENSSL_DEST_APPLE_INFO}" ;;
+		*.xcframework.zip) info_path="${OPENSSL_DEST_APPLE_XCFW_INFO}" ;;
 		*-android.tar.gz) info_path="${OPENSSL_DEST_ANDROID_INFO}" ;;
 		*) FAILURE "Unable to determine platform from the precompiled archive: $archive" ;;
 	esac

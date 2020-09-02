@@ -28,6 +28,7 @@ REQUIRE_COMMAND libtool
 REQUIRE_COMMAND sed
 REQUIRE_COMMAND jq			# brew install jq
 REQUIRE_COMMAND plutil
+REQUIRE_COMMAND zip
 
 # -----------------------------------------------------------------------------
 # BUILD_APPLE builds all supported Apple platforms.
@@ -81,6 +82,12 @@ function BUILD_APPLE
 	echo "### tar package" > ${BUILD_LOG}
 	tar -zcvf ${OPENSSL_DEST_APPLE_FILE} apple >> ${BUILD_LOG} 2>&1
 	SAVE_ARCHIVE_INFO_FILE "${OPENSSL_DEST_APPLE_FILE}"
+
+	echo "### Package.swift" > ${BUILD_LOG}
+	# Build binary artifact for swift pm
+	BUILD_APPLE_SWIFT_PACKAGE ${LIB_NAME} "${TMP_PATH}" "${BUILD_LOG}"
+	SAVE_ARCHIVE_INFO_FILE "${OPENSSL_DEST_APPLE_XCFW_FILE}"
+	
 	# ----
 	POP_DIR 
 	
@@ -348,6 +355,66 @@ function BUILD_APPLE_XC_FRAMEWORK
 	
 	# Cleanup
 	$RM "${JSON_INFO}" "${FILT_INFO}"
+}
+
+# -----------------------------------------------------------------------------
+# BUILD_APPLE_SWIFT_PACKAGE builds artifact for swift package manager.
+#
+# Parameters:
+#   $1   - library name (e.g. openssl)
+#   $2   - path to temporary folder
+#   $3   - path to top-level build log
+# -----------------------------------------------------------------------------
+function BUILD_APPLE_SWIFT_PACKAGE
+{
+	local LIB_NAME="$1"
+	local TMP_PATH="$2"
+	local BUILD_LOG="$3"
+	local FW_PATH="${LIB_NAME}.xcframework"
+	local ZIP_FILE="${OPENSSL_DEST_APPLE_XCFW_FILE}"
+	
+	LOG "Preparing binary artifact for Package.swift..."
+	
+	PUSH_DIR "${OPENSSL_DEST_APPLE}"
+	
+	zip -9rq "${ZIP_FILE}" "${LIB_NAME}.xcframework"
+	
+	POP_DIR
+	
+	$MV "${OPENSSL_DEST_APPLE}/${ZIP_FILE}" "${OPENSSL_DEST_APPLE_XCFW_PATH}"
+	
+	# Compute hash from zip file. Normally, we should use `swift package compute-checksum`,
+	# but the tool requires Package.swift to be present in the folder hierarchy.
+	local ARTIFACT_HASH=$(SHA256 "${OPENSSL_DEST}/${ZIP_FILE}")
+	local ARTIFACT_URL=${CC7_RELEASE_URL}/download/${CC7_VERSION}/${OPENSSL_DEST_APPLE_XCFW_FILE}
+	
+	LOG "  + Artifact: ${ZIP_FILE}"
+	LOG "    - url   : ${ARTIFACT_URL}"
+	LOG "    - hash  : ${ARTIFACT_HASH}"
+	
+	LOG "Preparing Package.swift..."
+	
+	cat > ${OPENSSL_DEST_APPLE_XCFW_PACKAGE} <<EOF
+// swift-tools-version:5.3
+import PackageDescription
+
+let package = Package(
+    name: "openssl",
+    platforms: [
+        .iOS(.v9),
+        .tvOS(.v9)
+    ],
+    products: [
+        .library(name: "openssl", targets: ["openssl"])
+    ],
+    targets: [
+        .binaryTarget(
+            name: "openssl",
+            url: "${ARTIFACT_URL}",
+            checksum: "${ARTIFACT_HASH}")
+    ]
+)
+EOF
 }
 
 # -----------------------------------------------------------------------------

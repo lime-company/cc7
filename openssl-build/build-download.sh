@@ -16,8 +16,8 @@
 
 ###############################################################################
 
-if [ x$OPENSSL_VERSION == 'x' ]; then
-	echo "Do not use this script explicitly. Use 'build.sh' instead."
+if [ -z "$OPENSSL_VERSION" ]; then
+	echo "Do not use this script directly. Use 'build.sh' instead."
 	exit 1
 fi
 

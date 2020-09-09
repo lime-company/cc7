@@ -394,27 +394,27 @@ function BUILD_APPLE_SWIFT_PACKAGE
     
     LOG "Preparing Package.swift..."
     
-    cat > ${OPENSSL_DEST_APPLE_XCFW_PACKAGE} <<-EOF
-    // swift-tools-version:5.3
-    import PackageDescription
+    cat > ${OPENSSL_DEST_APPLE_XCFW_PACKAGE} <<EOF
+// swift-tools-version:5.3
+import PackageDescription
 
-    let package = Package(
-        name: "openssl",
-        platforms: [
-            .iOS(.v9),
-            .tvOS(.v9)
-        ],
-        products: [
-            .library(name: "openssl", targets: ["openssl"])
-        ],
-        targets: [
-            .binaryTarget(
-                name: "openssl",
-                url: "${ARTIFACT_URL}",
-                checksum: "${ARTIFACT_HASH}")
-        ]
-    )
-    EOF
+let package = Package(
+    name: "openssl",
+    platforms: [
+        .iOS(.v9),
+        .tvOS(.v9)
+    ],
+    products: [
+        .library(name: "openssl", targets: ["openssl"])
+    ],
+    targets: [
+        .binaryTarget(
+            name: "openssl",
+            url: "${ARTIFACT_URL}",
+            checksum: "${ARTIFACT_HASH}")
+    ]
+)
+EOF
 }
 
 # -----------------------------------------------------------------------------

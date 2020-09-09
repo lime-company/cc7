@@ -17,8 +17,8 @@
 ###############################################################################
 
 if [ -z "$OPENSSL_VERSION" ]; then
-	echo "Do not use this script directly. Use 'build.sh' instead."
-	exit 1
+    echo "Do not use this script directly. Use 'build.sh' instead."
+    exit 1
 fi
 
 source "${TOP}/github-client.sh"
@@ -35,26 +35,26 @@ REQUIRE_COMMAND git
 # -----------------------------------------------------------------------------
 function PUBLISH_VALIDATE_VERSION
 {
-	local ver="$1"
+    local ver="$1"
 
     PUSH_DIR "${OPENSSL_DEST}"
     
-	LOG "Validating release version..."
+    LOG "Validating release version..."
     
     local GIT_CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
     if [ "$GIT_CURRENT_BRANCH" != "$CC7_BRANCH" ]; then
         FAILURE "You have to be at '${CC7_BRANCH}' git branch."
     fi
     
-	git fetch origin
-	
+    git fetch origin
+    
     local CURRENT_TAGS=(`git tag -l`)
-	local TAG	
-	for TAG in ${CURRENT_TAGS[@]}; do
-		if [ "$TAG" == ${ver} ]; then 
-			FAILURE "Version '${ver}' is already published."
-		fi 
-	done
+    local TAG   
+    for TAG in ${CURRENT_TAGS[@]}; do
+        if [ "$TAG" == ${ver} ]; then 
+            FAILURE "Version '${ver}' is already published."
+        fi 
+    done
 
     POP_DIR
     
@@ -83,15 +83,15 @@ function PUBLISH_VALIDATE_VERSION
 # -----------------------------------------------------------------------------
 function PUBLISH_COMMIT_CHANGES
 {
-	local release_url="${CC7_RELEASE_URL}/${ver}"
+    local release_url="${CC7_RELEASE_URL}/${ver}"
 
-	LOG_LINE
-	LOG "Publishing OpenSSL ${OPENSSL_VERSION} for cc7 release ${CC7_VERSION}."
-	LOG_LINE
+    LOG_LINE
+    LOG "Publishing OpenSSL ${OPENSSL_VERSION} for cc7 release ${CC7_VERSION}."
+    LOG_LINE
     
     LOG "Saving all generated files..."
-	
-	SAVE_FETCH_CONFIG
+    
+    SAVE_FETCH_CONFIG
     SAVE_VERSION_FILE
     
     PUSH_DIR "${TOP}/.."
@@ -112,7 +112,7 @@ function PUBLISH_COMMIT_CHANGES
     git push --follow-tag
     
     POP_DIR
-	
+    
     LOG "Creating release at github..."
 
     local rel_json="$GHC_TMP/rel.json"
@@ -124,9 +124,9 @@ function PUBLISH_COMMIT_CHANGES
     PUBLISH_UPLOAD_ARTIFACT "$rel_json" "${OPENSSL_DEST_APPLE_XCFW_PATH}"
     
     GITHUB_DEINIT
-	
+    
     LOG_LINE
-	LOG "Now you can edit release notes at  : $release_url"
+    LOG "Now you can edit release notes at  : $release_url"
 }
 
 # -----------------------------------------------------------------------------
@@ -161,80 +161,80 @@ function PUBLISH_UPLOAD_ARTIFACT
 # -----------------------------------------------------------------------------
 function PUBLISH_SAVE_ARTIFACT
 {
-	local archive="$1"
-	local info_path=
-	local platform=
-	local hash=
-	local BASE_URL="${CC7_RELEASE_URL}/download"
-	
-	case "$archive" in
-		*-apple.tar.gz) 
-			info_path="${OPENSSL_DEST_APPLE_INFO}"
-			platform="Apple"
-			;;
-		*.xcframework.zip) 
-			info_path="${OPENSSL_DEST_APPLE_XCFW_INFO}"
-			platform="Apple-XCFW"
-			# Also copy prebuilt Package.swift to "{GIT_ROOT}/Package.swift"
-			$CP "${OPENSSL_DEST_APPLE_XCFW_PACKAGE}" "${TOP}/../Package.swift"
-			;;
-		*-android.tar.gz)
-			info_path="${OPENSSL_DEST_ANDROID_INFO}"
-			platform="Android"
-			;;
-		*) 
-			FAILURE "Unable to determine platform from the precompiled archive: $archive"
-			;;
-	esac
-	
-	LOG "Publishing OpenSSL ${OPENSSL_VERSION} for ${platform} platform..."
-	
-	if [ ! -f "${archive}" ]; then
-		FAILURE "Missing archive file for ${platform} platform: ${archive}"
-	fi
+    local archive="$1"
+    local info_path=
+    local platform=
+    local hash=
+    local BASE_URL="${CC7_RELEASE_URL}/download"
+    
+    case "$archive" in
+        *-apple.tar.gz) 
+            info_path="${OPENSSL_DEST_APPLE_INFO}"
+            platform="Apple"
+            ;;
+        *.xcframework.zip) 
+            info_path="${OPENSSL_DEST_APPLE_XCFW_INFO}"
+            platform="Apple-XCFW"
+            # Also copy prebuilt Package.swift to "{GIT_ROOT}/Package.swift"
+            $CP "${OPENSSL_DEST_APPLE_XCFW_PACKAGE}" "${TOP}/../Package.swift"
+            ;;
+        *-android.tar.gz)
+            info_path="${OPENSSL_DEST_ANDROID_INFO}"
+            platform="Android"
+            ;;
+        *) 
+            FAILURE "Unable to determine platform from the precompiled archive: $archive"
+            ;;
+    esac
+    
+    LOG "Publishing OpenSSL ${OPENSSL_VERSION} for ${platform} platform..."
+    
+    if [ ! -f "${archive}" ]; then
+        FAILURE "Missing archive file for ${platform} platform: ${archive}"
+    fi
 
-	# Load fetch config & package info file
-	
-	LOAD_FETCH_CONFIG
-	LOAD_ARCHIVE_INFO_FILE required "${info_path}"
-	
-	hash=${OPENSSL_PREBUILD_HASH}
-	if [ $platform == 'Apple' ]; then
-		OPENSSL_FETCH_APPLE_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_FILE}"
-		OPENSSL_FETCH_APPLE_HASH=$hash
-	elif [ $platform == 'Apple-XCFW' ]; then
-		OPENSSL_FETCH_APPLE_XCFW_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_XCFW_FILE}"
-		OPENSSL_FETCH_APPLE_XCFW_HASH=$hash
-	else
-		OPENSSL_FETCH_ANDROID_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_ANDROID_FILE}"
-		OPENSSL_FETCH_ANDROID_HASH=$hash
-	fi
+    # Load fetch config & package info file
+    
+    LOAD_FETCH_CONFIG
+    LOAD_ARCHIVE_INFO_FILE required "${info_path}"
+    
+    hash=${OPENSSL_PREBUILD_HASH}
+    if [ $platform == 'Apple' ]; then
+        OPENSSL_FETCH_APPLE_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_FILE}"
+        OPENSSL_FETCH_APPLE_HASH=$hash
+    elif [ $platform == 'Apple-XCFW' ]; then
+        OPENSSL_FETCH_APPLE_XCFW_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_XCFW_FILE}"
+        OPENSSL_FETCH_APPLE_XCFW_HASH=$hash
+    else
+        OPENSSL_FETCH_ANDROID_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_ANDROID_FILE}"
+        OPENSSL_FETCH_ANDROID_HASH=$hash
+    fi
 
-	LOG "  - Precompiled archive : ${archive}"
-	LOG "  - Info path           : ${info_path}"
-	LOG "  - Hash                : ${hash}"
+    LOG "  - Precompiled archive : ${archive}"
+    LOG "  - Info path           : ${info_path}"
+    LOG "  - Hash                : ${hash}"
 }
 
 # -----------------------------------------------------------------------------
 # LOAD_FETCH_CONFIG loads config-fetch.sh into OPENSSL_FETCH* variables.
 # -----------------------------------------------------------------------------
 function LOAD_FETCH_CONFIG
-{	
-	DEBUG_LOG "Loading config-fetch.sh ..."
-	
-	if [ ! -z $OPENSSL_FETCH_VERSION ] && [ "$OPENSSL_FETCH_VERSION" == "${OPENSSL_VERSION}" ]; then
-		DEBUG_LOG "File config-fetch.sh is already loaded."
-		return 0
-	fi
-	
-	if [ -f "${TOP}/config-fetch.sh" ]; then
-		source "${TOP}/config-fetch.sh"	
-		if [ -z $OPENSSL_FETCH_VERSION ] || [ "$OPENSSL_FETCH_VERSION" != "${OPENSSL_VERSION}" ]; then
-			DEFAULT_FETCH_CONFIG
-		fi
-	else
-		DEFAULT_FETCH_CONFIG
-	fi
+{   
+    DEBUG_LOG "Loading config-fetch.sh ..."
+    
+    if [ ! -z $OPENSSL_FETCH_VERSION ] && [ "$OPENSSL_FETCH_VERSION" == "${OPENSSL_VERSION}" ]; then
+        DEBUG_LOG "File config-fetch.sh is already loaded."
+        return 0
+    fi
+    
+    if [ -f "${TOP}/config-fetch.sh" ]; then
+        source "${TOP}/config-fetch.sh" 
+        if [ -z $OPENSSL_FETCH_VERSION ] || [ "$OPENSSL_FETCH_VERSION" != "${OPENSSL_VERSION}" ]; then
+            DEFAULT_FETCH_CONFIG
+        fi
+    else
+        DEFAULT_FETCH_CONFIG
+    fi
 }
 
 # -----------------------------------------------------------------------------
@@ -242,27 +242,27 @@ function LOAD_FETCH_CONFIG
 # -----------------------------------------------------------------------------
 function SAVE_FETCH_CONFIG
 {
-	DEBUG_LOG "Saving config-fetch.sh ..."
-	
-	if [ -z $OPENSSL_FETCH_VERSION ] || [ "$OPENSSL_FETCH_VERSION" != "${OPENSSL_VERSION}" ]; then
-		DEFAULT_FETCH_CONFIG
-	fi
-	
-	local dst_config="${TOP}/config-fetch.sh"
-	cat > ${dst_config} <<-EOF
-	# ------------------------------------------------------- #
-	#      Please do not modify this autogenerated file.      #
-	#  Use  >> build.sh --publish <<  to update its content.  #
-	# ------------------------------------------------------- #
-	
-	OPENSSL_FETCH_VERSION='${OPENSSL_FETCH_VERSION}'
-	OPENSSL_FETCH_ANDROID_URL='${OPENSSL_FETCH_ANDROID_URL}'
-	OPENSSL_FETCH_ANDROID_HASH='${OPENSSL_FETCH_ANDROID_HASH}'
-	OPENSSL_FETCH_APPLE_URL='${OPENSSL_FETCH_APPLE_URL}'
-	OPENSSL_FETCH_APPLE_HASH='${OPENSSL_FETCH_APPLE_HASH}'
-	OPENSSL_FETCH_APPLE_XCFW_URL='${OPENSSL_FETCH_APPLE_XCFW_URL}'
-	OPENSSL_FETCH_APPLE_XCFW_HASH='${OPENSSL_FETCH_APPLE_XCFW_HASH}'
-	EOF
+    DEBUG_LOG "Saving config-fetch.sh ..."
+    
+    if [ -z $OPENSSL_FETCH_VERSION ] || [ "$OPENSSL_FETCH_VERSION" != "${OPENSSL_VERSION}" ]; then
+        DEFAULT_FETCH_CONFIG
+    fi
+    
+    local dst_config="${TOP}/config-fetch.sh"
+    cat > ${dst_config} <<-EOF
+    # ------------------------------------------------------- #
+    #      Please do not modify this autogenerated file.      #
+    #  Use  >> build.sh --publish <<  to update its content.  #
+    # ------------------------------------------------------- #
+    
+    OPENSSL_FETCH_VERSION='${OPENSSL_FETCH_VERSION}'
+    OPENSSL_FETCH_ANDROID_URL='${OPENSSL_FETCH_ANDROID_URL}'
+    OPENSSL_FETCH_ANDROID_HASH='${OPENSSL_FETCH_ANDROID_HASH}'
+    OPENSSL_FETCH_APPLE_URL='${OPENSSL_FETCH_APPLE_URL}'
+    OPENSSL_FETCH_APPLE_HASH='${OPENSSL_FETCH_APPLE_HASH}'
+    OPENSSL_FETCH_APPLE_XCFW_URL='${OPENSSL_FETCH_APPLE_XCFW_URL}'
+    OPENSSL_FETCH_APPLE_XCFW_HASH='${OPENSSL_FETCH_APPLE_XCFW_HASH}'
+    EOF
 }
 
 # -----------------------------------------------------------------------------
@@ -270,16 +270,16 @@ function SAVE_FETCH_CONFIG
 # -----------------------------------------------------------------------------
 function DEFAULT_FETCH_CONFIG
 {
-	DEBUG_LOG "Setting default values for config-fetch.sh ..."
-	
-	local BASE_URL="${CC7_RELEASE_URL}/download"
-	OPENSSL_FETCH_VERSION="${OPENSSL_VERSION}"
-	OPENSSL_FETCH_ANDROID_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_ANDROID_FILE}"
-	OPENSSL_FETCH_ANDROID_HASH=''
-	OPENSSL_FETCH_APPLE_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_FILE}"
-	OPENSSL_FETCH_APPLE_HASH=''
-	OPENSSL_FETCH_APPLE_XCFW_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_XCFW_FILE}"
-	OPENSSL_FETCH_APPLE_XCFW_HASH=''
+    DEBUG_LOG "Setting default values for config-fetch.sh ..."
+    
+    local BASE_URL="${CC7_RELEASE_URL}/download"
+    OPENSSL_FETCH_VERSION="${OPENSSL_VERSION}"
+    OPENSSL_FETCH_ANDROID_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_ANDROID_FILE}"
+    OPENSSL_FETCH_ANDROID_HASH=''
+    OPENSSL_FETCH_APPLE_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_FILE}"
+    OPENSSL_FETCH_APPLE_HASH=''
+    OPENSSL_FETCH_APPLE_XCFW_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_XCFW_FILE}"
+    OPENSSL_FETCH_APPLE_XCFW_HASH=''
 }
 
 # -----------------------------------------------------------------------------
@@ -287,12 +287,12 @@ function DEFAULT_FETCH_CONFIG
 # -----------------------------------------------------------------------------
 function SAVE_VERSION_FILE
 {
-	cat > "${TOP}/version.sh" <<-EOF
+    cat > "${TOP}/version.sh" <<-EOF
     # ------------------------------------------------------- #
     #      Please do not modify this autogenerated file.      #
     #  Use  >> build.sh --publish << to update its content.   #
     # ------------------------------------------------------- #
 
     CC7_VERSION_EXT='${CC7_VERSION}'
-	EOF
+    EOF
 }

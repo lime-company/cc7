@@ -28,6 +28,8 @@ source "${TOP}/config-build.sh"
 DO_APPLE=0
 DO_ANDROID=0
 DO_PUBLISH=0
+DO_PUBLISH_VER=
+GITHUB_ACCESS=
 
 # -----------------------------------------------------------------------------
 # USAGE prints help and exits the script with error code from provided parameter
@@ -45,9 +47,16 @@ function USAGE
 	echo ""
 	echo "options are:"
 	echo ""
-	echo "  --publish             If used, then the build is also published to"
-	echo "                        github."
-	echo ""
+	echo "  --publish version     If used, then the build also create a new"
+	echo "                        version tag and publish this build to github."
+    echo ""
+    echo "  --github-access user:token"
+    echo "                        Set user with token to access github. If not"
+    echo "                        provided, then script will use lime-credentials"
+    echo "                        file to acquire credentials. Note that token"
+    echo "                        must have following scopes: 'public_repo',"
+    echo "                        'repo:status' and 'repo_deployment'"
+    echo ""
 	echo "  -v0                   turn off all prints to stdout"
 	echo "  -v1                   print only basic log about execution progress"
 	echo "  -v2                   print full build log with rich debug info"
@@ -85,7 +94,14 @@ do
 			;;
 		--publish)
 			DO_PUBLISH=1
+            VALIDATE_AND_SET_VERSION_STRING $2
+            DO_PUBLISH_VER=$VERSION
+            shift
 			;;
+        --github-access)
+            GITHUB_ACCESS=$2
+            shift
+            ;;
 		-v*)
 			SET_VERBOSE_LEVEL_FROM_SWITCH $opt
 			;;
@@ -98,7 +114,6 @@ do
 	esac
 	shift
 done
-UPDATE_VERBOSE_COMMANDS
 
 # Validate input parameters
 
@@ -118,6 +133,7 @@ case $DO_APPLE$DO_ANDROID in
 	11) DEBUG_LOG " - Platforms  : Apple + Android" ;;
 esac
 if [ x$DO_PUBLISH = x1 ]; then
+    CC7_VERSION=${DO_PUBLISH_VER}
 	DEBUG_LOG " - Publish    : YES, upload for cc7 $CC7_VERSION"
 else
 	DEBUG_LOG " - Publish    : NO"
@@ -132,6 +148,8 @@ source "${TOP}/build-download.sh"
 
 # Execute build
 
+[[ x${DO_PUBLISH} == x1 ]] && PUBLISH_VALIDATE_VERSION ${DO_PUBLISH_VER}
+
 GET_OPENSSL_ARCHIVE
 
 [[ x${DO_ANDROID} == x1 ]] && BUILD_ANDROID
@@ -139,9 +157,9 @@ GET_OPENSSL_ARCHIVE
 
 LOG_LINE
 
-[[ x${DO_ANDROID} == x1 ]] && [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_ARCHIVE "${OPENSSL_DEST_ANDROID_PATH}"
-[[ x${DO_APPLE}   == x1 ]] && [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_ARCHIVE "${OPENSSL_DEST_APPLE_PATH}"
-[[ x${DO_APPLE}   == x1 ]] && [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_ARCHIVE "${OPENSSL_DEST_APPLE_XCFW_PATH}"
+[[ x${DO_ANDROID} == x1 ]] && [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_SAVE_ARTIFACT "${OPENSSL_DEST_ANDROID_PATH}"
+[[ x${DO_APPLE}   == x1 ]] && [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_SAVE_ARTIFACT "${OPENSSL_DEST_APPLE_PATH}"
+[[ x${DO_APPLE}   == x1 ]] && [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_SAVE_ARTIFACT "${OPENSSL_DEST_APPLE_XCFW_PATH}"
 [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_COMMIT_CHANGES
 
 EXIT_SUCCESS

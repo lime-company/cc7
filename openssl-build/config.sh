@@ -10,10 +10,17 @@
 #                     links cc7 release version with the underlying OpenSSL version. So, the variable
 #                     must be also updated together with $OPENSSL_VERSION.
 #
+# CC7_BRANCH          Defines release branch for cc7. By default, it's 'develop', but may be changed
+#                     to 'releases/X.Y.x' in case that bugfix must be released for older library version.
+#
+
+source "${TOP}/version.sh"
 
 OPENSSL_VERSION='1.1.1g'
 OPENSSL_SHA256='ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46'
-CC7_VERSION='0.2.4'
+
+CC7_VERSION=${CC7_VERSION_EXT}
+CC7_BRANCH='develop'
 
 
 # -----------------------------------------------------------------------------

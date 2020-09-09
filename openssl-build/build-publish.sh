@@ -16,41 +16,150 @@
 
 ###############################################################################
 
-if [ x$OPENSSL_VERSION == 'x' ]; then
-	echo "Do not use this script explicitly. Use 'build.sh' instead."
+if [ -z "$OPENSSL_VERSION" ]; then
+	echo "Do not use this script directly. Use 'build.sh' instead."
 	exit 1
 fi
+
+source "${TOP}/github-client.sh"
+
+REQUIRE_COMMAND git
+
+# -----------------------------------------------------------------------------
+# PUBLISH_VALIDATE_VERSION validates whether we're at right branch and version
+# is not published yet. Function also loads github access credentials
+# and initialize github-client.sh.
+#
+# Parameters:
+#   $1   - Version to validate
+# -----------------------------------------------------------------------------
+function PUBLISH_VALIDATE_VERSION
+{
+	local ver="$1"
+
+    PUSH_DIR "${OPENSSL_DEST}"
+    
+	LOG "Validating release version..."
+    
+    local GIT_CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+    if [ "$GIT_CURRENT_BRANCH" != "$CC7_BRANCH" ]; then
+        FAILURE "You have to be at '${CC7_BRANCH}' git branch."
+    fi
+    
+	git fetch origin
+	
+    local CURRENT_TAGS=(`git tag -l`)
+	local TAG	
+	for TAG in ${CURRENT_TAGS[@]}; do
+		if [ "$TAG" == ${ver} ]; then 
+			FAILURE "Version '${ver}' is already published."
+		fi 
+	done
+
+    POP_DIR
+    
+    # Load credentials
+    if [ -z "$GITHUB_ACCESS" ]; then
+        LOAD_API_CREDENTIALS
+        [[ -z "$GITHUB_RELEASE_ACCESS" ]] && FAILURE "Missing \$GITHUB_RELEASE_ACCESS variable in .lime-credentials file."
+        GITHUB_ACCESS="$GITHUB_RELEASE_ACCESS"
+        DEBUG_LOG "Using github credentials from .lime-credentials file."
+    else
+        DEBUG_LOG "Using github credentials from command line."
+    fi
+    
+    # Split credentials into user & token
+    local ACCESS=(${GITHUB_ACCESS//:/ })
+    local USER=${ACCESS[0]}
+    local TOKEN=${ACCESS[1]}
+    [[ -z "$USER" ]] && FAILURE "Missing user in github access."
+    [[ -z "$TOKEN" ]] && FAILURE "Missing access token in github access."
+    
+    GITHUB_INIT 'wultra' 'cc7' ${USER} ${TOKEN}
+}
 
 # -----------------------------------------------------------------------------
 # PUBLISH_COMMIT_CHANGES displays info about release publishing
 # -----------------------------------------------------------------------------
 function PUBLISH_COMMIT_CHANGES
 {
-	local release_url="${CC7_RELEASE_URL}/${CC7_VERSION}"
+	local release_url="${CC7_RELEASE_URL}/${ver}"
 
-	LOG "Commiting all chages..."
+	LOG_LINE
+	LOG "Publishing OpenSSL ${OPENSSL_VERSION} for cc7 release ${CC7_VERSION}."
+	LOG_LINE
+    
+    LOG "Saving all generated files..."
 	
 	SAVE_FETCH_CONFIG
+    SAVE_VERSION_FILE
+    
+    PUSH_DIR "${TOP}/.."
+    
+    LOG "Commiting all chages..."
+    
+    git add 'Package.swift'
+    git add 'openssl-build/config-fetch.sh'
+    git add 'openssl-build/version.sh'
+    git commit -m "Deployment: Update release files to ${CC7_VERSION}"
+    
+    LOG "Creating tag for version..."
+    
+    git tag -a ${CC7_VERSION} -m "Version ${CC7_VERSION}"
+    
+    LOG "Pushing all changes..."
+
+    git push --follow-tag
+    
+    POP_DIR
 	
-	LOG_LINE
-	LOG "To publish OpenSSL ${OPENSSL_VERSION} for cc7 release ${CC7_VERSION},"
-	LOG " you should do the following steps:"
-	LOG "    - commit and push all local changes into the git"
-	LOG "    - create and push tag ${CC7_VERSION}"
-	LOG "    - collect all platform archives:"
-	[[ x${DO_ANDROID} == x1 ]] && LOG "        - ${OPENSSL_DEST_ANDROID_PATH}"
-	[[ x${DO_APPLE}   == x1 ]] && LOG "        - ${OPENSSL_DEST_APPLE_PATH}"
-	[[ x${DO_APPLE}   == x1 ]] && LOG "        - ${OPENSSL_DEST_APPLE_XCFW_PATH}"
-	LOG "    - upload above archives into assets: $release_url"
+    LOG "Creating release at github..."
+
+    local rel_json="$GHC_TMP/rel.json"
+    
+    GITHUB_CREATE_RELEASE "${CC7_VERSION}" "${CC7_VERSION}" '- TBA' false false "$rel_json"
+    
+    PUBLISH_UPLOAD_ARTIFACT "$rel_json" "${OPENSSL_DEST_ANDROID_PATH}"
+    PUBLISH_UPLOAD_ARTIFACT "$rel_json" "${OPENSSL_DEST_APPLE_PATH}"
+    PUBLISH_UPLOAD_ARTIFACT "$rel_json" "${OPENSSL_DEST_APPLE_XCFW_PATH}"
+    
+    GITHUB_DEINIT
+	
+    LOG_LINE
+	LOG "Now you can edit release notes at  : $release_url"
 }
 
 # -----------------------------------------------------------------------------
-# PUBLISH_ARCHIVE saves just created build into config-fetch.sh 
+# PUBLISH_UPLOAD_ARTIFACT uploads artifact into github release 
 # 
 # Parameters:
-#   $1   - precompiled archive to publish
+#   $1   - release JSON file
+#   $2   - artifact to upload
 # -----------------------------------------------------------------------------
-function PUBLISH_ARCHIVE
+function PUBLISH_UPLOAD_ARTIFACT
+{
+    local rel_json="$1"
+    local artifact="$2"
+    local artifact_name=$(basename $artifact)
+    local mime_type=
+    case $artifact in
+        *zip) mime_type='application/zip' ;;
+        *tar.gz) mime_type='application/gzip' ;;
+        *) FAILURE "Unknown artifact file extension: $artifact" ;;
+    esac
+    
+    LOG "Uploading $artifact_name ..."
+    
+    GITHUB_UPLOAD_RELEASE_ASSET "$rel_json" "$artifact" "$artifact_name" "$mime_type"
+}
+
+# -----------------------------------------------------------------------------
+# PUBLISH_SAVE_ARTIFACT saves just created artifact into config-fetch.sh 
+# 
+# Parameters:
+#   $1   - precompiled artifact to save
+# -----------------------------------------------------------------------------
+function PUBLISH_SAVE_ARTIFACT
 {
 	local archive="$1"
 	local info_path=
@@ -66,8 +175,8 @@ function PUBLISH_ARCHIVE
 		*.xcframework.zip) 
 			info_path="${OPENSSL_DEST_APPLE_XCFW_INFO}"
 			platform="Apple-XCFW"
-			# Also copy prebuilt Package.swift to "openssl-build/Package.swift"
-			$CP "${OPENSSL_DEST_APPLE_XCFW_PACKAGE}" "${TOP}/Package.swift"
+			# Also copy prebuilt Package.swift to "{GIT_ROOT}/Package.swift"
+			$CP "${OPENSSL_DEST_APPLE_XCFW_PACKAGE}" "${TOP}/../Package.swift"
 			;;
 		*-android.tar.gz)
 			info_path="${OPENSSL_DEST_ANDROID_INFO}"
@@ -171,4 +280,19 @@ function DEFAULT_FETCH_CONFIG
 	OPENSSL_FETCH_APPLE_HASH=''
 	OPENSSL_FETCH_APPLE_XCFW_URL="${BASE_URL}/${CC7_VERSION}/${OPENSSL_DEST_APPLE_XCFW_FILE}"
 	OPENSSL_FETCH_APPLE_XCFW_HASH=''
+}
+
+# -----------------------------------------------------------------------------
+# SAVE_VERSION_FILE saves CC7_VERSION version to version.sh file
+# -----------------------------------------------------------------------------
+function SAVE_VERSION_FILE
+{
+	cat > "${TOP}/version.sh" <<-EOF
+    # ------------------------------------------------------- #
+    #      Please do not modify this autogenerated file.      #
+    #  Use  >> build.sh --publish << to update its content.   #
+    # ------------------------------------------------------- #
+
+    CC7_VERSION_EXT='${CC7_VERSION}'
+	EOF
 }

@@ -35,15 +35,15 @@ The script will prepare a precompiled framework in `openssl-lib/apple` folder, w
 
 - `openssl.xcframework` - contains universal xcframework with precompiled static library, for all currently supported Apple platforms.
 
-The `fetch.sh` step is a part of Xcode project, so it's 
+The `fetch.sh` step is a part of Xcode project, so it's not necessary to do any additional operations if the project is used as submodule dependency and referenced directly.
 
 ## Build OpenSSL
 
 To prepare a precompiled libraries, use the following command:
 
 ```bash
-./build.sh all [--publish]
+./build.sh all [--publish version]
 ```
 
-The script will compile all platforms and flavors at once, in the same folder hierarchy as for [download](#download-precompiled-openssl). If you use also `--publish` switch, then the script automatically update configuration for `fetch.sh`. 
+The script will compile all platforms and flavors at once, in the same folder hierarchy as for [download](#download-precompiled-openssl). If you use also `--publish` switch, then the script automatically update configuration for `fetch.sh` and publish binaries into github. 
 

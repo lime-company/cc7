@@ -83,8 +83,6 @@ function PUBLISH_VALIDATE_VERSION
 # -----------------------------------------------------------------------------
 function PUBLISH_COMMIT_CHANGES
 {
-    local release_url="${CC7_RELEASE_URL}/${ver}"
-
     LOG_LINE
     LOG "Publishing OpenSSL ${OPENSSL_VERSION} for cc7 release ${CC7_VERSION}."
     LOG_LINE
@@ -126,7 +124,7 @@ function PUBLISH_COMMIT_CHANGES
     GITHUB_DEINIT
     
     LOG_LINE
-    LOG "Now you can edit release notes at  : $release_url"
+    LOG "Now you can edit release notes at  : ${CC7_RELEASE_URL}/${CC7_VERSION}"
 }
 
 # -----------------------------------------------------------------------------

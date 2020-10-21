@@ -21,6 +21,9 @@ if [ -z "$OPENSSL_VERSION" ]; then
     exit 1
 fi
 
+REQUIRE_COMMAND clang
+REQUIRE_COMMAND tail
+
 # -----------------------------------------------------------------------------
 # BUILD_ANDROID builds all Android architectures
 # -----------------------------------------------------------------------------
@@ -50,8 +53,7 @@ function BUILD_ANDROID
     export ANDROID_NDK_HOME="${NDK_DIR}"
     
     DEBUG_LOG "Validate clang"
-    
-    REQUIRE_COMMAND clang
+        
     local TEST_CLANG=$(clang -v 2>&1 >/dev/null)
     case ${TEST_CLANG} in
         Android*)
@@ -127,6 +129,7 @@ function BUILD_ANDROID_ARCH
     echo "### Configure" > ${BUILD_LOG}
     
     set +e
+    
     ./Configure \
         ${BUILD_TARGET} \
         -D__ANDROID_API__=${ANDROID_API_LEVEL} \
@@ -134,7 +137,7 @@ function BUILD_ANDROID_ARCH
         >> ${BUILD_LOG} 2>&1
 
     if [ $? -ne 0 ]; then
-        tail -20 ${BUILD_LOG}
+        tail -20 "${BUILD_LOG}"
         LOG_LINE
         FAILURE "Configure script did fail"
     fi
@@ -144,10 +147,9 @@ function BUILD_ANDROID_ARCH
     echo "### make" >> ${BUILD_LOG}
 
     make -j$BUILD_JOBS_COUNT >> ${BUILD_LOG} 2>&1   
-    set -e
     
-    if [ ! -f "libcrypto.a" ]; then
-        tail -20 ${BUILD_LOG}
+    if [ $? -ne 0 ]; then
+        tail -20 "${BUILD_LOG}"
         LOG_LINE
         FAILURE "Build did not produce final library"
     fi
@@ -156,6 +158,14 @@ function BUILD_ANDROID_ARCH
     
     echo "### make install" >> ${BUILD_LOG}
     make DESTDIR=out install_sw -j$BUILD_JOBS_COUNT >> ${BUILD_LOG} 2>&1
+    
+    if [ $? -ne 0 ]; then
+        tail -20 "${BUILD_LOG}"
+        LOG_LINE
+        FAILURE "Failed to install headers"
+    fi
+    
+    set -e
     
     # Copy all headers only for armeabi-v7a architecture
     if [ $ABI == "armeabi-v7a" ]; then

@@ -29,6 +29,7 @@ DO_APPLE=0
 DO_ANDROID=0
 DO_PUBLISH=0
 DO_PUBLISH_VER=
+DO_UPLOAD=0
 GITHUB_ACCESS=
 
 # -----------------------------------------------------------------------------
@@ -49,6 +50,9 @@ function USAGE
     echo ""
     echo "  --publish version     If used, then the build also create a new"
     echo "                        version tag and publish this build to github."
+    echo ""
+    echo "  --local version       Similar to '--publish', but makes only local"
+    echo "                        changes, without publishing to github."
     echo ""
     echo "  --github-access user:token"
     echo "                        Set user with token to access github. If not"
@@ -94,6 +98,14 @@ do
             ;;
         --publish)
             DO_PUBLISH=1
+            DO_UPLOAD=1
+            VALIDATE_AND_SET_VERSION_STRING $2
+            DO_PUBLISH_VER=$VERSION
+            shift
+            ;;
+        --local)
+            DO_PUBLISH=1
+            DO_UPLOAD=0
             VALIDATE_AND_SET_VERSION_STRING $2
             DO_PUBLISH_VER=$VERSION
             shift
@@ -148,7 +160,7 @@ source "${TOP}/build-download.sh"
 
 # Execute build
 
-[[ x${DO_PUBLISH} == x1 ]] && PUBLISH_VALIDATE_VERSION ${DO_PUBLISH_VER}
+[[ x${DO_PUBLISH} == x1 ]] && PUBLISH_VALIDATE_VERSION ${DO_PUBLISH_VER} ${DO_UPLOAD}
 
 GET_OPENSSL_ARCHIVE
 
@@ -160,6 +172,6 @@ LOG_LINE
 [[ x${DO_ANDROID} == x1 ]] && [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_SAVE_ARTIFACT "${OPENSSL_DEST_ANDROID_PATH}"
 [[ x${DO_APPLE}   == x1 ]] && [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_SAVE_ARTIFACT "${OPENSSL_DEST_APPLE_PATH}"
 [[ x${DO_APPLE}   == x1 ]] && [[ x${DO_PUBLISH} == x1 ]] && PUBLISH_SAVE_ARTIFACT "${OPENSSL_DEST_APPLE_XCFW_PATH}"
-[[ x${DO_PUBLISH} == x1 ]] && PUBLISH_COMMIT_CHANGES
+[[ x${DO_PUBLISH} == x1 ]] && PUBLISH_COMMIT_CHANGES ${DO_UPLOAD}
 
 EXIT_SUCCESS

@@ -32,10 +32,17 @@ REQUIRE_COMMAND git
 #
 # Parameters:
 #   $1   - Version to validate
+#   $2   - 0 / 1 whether version will be published to github
 # -----------------------------------------------------------------------------
 function PUBLISH_VALIDATE_VERSION
 {
     local ver="$1"
+    local upload="$2"
+
+    if [ x$upload == x0 ]; then
+        LOG "Skipping release version validation..."
+        return
+    fi
 
     PUSH_DIR "${OPENSSL_DEST}"
     
@@ -80,9 +87,14 @@ function PUBLISH_VALIDATE_VERSION
 
 # -----------------------------------------------------------------------------
 # PUBLISH_COMMIT_CHANGES displays info about release publishing
+#
+# Parameters:
+#   $1   - 0 / 1 whether version will be published to github
 # -----------------------------------------------------------------------------
 function PUBLISH_COMMIT_CHANGES
 {
+    local upload="$1"
+    
     LOG_LINE
     LOG "Publishing OpenSSL ${OPENSSL_VERSION} for cc7 release ${CC7_VERSION}."
     LOG_LINE
@@ -91,6 +103,13 @@ function PUBLISH_COMMIT_CHANGES
     
     SAVE_FETCH_CONFIG
     SAVE_VERSION_FILE
+    
+    if [ x$upload == x0 ]; then
+        LOG_LINE
+        LOG "Skipping publishing to github, as requested."
+        LOG "Now you can investigate all local changes."
+        return
+    fi
     
     PUSH_DIR "${TOP}/.."
     

@@ -29,6 +29,7 @@ REQUIRE_COMMAND sed
 REQUIRE_COMMAND jq          # brew install jq
 REQUIRE_COMMAND plutil
 REQUIRE_COMMAND zip
+REQUIRE_COMMAND tail
 
 # -----------------------------------------------------------------------------
 # BUILD_APPLE builds all supported Apple platforms.
@@ -135,19 +136,24 @@ function BUILD_APPLE_TARGET
     
     echo "### Configure" > ${BUILD_LOG}
     
-    export CONFIG_DISABLE_BITCODE='true'
     export CROSS_SYSROOT=`xcrun -sdk $SDK --show-sdk-path`
     export CROSS_MIN_VERSION=$MIN_OS_VERSION
     export SDKVERSION=`xcrun -sdk $SDK --show-sdk-version`
     
+    DEBUG_LOG "Exported env vars:"
+    DEBUG_LOG " - CROSS_SYSROOT='$CROSS_SYSROOT'"
+    DEBUG_LOG " - CROSS_MIN_VERSION='$CROSS_MIN_VERSION'"
+    DEBUG_LOG " - CROSS_SYSROOT='$SDKVERSION'"
+    
     set +e
+    
     ./Configure \
         ${TARGET} \
         ${OPENSSL_CONF_PARAMS} \
         >> ${BUILD_LOG} 2>&1
     
     if [ $? -ne 0 ]; then
-        tail -20 ${BUILD_LOG}
+        tail -20 "${BUILD_LOG}"
         LOG_LINE
         FAILURE "Configure script did fail"
     fi
@@ -155,12 +161,11 @@ function BUILD_APPLE_TARGET
     LOG "Building library..."
     
     echo "### make" >> ${BUILD_LOG}
-    
+        
     make -j$BUILD_JOBS_COUNT >> ${BUILD_LOG} 2>&1   
-    set -e
     
-    if [ ! -f "libcrypto.a" ]; then
-        tail -20 ${BUILD_LOG}
+    if [ $? -ne 0 ]; then
+        tail -20 "${BUILD_LOG}"
         LOG_LINE
         FAILURE "Build did not produce final library"
     fi
@@ -169,6 +174,14 @@ function BUILD_APPLE_TARGET
     
     echo "### make install" >> ${BUILD_LOG}
     make DESTDIR=out install_sw -j$BUILD_JOBS_COUNT >> ${BUILD_LOG} 2>&1
+
+    if [ $? -ne 0 ]; then
+        tail -20 "${BUILD_LOG}"
+        LOG_LINE
+        FAILURE "Failed to install headers"
+    fi
+    
+    set -e
     
     # ----
     POP_DIR
@@ -506,6 +519,8 @@ function BUILD_APPLE_PLATFORM_SWITCH
                 IF_CONDITION="TARGET_OS_OSX && TARGET_CPU_ARM64" ;;
             *_ios-sim-cross-x86_64.h)
                 IF_CONDITION="TARGET_OS_IOS && TARGET_OS_SIMULATOR && TARGET_CPU_X86_64" ;;
+            *_ios-sim-cross-arm64.h)
+                IF_CONDITION="TARGET_OS_IOS && TARGET_OS_SIMULATOR && TARGET_CPU_ARM64" ;;
             *_ios-sim-cross-i386.h)
                 IF_CONDITION="TARGET_OS_IOS && TARGET_OS_SIMULATOR && TARGET_CPU_X86" ;;
             *_ios64-cross-arm64.h)
@@ -518,6 +533,8 @@ function BUILD_APPLE_PLATFORM_SWITCH
                 IF_CONDITION="TARGET_OS_IOS && TARGET_OS_EMBEDDED && TARGET_CPU_ARM && !defined(__ARM_ARCH_7S__)" ;;
             *_tvos-sim-cross-x86_64.h)
                 IF_CONDITION="TARGET_OS_TV && TARGET_OS_SIMULATOR && TARGET_CPU_X86_64" ;;
+            *_tvos-sim-cross-arm64.h)
+                IF_CONDITION="TARGET_OS_TV && TARGET_OS_SIMULATOR && TARGET_CPU_ARM64" ;;
             *_tvos64-cross-arm64.h)
                 IF_CONDITION="TARGET_OS_TV && TARGET_OS_EMBEDDED && TARGET_CPU_ARM64" ;;
             *_watchos-cross-armv7k.h)

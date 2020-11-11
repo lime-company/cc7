@@ -21,7 +21,7 @@ OPENSSL_CONF_PARAMS+=" no-scrypt no-blake2 no-siphash"
 APPLE_PLATFORMS="iOS iOS_Simulator macOS_Catalyst tvOS tvOS_Simulator"
 APPLE_TARGETS="ios-sim-cross-i386 ios-sim-cross-x86_64 ios-sim-cross-arm64"
 APPLE_TARGETS+=" ios-cross-armv7 ios-cross-armv7s ios64-cross-arm64 ios64-cross-arm64e"
-APPLE_TARGETS+=" mac-catalyst-x86_64" # mac-catalyst-arm64 - requires Xcode12.2
+APPLE_TARGETS+=" mac-catalyst-x86_64 mac-catalyst-arm64"
 APPLE_TARGETS+=" tvos-sim-cross-x86_64 tvos-sim-cross-arm64"
 APPLE_TARGETS+=" tvos64-cross-arm64"
 

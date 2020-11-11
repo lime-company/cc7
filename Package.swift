@@ -13,7 +13,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "openssl",
-            url: "https://github.com/wultra/cc7/releases/download/0.3.1/openssl-1.1.1h.xcframework.zip",
-            checksum: "786059205ca88c9dce0a213dbfa3f9b2886edc050cc9b36d2cc777da4f1ffcd0")
+            url: "https://github.com/wultra/cc7/releases/download/0.3.2/openssl-1.1.1h.xcframework.zip",
+            checksum: "581ed53913f101bac718b166ab348033bd8e9dcc60632b341ffc7fbc92752411")
     ]
 )

@@ -777,8 +777,8 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 1210;
-				ORGANIZATIONNAME = "Juraj Ďurech";
+				LastUpgradeCheck = 1220;
+				ORGANIZATIONNAME = "Wultra s.r.o.";
 				TargetAttributes = {
 					BF498AA11CDCBE8300D7E904 = {
 						CreatedOnToolsVersion = 7.3.1;

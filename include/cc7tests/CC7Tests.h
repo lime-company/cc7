@@ -22,3 +22,4 @@
 #include <cc7tests/TestDirectory.h>
 #include <cc7tests/TestUtils.h>
 #include <cc7tests/JSONReader.h>
+#include <cc7tests/PerformanceTimer.h>

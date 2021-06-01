@@ -16,12 +16,13 @@ OPENSSL_CONF_PARAMS+=" no-scrypt no-blake2 no-siphash"
 # -----------------------------------------------------------------------------
 # Apple specific
 #  - Note that we don't build all architectures and platforms. 
-#    The following lists exclude watchOS and OSX variants from the build.
+#    The following lists exclude watchOS variants from the build.
 
-APPLE_PLATFORMS="iOS iOS_Simulator macOS_Catalyst tvOS tvOS_Simulator"
+APPLE_PLATFORMS="iOS iOS_Simulator macOS_Catalyst tvOS tvOS_Simulator macOSX"
 APPLE_TARGETS="ios-sim-cross-i386 ios-sim-cross-x86_64 ios-sim-cross-arm64"
 APPLE_TARGETS+=" ios-cross-armv7 ios-cross-armv7s ios64-cross-arm64 ios64-cross-arm64e"
 APPLE_TARGETS+=" mac-catalyst-x86_64 mac-catalyst-arm64"
+APPLE_TARGETS+=" macos64-x86_64 macos64-arm64"
 APPLE_TARGETS+=" tvos-sim-cross-x86_64 tvos-sim-cross-arm64"
 APPLE_TARGETS+=" tvos64-cross-arm64"
 
@@ -33,7 +34,7 @@ APPLE_IOS_MIN_SDK="9.0"
 APPLE_TVOS_MIN_SDK="9.0"
 APPLE_CATALYST_MIN_SDK="10.15"
 APPLE_WATCHOS_MIN_SDK="2.0"
-APPLE_OSX_MIN_SDK="10.11"
+APPLE_OSX_MIN_SDK="10.15"
 
 
 # -----------------------------------------------------------------------------

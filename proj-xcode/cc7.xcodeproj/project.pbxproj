@@ -38,6 +38,39 @@
 		BF498ACD1CDDDABE00D7E904 /* cc7ByteRangeTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498ACB1CDDD80700D7E904 /* cc7ByteRangeTests.cpp */; };
 		BF4B4A881CB93B8B00BF2C9D /* ByteRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF4B4A861CB93B8B00BF2C9D /* ByteRange.cpp */; };
 		BF79F0181D04BFB7004653A1 /* ObjcHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF79F0171D04BFB7004653A1 /* ObjcHelper.mm */; };
+		BF8EEBF3266629ED009AC5FD /* CC7TestWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF498AAD1CDCBEC000D7E904 /* CC7TestWrapper.mm */; };
+		BF8EEC0126662A01009AC5FD /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC41CE3AEFE006CAA74 /* Base64.cpp */; };
+		BF8EEC0226662A01009AC5FD /* HexString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC61CE3B94D006CAA74 /* HexString.cpp */; };
+		BF8EEC0326662A01009AC5FD /* PlatformApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFE174021CC9664500039466 /* PlatformApple.mm */; };
+		BF8EEC0426662A01009AC5FD /* Base32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFABCD6F214C087700A9221F /* Base32.cpp */; };
+		BF8EEC0526662A01009AC5FD /* ByteRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF4B4A861CB93B8B00BF2C9D /* ByteRange.cpp */; };
+		BF8EEC0626662A01009AC5FD /* ObjcHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF79F0171D04BFB7004653A1 /* ObjcHelper.mm */; };
+		BF8EEC0726662A01009AC5FD /* DebugFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFE174061CC96D3600039466 /* DebugFeatures.cpp */; };
+		BF8EEC0826662A01009AC5FD /* ByteArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF388B621CC62CF700DEC1AE /* ByteArray.cpp */; };
+		BF8EEC1326662A0B009AC5FD /* cc7Base64Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC91CE3BF08006CAA74 /* cc7Base64Tests.cpp */; };
+		BF8EEC1426662A0B009AC5FD /* PerformanceTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFC5254A1CDBC887002E653C /* PerformanceTimer.cpp */; };
+		BF8EEC1526662A0B009AC5FD /* TestLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3068571CC95503002FD3BC /* TestLog.cpp */; };
+		BF8EEC1626662A0B009AC5FD /* cc7OpenSSLIntegration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF22BDFC2476995A00029A38 /* cc7OpenSSLIntegration.cpp */; };
+		BF8EEC1726662A0B009AC5FD /* tt7Testception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498AB91CDD065B00D7E904 /* tt7Testception.cpp */; };
+		BF8EEC1826662A0B009AC5FD /* TestFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493FE1CE8E74600F8D81B /* TestFile.cpp */; };
+		BF8EEC1926662A0B009AC5FD /* tt7JSONReaderTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493D81CE7769500F8D81B /* tt7JSONReaderTests.cpp */; };
+		BF8EEC1A26662A0B009AC5FD /* TestResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB494021CE8E7C600F8D81B /* TestResource.cpp */; };
+		BF8EEC1B26662A0B009AC5FD /* cc7HexStringTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBCB1CE3C172006CAA74 /* cc7HexStringTests.cpp */; };
+		BF8EEC1C26662A0B009AC5FD /* JSONValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493D61CE75C7F00F8D81B /* JSONValue.cpp */; };
+		BF8EEC1D26662A0B009AC5FD /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498A991CDBD4F600D7E904 /* StringUtils.cpp */; };
+		BF8EEC1E26662A0B009AC5FD /* EmbeddedTestsList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498AB61CDCC24F00D7E904 /* EmbeddedTestsList.cpp */; };
+		BF8EEC1F26662A0B009AC5FD /* TestManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3068511CC91E56002FD3BC /* TestManager.cpp */; };
+		BF8EEC2026662A0B009AC5FD /* g_baseFiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB494041CE900E500F8D81B /* g_baseFiles.cpp */; };
+		BF8EEC2126662A0B009AC5FD /* cc7Base32Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFABCD732150036A00A9221F /* cc7Base32Tests.cpp */; };
+		BF8EEC2226662A0B009AC5FD /* cc7PlatformTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1C7BBE1CE0CE9300C4399E /* cc7PlatformTests.cpp */; };
+		BF8EEC2326662A0B009AC5FD /* cc7ByteArrayTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498AC91CDDD7ED00D7E904 /* cc7ByteArrayTests.cpp */; };
+		BF8EEC2426662A0B009AC5FD /* PerformanceTimerApple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFC5254D1CDBC985002E653C /* PerformanceTimerApple.cpp */; };
+		BF8EEC2526662A0B009AC5FD /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3068541CC91EE4002FD3BC /* UnitTest.cpp */; };
+		BF8EEC2626662A0B009AC5FD /* cc7ByteRangeTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF498ACB1CDDD80700D7E904 /* cc7ByteRangeTests.cpp */; };
+		BF8EEC2726662A0B009AC5FD /* TestDirectory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB494001CE8E79400F8D81B /* TestDirectory.cpp */; };
+		BF8EEC2826662A0B009AC5FD /* JSONReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB493D21CE750EC00F8D81B /* JSONReader.cpp */; };
+		BF8EEC3426662A7B009AC5FD /* libcc7-macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EEC0E26662A01009AC5FD /* libcc7-macos.a */; };
+		BF8EEC3526662A8F009AC5FD /* libcc7tests-macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EEC2F26662A0B009AC5FD /* libcc7tests-macos.a */; };
 		BF9FFBC51CE3AEFE006CAA74 /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC41CE3AEFE006CAA74 /* Base64.cpp */; };
 		BF9FFBC71CE3B94D006CAA74 /* HexString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC61CE3B94D006CAA74 /* HexString.cpp */; };
 		BF9FFBCA1CE3BF08006CAA74 /* cc7Base64Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9FFBC91CE3BF08006CAA74 /* cc7Base64Tests.cpp */; };
@@ -118,6 +151,27 @@
 			remoteGlobalIDString = BF734A94248525E9001F46BA;
 			remoteInfo = OpenSSL;
 		};
+		BF8EEBFE26662A01009AC5FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFB1A6AC1CB5937800B2D172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF734A94248525E9001F46BA;
+			remoteInfo = OpenSSL;
+		};
+		BF8EEC3026662A5D009AC5FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFB1A6AC1CB5937800B2D172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF8EEC0F26662A0B009AC5FD;
+			remoteInfo = "cc7tests-macos";
+		};
+		BF8EEC3226662A70009AC5FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFB1A6AC1CB5937800B2D172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF8EEBFC26662A01009AC5FD;
+			remoteInfo = "cc7-macos";
+		};
 		BFFE8AD02449B5490032821F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFB1A6AC1CB5937800B2D172 /* Project object */;
@@ -136,6 +190,24 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BF3068331CC91B20002FD3BC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8EEC0A26662A01009AC5FD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8EEC2B26662A0B009AC5FD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -211,6 +283,9 @@
 		BF71B3E41D5AB95700ABE831 /* Android.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Android.mk; sourceTree = "<group>"; };
 		BF79F0161D04BD32004653A1 /* ObjcHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcHelper.h; sourceTree = "<group>"; };
 		BF79F0171D04BFB7004653A1 /* ObjcHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjcHelper.mm; sourceTree = "<group>"; };
+		BF8EEBFA266629ED009AC5FD /* CC7TestsWrapper-macos.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CC7TestsWrapper-macos.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF8EEC0E26662A01009AC5FD /* libcc7-macos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcc7-macos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF8EEC2F26662A0B009AC5FD /* libcc7tests-macos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcc7tests-macos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9FFBC31CE3ADB3006CAA74 /* Base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		BF9FFBC41CE3AEFE006CAA74 /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cpp; sourceTree = "<group>"; };
 		BF9FFBC61CE3B94D006CAA74 /* HexString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HexString.cpp; sourceTree = "<group>"; };
@@ -281,6 +356,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF498AA71CDCBE8400D7E904 /* libcc7tests-ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8EEBF4266629ED009AC5FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8EEC3526662A8F009AC5FD /* libcc7tests-macos.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8EEC0926662A01009AC5FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8EEC2926662A0B009AC5FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8EEC3426662A7B009AC5FD /* libcc7-macos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +571,9 @@
 				BFFE8AAF2449B4F80032821F /* libcc7-tvos.a */,
 				BFFE8ACF2449B53C0032821F /* libcc7tests-tvos.a */,
 				BFFE8ADF2449B5820032821F /* CC7TestsWrapper-tvos.xctest */,
+				BF8EEBFA266629ED009AC5FD /* CC7TestsWrapper-macos.xctest */,
+				BF8EEC0E26662A01009AC5FD /* libcc7-macos.a */,
+				BF8EEC2F26662A0B009AC5FD /* libcc7tests-macos.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -696,6 +797,61 @@
 			productReference = BF498AA21CDCBE8300D7E904 /* CC7TestsWrapper-ios.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		BF8EEBEF266629ED009AC5FD /* CC7TestsWrapper-macos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF8EEBF7266629ED009AC5FD /* Build configuration list for PBXNativeTarget "CC7TestsWrapper-macos" */;
+			buildPhases = (
+				BF8EEBF2266629ED009AC5FD /* Sources */,
+				BF8EEBF4266629ED009AC5FD /* Frameworks */,
+				BF8EEBF6266629ED009AC5FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF8EEC3126662A5D009AC5FD /* PBXTargetDependency */,
+			);
+			name = "CC7TestsWrapper-macos";
+			productName = CC7TestsWrapper;
+			productReference = BF8EEBFA266629ED009AC5FD /* CC7TestsWrapper-macos.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BF8EEBFC26662A01009AC5FD /* cc7-macos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF8EEC0B26662A01009AC5FD /* Build configuration list for PBXNativeTarget "cc7-macos" */;
+			buildPhases = (
+				BF8EEBFF26662A01009AC5FD /* [CC7] XCFramework Extract */,
+				BF8EEC0026662A01009AC5FD /* Sources */,
+				BF8EEC0926662A01009AC5FD /* Frameworks */,
+				BF8EEC0A26662A01009AC5FD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF8EEBFD26662A01009AC5FD /* PBXTargetDependency */,
+			);
+			name = "cc7-macos";
+			productName = cc7;
+			productReference = BF8EEC0E26662A01009AC5FD /* libcc7-macos.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BF8EEC0F26662A0B009AC5FD /* cc7tests-macos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF8EEC2C26662A0B009AC5FD /* Build configuration list for PBXNativeTarget "cc7tests-macos" */;
+			buildPhases = (
+				BF8EEC1226662A0B009AC5FD /* Sources */,
+				BF8EEC2926662A0B009AC5FD /* Frameworks */,
+				BF8EEC2B26662A0B009AC5FD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF8EEC3326662A70009AC5FD /* PBXTargetDependency */,
+			);
+			name = "cc7tests-macos";
+			productName = cc7;
+			productReference = BF8EEC2F26662A0B009AC5FD /* libcc7tests-macos.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		BFB1A6B31CB5937800B2D172 /* cc7-ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFB1A6BD1CB5937800B2D172 /* Build configuration list for PBXNativeTarget "cc7-ios" */;
@@ -789,6 +945,9 @@
 						DevelopmentTeam = KTT9G859MR;
 						ProvisioningStyle = Automatic;
 					};
+					BF8EEBEF266629ED009AC5FD = {
+						DevelopmentTeam = KTT9G859MR;
+					};
 					BFB1A6B31CB5937800B2D172 = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -812,10 +971,13 @@
 			targets = (
 				BFB1A6B31CB5937800B2D172 /* cc7-ios */,
 				BFFE8A9F2449B4F80032821F /* cc7-tvos */,
+				BF8EEBFC26662A01009AC5FD /* cc7-macos */,
 				BF30682D1CC91B20002FD3BC /* cc7tests-ios */,
 				BFFE8AB02449B53C0032821F /* cc7tests-tvos */,
+				BF8EEC0F26662A0B009AC5FD /* cc7tests-macos */,
 				BF498AA11CDCBE8300D7E904 /* CC7TestsWrapper-ios */,
 				BFFE8AD42449B5820032821F /* CC7TestsWrapper-tvos */,
+				BF8EEBEF266629ED009AC5FD /* CC7TestsWrapper-macos */,
 				BF734A94248525E9001F46BA /* OpenSSL */,
 			);
 		};
@@ -823,6 +985,13 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		BF498AA01CDCBE8300D7E904 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8EEBF6266629ED009AC5FD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -893,6 +1062,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Prepare platform / architecture specific framework\n\"${PROJECT_DIR}/../openssl-build/xcbuild-helper.sh\" \"${EFFECTIVE_PLATFORM_NAME}\" \"${BUILT_PRODUCTS_DIR}\"\n";
 		};
+		BF8EEBFF26662A01009AC5FD /* [CC7] XCFramework Extract */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CC7] XCFramework Extract";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Prepare platform / architecture specific framework\n\"${PROJECT_DIR}/../openssl-build/xcbuild-helper.sh\" \"${PLATFORM_NAME}\" \"${BUILT_PRODUCTS_DIR}\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -930,6 +1117,58 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF498AAE1CDCBEC000D7E904 /* CC7TestWrapper.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8EEBF2266629ED009AC5FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8EEBF3266629ED009AC5FD /* CC7TestWrapper.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8EEC0026662A01009AC5FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8EEC0126662A01009AC5FD /* Base64.cpp in Sources */,
+				BF8EEC0226662A01009AC5FD /* HexString.cpp in Sources */,
+				BF8EEC0326662A01009AC5FD /* PlatformApple.mm in Sources */,
+				BF8EEC0426662A01009AC5FD /* Base32.cpp in Sources */,
+				BF8EEC0526662A01009AC5FD /* ByteRange.cpp in Sources */,
+				BF8EEC0626662A01009AC5FD /* ObjcHelper.mm in Sources */,
+				BF8EEC0726662A01009AC5FD /* DebugFeatures.cpp in Sources */,
+				BF8EEC0826662A01009AC5FD /* ByteArray.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8EEC1226662A0B009AC5FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8EEC1326662A0B009AC5FD /* cc7Base64Tests.cpp in Sources */,
+				BF8EEC1426662A0B009AC5FD /* PerformanceTimer.cpp in Sources */,
+				BF8EEC1526662A0B009AC5FD /* TestLog.cpp in Sources */,
+				BF8EEC1626662A0B009AC5FD /* cc7OpenSSLIntegration.cpp in Sources */,
+				BF8EEC1726662A0B009AC5FD /* tt7Testception.cpp in Sources */,
+				BF8EEC1826662A0B009AC5FD /* TestFile.cpp in Sources */,
+				BF8EEC1926662A0B009AC5FD /* tt7JSONReaderTests.cpp in Sources */,
+				BF8EEC1A26662A0B009AC5FD /* TestResource.cpp in Sources */,
+				BF8EEC1B26662A0B009AC5FD /* cc7HexStringTests.cpp in Sources */,
+				BF8EEC1C26662A0B009AC5FD /* JSONValue.cpp in Sources */,
+				BF8EEC1D26662A0B009AC5FD /* StringUtils.cpp in Sources */,
+				BF8EEC1E26662A0B009AC5FD /* EmbeddedTestsList.cpp in Sources */,
+				BF8EEC1F26662A0B009AC5FD /* TestManager.cpp in Sources */,
+				BF8EEC2026662A0B009AC5FD /* g_baseFiles.cpp in Sources */,
+				BF8EEC2126662A0B009AC5FD /* cc7Base32Tests.cpp in Sources */,
+				BF8EEC2226662A0B009AC5FD /* cc7PlatformTests.cpp in Sources */,
+				BF8EEC2326662A0B009AC5FD /* cc7ByteArrayTests.cpp in Sources */,
+				BF8EEC2426662A0B009AC5FD /* PerformanceTimerApple.cpp in Sources */,
+				BF8EEC2526662A0B009AC5FD /* UnitTest.cpp in Sources */,
+				BF8EEC2626662A0B009AC5FD /* cc7ByteRangeTests.cpp in Sources */,
+				BF8EEC2726662A0B009AC5FD /* TestDirectory.cpp in Sources */,
+				BF8EEC2826662A0B009AC5FD /* JSONReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1023,6 +1262,21 @@
 			target = BF734A94248525E9001F46BA /* OpenSSL */;
 			targetProxy = BF734A9B24852644001F46BA /* PBXContainerItemProxy */;
 		};
+		BF8EEBFD26662A01009AC5FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF734A94248525E9001F46BA /* OpenSSL */;
+			targetProxy = BF8EEBFE26662A01009AC5FD /* PBXContainerItemProxy */;
+		};
+		BF8EEC3126662A5D009AC5FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF8EEC0F26662A0B009AC5FD /* cc7tests-macos */;
+			targetProxy = BF8EEC3026662A5D009AC5FD /* PBXContainerItemProxy */;
+		};
+		BF8EEC3326662A70009AC5FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF8EEBFC26662A01009AC5FD /* cc7-macos */;
+			targetProxy = BF8EEC3226662A70009AC5FD /* PBXContainerItemProxy */;
+		};
 		BFFE8AD12449B5490032821F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BFFE8A9F2449B4F80032821F /* cc7-tvos */;
@@ -1115,6 +1369,97 @@
 			};
 			name = Release;
 		};
+		BF8EEBF8266629ED009AC5FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KTT9G859MR;
+				INFOPLIST_FILE = CC7TestsWrapper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					openssl,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.cc7.lib.CC7TestsWrapper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF8EEBF9266629ED009AC5FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KTT9G859MR;
+				INFOPLIST_FILE = CC7TestsWrapper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					openssl,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.cc7.lib.CC7TestsWrapper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BF8EEC0C26662A01009AC5FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7/platform/apple/PrefixCC7.pch";
+				GCC_WARN_PEDANTIC = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					openssl,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BF8EEC0D26662A01009AC5FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7/platform/apple/PrefixCC7.pch";
+				GCC_WARN_PEDANTIC = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					openssl,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		BF8EEC2D26662A0B009AC5FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7tests/platform/PrefixCC7Tests.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BF8EEC2E26662A0B009AC5FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/../src/cc7tests/platform/PrefixCC7Tests.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		BFB1A6BB1CB5937800B2D172 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1169,10 +1514,12 @@
 					"$(PROJECT_DIR)/../openssl-lib/apple/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_STYLE = "non-global";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -1224,10 +1571,12 @@
 					"$(PROJECT_DIR)/../openssl-lib/apple/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				STRIP_STYLE = "non-global";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -1382,6 +1731,33 @@
 			buildConfigurations = (
 				BF734A96248525E9001F46BA /* Debug */,
 				BF734A97248525E9001F46BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF8EEBF7266629ED009AC5FD /* Build configuration list for PBXNativeTarget "CC7TestsWrapper-macos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF8EEBF8266629ED009AC5FD /* Debug */,
+				BF8EEBF9266629ED009AC5FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF8EEC0B26662A01009AC5FD /* Build configuration list for PBXNativeTarget "cc7-macos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF8EEC0C26662A01009AC5FD /* Debug */,
+				BF8EEC0D26662A01009AC5FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF8EEC2C26662A0B009AC5FD /* Build configuration list for PBXNativeTarget "cc7tests-macos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF8EEC2D26662A0B009AC5FD /* Debug */,
+				BF8EEC2E26662A0B009AC5FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

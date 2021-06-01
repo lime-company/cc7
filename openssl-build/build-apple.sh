@@ -342,6 +342,10 @@ function BUILD_APPLE_XC_FRAMEWORK
                 local SELECTOR='iosmaccatalyst'
                 local BUILD_SUFFIX='-maccatalyst'
                 ;;
+            macOSX)
+                local SELECTOR='macosnull'
+                local BUILD_SUFFIX='macosx'
+                ;;
             *)
                 FAILURE "Platform '$PLATFORM' is not supported in Xcode build helper script."
                 ;;

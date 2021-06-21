@@ -24,27 +24,27 @@ namespace tests
 {
 namespace detail
 {
-	/**
-	 The UnitTestFactoryFunction is a type for factory function, responsible
-	 for creation of instance of one particular test.
-	 
-	 This is an internal type and should not be used outside of the cc7tests
-	 library.
-	 */
-	typedef UnitTest* (*UnitTestFactoryFunction)();
-	
-	/**
-	 The UnitTestDescriptor structure keeps information about one particular
-	 unit test. The type is internal and should not be used outside of the
-	 cc7tests library.
-	 */
-	struct UnitTestDescriptor
-	{
-		UnitTestFactoryFunction		factory;
-		const char *				name;
-		const char *				tags;
-	};
-	
+    /**
+     The UnitTestFactoryFunction is a type for factory function, responsible
+     for creation of instance of one particular test.
+     
+     This is an internal type and should not be used outside of the cc7tests
+     library.
+     */
+    typedef UnitTest* (*UnitTestFactoryFunction)();
+    
+    /**
+     The UnitTestDescriptor structure keeps information about one particular
+     unit test. The type is internal and should not be used outside of the
+     cc7tests library.
+     */
+    struct UnitTestDescriptor
+    {
+        UnitTestFactoryFunction     factory;
+        const char *                name;
+        const char *                tags;
+    };
+    
 } // cc7::tests::detail
 } // cc7::tests
 } // cc7

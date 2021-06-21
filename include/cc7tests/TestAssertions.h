@@ -26,78 +26,78 @@
 /**
  Triggers failure when condition is not true
  */
-#define ccstAssertTrue(condition, ...)																	\
-	try {																								\
-		if ((condition) != true) {																		\
-			this->tl().logIncident(__FILE__, __LINE__, "(" #condition ") == true", "" __VA_ARGS__);		\
-		}																								\
-	} catch (...) {																						\
-		this->tl().logIncident(__FILE__, __LINE__, "Evaluation failed (" #condition ")", "");			\
-	}
+#define ccstAssertTrue(condition, ...)                                                                  \
+    try {                                                                                               \
+        if ((condition) != true) {                                                                      \
+            this->tl().logIncident(__FILE__, __LINE__, "(" #condition ") == true", "" __VA_ARGS__);     \
+        }                                                                                               \
+    } catch (...) {                                                                                     \
+        this->tl().logIncident(__FILE__, __LINE__, "Evaluation failed (" #condition ")", "");           \
+    }
 
 /**
  Triggers failure when condition is not false
  */
-#define ccstAssertFalse(condition, ...)																	\
-	try {																								\
-		if ((condition) != false) {																		\
-			this->tl().logIncident(__FILE__, __LINE__, "(" #condition ") == false", "" __VA_ARGS__);	\
-		}																								\
-	} catch (...) {																						\
-		this->tl().logIncident(__FILE__, __LINE__, "Evaluation failed (" #condition ")", "");			\
-	}
+#define ccstAssertFalse(condition, ...)                                                                 \
+    try {                                                                                               \
+        if ((condition) != false) {                                                                     \
+            this->tl().logIncident(__FILE__, __LINE__, "(" #condition ") == false", "" __VA_ARGS__);    \
+        }                                                                                               \
+    } catch (...) {                                                                                     \
+        this->tl().logIncident(__FILE__, __LINE__, "Evaluation failed (" #condition ")", "");           \
+    }
 
 /**
  Triggers failure when pointer is not NULL
  */
-#define ccstAssertNull(object, ...)																		\
-	if (object != nullptr) {																			\
-		this->tl().logIncident(__FILE__, __LINE__, "(" #object ") == NULL", "" __VA_ARGS__);			\
-	}
+#define ccstAssertNull(object, ...)                                                                     \
+    if (object != nullptr) {                                                                            \
+        this->tl().logIncident(__FILE__, __LINE__, "(" #object ") == NULL", "" __VA_ARGS__);            \
+    }
 
 /**
  Triggers failure when pointer is NULL
  */
-#define ccstAssertNotNull(object, ...)																	\
-	if (object == nullptr) {																			\
-		this->tl().logIncident(__FILE__, __LINE__, "(" #object ") != NULL", "" __VA_ARGS__);			\
-	}
+#define ccstAssertNotNull(object, ...)                                                                  \
+    if (object == nullptr) {                                                                            \
+        this->tl().logIncident(__FILE__, __LINE__, "(" #object ") != NULL", "" __VA_ARGS__);            \
+    }
 
 /**
  Triggers failure when both parameters are not equal
  */
-#define ccstAssertEqual(aa, bb, ...)																	\
-	try {																								\
-		if (!(aa == bb)) {																				\
-			this->tl().logIncident(__FILE__, __LINE__, "(" #aa " == " #bb ")", "" __VA_ARGS__);			\
-		}																								\
-	} catch (...) {																						\
-		this->tl().logIncident(__FILE__, __LINE__, "Evaluation failed (" #aa " == " #bb ")", "");		\
-	}
+#define ccstAssertEqual(aa, bb, ...)                                                                    \
+    try {                                                                                               \
+        if (!(aa == bb)) {                                                                              \
+            this->tl().logIncident(__FILE__, __LINE__, "(" #aa " == " #bb ")", "" __VA_ARGS__);         \
+        }                                                                                               \
+    } catch (...) {                                                                                     \
+        this->tl().logIncident(__FILE__, __LINE__, "Evaluation failed (" #aa " == " #bb ")", "");       \
+    }
 
 /**
  Triggers failure when both parameters are equal
  */
-#define ccstAssertNotEqual(aa, bb, ...)																	\
-	try {																								\
-		if (aa == bb) {																					\
-			this->tl().logIncident(__FILE__, __LINE__, "(" #aa " != " #bb ")", "" __VA_ARGS__);			\
-		}																								\
-	} catch (...) {																						\
-		this->tl().logIncident(__FILE__, __LINE__, "Evaluation failed (" #aa " != " #bb ")", "");		\
-	}
+#define ccstAssertNotEqual(aa, bb, ...)                                                                 \
+    try {                                                                                               \
+        if (aa == bb) {                                                                                 \
+            this->tl().logIncident(__FILE__, __LINE__, "(" #aa " != " #bb ")", "" __VA_ARGS__);         \
+        }                                                                                               \
+    } catch (...) {                                                                                     \
+        this->tl().logIncident(__FILE__, __LINE__, "Evaluation failed (" #aa " != " #bb ")", "");       \
+    }
 
 /**
  Triggers failure when both memory regions are not equal
  */
-#define ccstAssertEqualMemSize(p1, p2, size, ...)														\
-	if (p1 && p2) {																						\
-		if (memcmp(p1, p2, size) != 0) {																\
-			this->tl().logIncident(__FILE__, __LINE__, "mem(" #p1 ") == mem(" #p2 ")", "" __VA_ARGS__);	\
-		}																								\
-	} else if (size > 0) {																				\
-		this->tl().logIncident(__FILE__, __LINE__, "(" #p1 ") or (" #p2 ") is NULL", "" __VA_ARGS__);	\
-	}
+#define ccstAssertEqualMemSize(p1, p2, size, ...)                                                       \
+    if (p1 && p2) {                                                                                     \
+        if (memcmp(p1, p2, size) != 0) {                                                                \
+            this->tl().logIncident(__FILE__, __LINE__, "mem(" #p1 ") == mem(" #p2 ")", "" __VA_ARGS__); \
+        }                                                                                               \
+    } else if (size > 0) {                                                                              \
+        this->tl().logIncident(__FILE__, __LINE__, "(" #p1 ") or (" #p2 ") is NULL", "" __VA_ARGS__);   \
+    }
 
 
 /**
@@ -105,26 +105,26 @@
  is determined by sizeof(expected_array) and therefore the ptr parameter must point
  to at least the same amount of bytes.
  */
-#define ccstAssertEqualMemArray(ptr, expected_array, ...)												\
-	if (ptr) {																							\
-		if (memcmp(ptr, expected_array, sizeof(expected_array)) != 0) {									\
-			this->tl().logIncident(__FILE__, __LINE__, "mem(" #ptr ") == mem(" #expected_array ")", "" __VA_ARGS__);\
-		}																								\
-	} else if (sizeof(expected_array) > 0) {															\
-		this->tl().logIncident(__FILE__, __LINE__, "(" #ptr ") is NULL", "" __VA_ARGS__);				\
-	}
+#define ccstAssertEqualMemArray(ptr, expected_array, ...)                                               \
+    if (ptr) {                                                                                          \
+        if (memcmp(ptr, expected_array, sizeof(expected_array)) != 0) {                                 \
+            this->tl().logIncident(__FILE__, __LINE__, "mem(" #ptr ") == mem(" #expected_array ")", "" __VA_ARGS__);\
+        }                                                                                               \
+    } else if (sizeof(expected_array) > 0) {                                                            \
+        this->tl().logIncident(__FILE__, __LINE__, "(" #ptr ") is NULL", "" __VA_ARGS__);               \
+    }
 
 
 /**
  Always triggers failure
  */
-#define ccstFailure(...)																				\
-	this->tl().logIncident(__FILE__, __LINE__, NULL, "" __VA_ARGS__);
+#define ccstFailure(...)                                                                                \
+    this->tl().logIncident(__FILE__, __LINE__, NULL, "" __VA_ARGS__);
 
 
 /**
  Adds simple message to the test log
  */
-#define ccstMessage(...)																				\
-	this->tl().logFormattedMessage("" __VA_ARGS__);
+#define ccstMessage(...)                                                                                \
+    this->tl().logFormattedMessage("" __VA_ARGS__);
 

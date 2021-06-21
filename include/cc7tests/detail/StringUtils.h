@@ -25,22 +25,22 @@ namespace tests
 namespace detail
 {
 
-	/**
-	 Returns formatted std::string like regular sprintf() does.
-	 */
-	std::string FormattedString(const char * format, ...);
-	
-	/**
-	 Helper split function.
-	 */
-	std::vector<std::string> & SplitString(const std::string & str, char delim, std::vector<std::string> & elems);
-	
-	/**
-	 Returns a vector containing substrings from the input string that have been divided by a given delimiter.
-	 */
-	std::vector<std::string>   SplitString(const std::string & str, char delimiter);
-	
-	
+    /**
+     Returns formatted std::string like regular sprintf() does.
+     */
+    std::string FormattedString(const char * format, ...);
+    
+    /**
+     Helper split function.
+     */
+    std::vector<std::string> & SplitString(const std::string & str, char delim, std::vector<std::string> & elems);
+    
+    /**
+     Returns a vector containing substrings from the input string that have been divided by a given delimiter.
+     */
+    std::vector<std::string>   SplitString(const std::string & str, char delimiter);
+    
+    
 } // cc7::tests::detail
 } // cc7::tests
 } // cc7

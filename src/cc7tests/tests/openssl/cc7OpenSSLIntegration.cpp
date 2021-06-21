@@ -24,25 +24,25 @@ namespace cc7
 {
 namespace tests
 {
-	class cc7OpenSSLIntegration : public UnitTest
-	{
-	public:
-		cc7OpenSSLIntegration()
-		{
-			CC7_REGISTER_TEST_METHOD(testLinking)
-		}
-		
-		/// This test only validates whether we have OpenSSL properly integrated into the project.
-		void testLinking()
-		{
-			AES_KEY key;
-			const unsigned char key_bytes[16] = { 0 };
-			auto result = AES_set_decrypt_key(key_bytes, 128, &key);
-			ccstAssertTrue(result == 0);
-		}
-	};
-	
-	CC7_CREATE_UNIT_TEST(cc7OpenSSLIntegration, "cc7")
-	
+    class cc7OpenSSLIntegration : public UnitTest
+    {
+    public:
+        cc7OpenSSLIntegration()
+        {
+            CC7_REGISTER_TEST_METHOD(testLinking)
+        }
+        
+        /// This test only validates whether we have OpenSSL properly integrated into the project.
+        void testLinking()
+        {
+            AES_KEY key;
+            const unsigned char key_bytes[16] = { 0 };
+            auto result = AES_set_decrypt_key(key_bytes, 128, &key);
+            ccstAssertTrue(result == 0);
+        }
+    };
+    
+    CC7_CREATE_UNIT_TEST(cc7OpenSSLIntegration, "cc7")
+    
 } // cc7::tests
 } // cc7

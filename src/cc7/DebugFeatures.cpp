@@ -20,80 +20,80 @@ namespace cc7
 {
 namespace debug
 {
-	
+    
 #if defined(DEBUG) || defined(ENABLE_CC7_LOG) || defined(ENABLE_CC7_ASSERT)
-	// Following string is useful for debug build detection during the library deployment.
-	// You can check whether final executable or library doesn't contain this string,
-	// to be sure that the release build was really produced.
-	const char * gFooDEBUG = "ThisIsDebugBuild_CC7";
+    // Following string is useful for debug build detection during the library deployment.
+    // You can check whether final executable or library doesn't contain this string,
+    // to be sure that the release build was really produced.
+    const char * gFooDEBUG = "ThisIsDebugBuild_CC7";
 #endif
 
-	//
-	// Must be always implemented. Doesn't depend on assert.
-	//
-	bool HasDebugFeaturesTurnedOn()
-	{
+    //
+    // Must be always implemented. Doesn't depend on assert.
+    //
+    bool HasDebugFeaturesTurnedOn()
+    {
 #if defined(DEBUG) || defined(ENABLE_CC7_LOG) || defined(ENABLE_CC7_ASSERT)
-		return true;
+        return true;
 #else
-		return false;
+        return false;
 #endif
-	}
-	
-	
+    }
+    
+    
 #if defined(ENABLE_CC7_ASSERT)
-	//
-	// Assertion handler
-	//
-	static AssertionHandlerSetup s_assert_setup = { nullptr, nullptr };
-	
-	void SetAssertionHandler(const AssertionHandlerSetup & new_setup)
-	{
-		AssertionHandlerSetup default_setup = Platform_GetDefaultAssertionHandler();
-		if (!new_setup.handler) {
-			s_assert_setup = default_setup;
-		} else {
-			s_assert_setup = new_setup;
-		}
-	}
-	
-	AssertionHandlerSetup GetAssertionHandler()
-	{
-		return s_assert_setup;
-	}
+    //
+    // Assertion handler
+    //
+    static AssertionHandlerSetup s_assert_setup = { nullptr, nullptr };
+    
+    void SetAssertionHandler(const AssertionHandlerSetup & new_setup)
+    {
+        AssertionHandlerSetup default_setup = Platform_GetDefaultAssertionHandler();
+        if (!new_setup.handler) {
+            s_assert_setup = default_setup;
+        } else {
+            s_assert_setup = new_setup;
+        }
+    }
+    
+    AssertionHandlerSetup GetAssertionHandler()
+    {
+        return s_assert_setup;
+    }
 #endif //ENABLE_CC7_ASSERT
 
-	
+    
 #if defined(ENABLE_CC7_LOG)
-	//
-	// Log handler
-	//
-	static LogHandlerSetup s_log_setup = { nullptr, nullptr };
-	static bool s_log_enabled = Platform_IsDefaultLogEnabled();
-	
-	void SetLogHandler(const LogHandlerSetup & new_setup)
-	{
-		if (!new_setup.handler) {
-			s_log_setup = Platform_GetDefaultLogHandler();
-		} else {
-			s_log_setup = new_setup;
-		}
-	}
-	
-	LogHandlerSetup GetLogHandler()
-	{
-		return s_log_setup;
-	}
+    //
+    // Log handler
+    //
+    static LogHandlerSetup s_log_setup = { nullptr, nullptr };
+    static bool s_log_enabled = Platform_IsDefaultLogEnabled();
+    
+    void SetLogHandler(const LogHandlerSetup & new_setup)
+    {
+        if (!new_setup.handler) {
+            s_log_setup = Platform_GetDefaultLogHandler();
+        } else {
+            s_log_setup = new_setup;
+        }
+    }
+    
+    LogHandlerSetup GetLogHandler()
+    {
+        return s_log_setup;
+    }
 
-	void SetLogEnabled(bool enabled)
-	{
-		s_log_enabled = enabled;
-	}
-	
-	bool IsLogEnabled()
-	{
-		return s_log_enabled;
-	}
+    void SetLogEnabled(bool enabled)
+    {
+        s_log_enabled = enabled;
+    }
+    
+    bool IsLogEnabled()
+    {
+        return s_log_enabled;
+    }
 #endif //ENABLE_CC7_LOG
 
 
@@ -107,44 +107,44 @@ namespace debug
 //
 int CC7AssertImpl(int condition, const char * file, int line, const char * fmt, ...)
 {
-	if (condition) {
-		// assertion did not fail, just return positive value
-		return 1;
-	}
-	
-	// Format input string
-	char buffer[1024];
-	va_list args;
-	va_start(args, fmt);
-	vsnprintf(buffer, 1024, fmt, args);
-	buffer[1024 - 1] = 0;
-	va_end(args);
-	
-	// Look for file name component from "file"
-	// Printing just file name component from the path increases readability (IMO)
-	const char * separator = strrchr(file, '/');
-	if (!separator) {
-		separator = strrchr(file, '\\');
-	}
-	const char * file_name = separator ? separator + 1 : file;
-	
-	// Build final string
-	char message[1024];
-	snprintf(message, 1024, "CC7_ASSERT: %s, %d: %s", file_name, line, buffer);
-	message[1024 - 1] = 0;
-	
-	// Pass that message to the assert handler
-	if (!cc7::debug::s_assert_setup.handler) {
-		cc7::debug::s_assert_setup = cc7::debug::Platform_GetDefaultAssertionHandler();
-		if (cc7::debug::s_assert_setup.handler) {
-			cc7::debug::s_assert_setup.handler(cc7::debug::s_assert_setup.handler_data, file_name, line, message);
-		}
-	} else {
-		cc7::debug::s_assert_setup.handler(cc7::debug::s_assert_setup.handler_data, file_name, line, message);
-	}
-	
-	// Function must return 0 due to fact, that CC7AssertImpl() is also used in CC7_CHECK() macros.
-	return condition;
+    if (condition) {
+        // assertion did not fail, just return positive value
+        return 1;
+    }
+    
+    // Format input string
+    char buffer[1024];
+    va_list args;
+    va_start(args, fmt);
+    vsnprintf(buffer, 1024, fmt, args);
+    buffer[1024 - 1] = 0;
+    va_end(args);
+    
+    // Look for file name component from "file"
+    // Printing just file name component from the path increases readability (IMO)
+    const char * separator = strrchr(file, '/');
+    if (!separator) {
+        separator = strrchr(file, '\\');
+    }
+    const char * file_name = separator ? separator + 1 : file;
+    
+    // Build final string
+    char message[1024];
+    snprintf(message, 1024, "CC7_ASSERT: %s, %d: %s", file_name, line, buffer);
+    message[1024 - 1] = 0;
+    
+    // Pass that message to the assert handler
+    if (!cc7::debug::s_assert_setup.handler) {
+        cc7::debug::s_assert_setup = cc7::debug::Platform_GetDefaultAssertionHandler();
+        if (cc7::debug::s_assert_setup.handler) {
+            cc7::debug::s_assert_setup.handler(cc7::debug::s_assert_setup.handler_data, file_name, line, message);
+        }
+    } else {
+        cc7::debug::s_assert_setup.handler(cc7::debug::s_assert_setup.handler_data, file_name, line, message);
+    }
+    
+    // Function must return 0 due to fact, that CC7AssertImpl() is also used in CC7_CHECK() macros.
+    return condition;
 }
 #endif //ENABLE_CC7_ASSERT
 
@@ -155,34 +155,34 @@ int CC7AssertImpl(int condition, const char * file, int line, const char * fmt, 
 //
 void CC7LogImpl(const char * fmt, ...)
 {
-	if (!cc7::debug::IsLogEnabled()) {
-		return;
-	}
-	
-	char message[1024];
-	va_list args;
-	va_start(args, fmt);
-	vsnprintf(message, 1024, fmt, args);
-	message[1024 - 1] = 0;
-	va_end(args);
-	
-	// Pass that message to the assert handler
-	if (!cc7::debug::s_log_setup.handler) {
-		cc7::debug::s_log_setup = cc7::debug::Platform_GetDefaultLogHandler();
-		if (cc7::debug::s_log_setup.handler) {
-			cc7::debug::s_log_setup.handler(cc7::debug::s_log_setup.handler_data, message);
-		}
-	} else {
-		cc7::debug::s_log_setup.handler(cc7::debug::s_log_setup.handler_data, message);
-	}
+    if (!cc7::debug::IsLogEnabled()) {
+        return;
+    }
+    
+    char message[1024];
+    va_list args;
+    va_start(args, fmt);
+    vsnprintf(message, 1024, fmt, args);
+    message[1024 - 1] = 0;
+    va_end(args);
+    
+    // Pass that message to the assert handler
+    if (!cc7::debug::s_log_setup.handler) {
+        cc7::debug::s_log_setup = cc7::debug::Platform_GetDefaultLogHandler();
+        if (cc7::debug::s_log_setup.handler) {
+            cc7::debug::s_log_setup.handler(cc7::debug::s_log_setup.handler_data, message);
+        }
+    } else {
+        cc7::debug::s_log_setup.handler(cc7::debug::s_log_setup.handler_data, message);
+    }
 }
 
 void CC7LogEnableImpl(bool enable)
 {
-	cc7::debug::SetLogEnabled(enable);
+    cc7::debug::SetLogEnabled(enable);
 }
 bool CC7LogIsEnabledImpl()
 {
-	return cc7::debug::IsLogEnabled();
+    return cc7::debug::IsLogEnabled();
 }
 #endif //ENABLE_CC7_LOG

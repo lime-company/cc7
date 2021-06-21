@@ -22,15 +22,15 @@
 /**
  Inline header, you have to setup following macros before you include this file:
 
- #define CC7_JNI_CLASS_PATH		"org/example/package/path"	// Class path for code which you're going to implement
- #define CC7_JNI_CLASS_PACKAGE	org_example_package_path	// Class path prefix for functions which implements JNI methods. Without "Java" prefix.
- #define CC7_JNI_JAVA_CLASS		YourJavaClass				// Name of Java class
- #define CC7_JNI_CPP_CLASS		YourNativeClass				// Name of CPP class
+ #define CC7_JNI_CLASS_PATH     "org/example/package/path"  // Class path for code which you're going to implement
+ #define CC7_JNI_CLASS_PACKAGE  org_example_package_path    // Class path prefix for functions which implements JNI methods. Without "Java" prefix.
+ #define CC7_JNI_JAVA_CLASS     YourJavaClass               // Name of Java class
+ #define CC7_JNI_CPP_CLASS      YourNativeClass             // Name of CPP class
  
  Optional defines:
  
- #define CC7_JNI_POINTER_FIELD	"cppPointer"				// Name of Java class field, where the C++ instance is stored (default value is "handle")
-															// You have to add a private field with the same name into your Java class.
+ #define CC7_JNI_POINTER_FIELD  "cppPointer"                // Name of Java class field, where the C++ instance is stored (default value is "handle")
+                                                            // You have to add a private field with the same name into your Java class.
 
  Warning: It is not recommended to put implementation of multiple JNI class wrappers, into a single CPP file.
  
@@ -46,61 +46,61 @@
 #error "This is an inline header. You have to define CC7_JNI_CLASS_PATH & CC7_JNI_CLASS_PACKAGE & CC7_JNI_CPP_CLASS & CC7_JNI_JAVA_CLASS macros before include."
 #endif
 
-#define __CC7_JNI_XSTRINGIFY(a)			# a
-#define __CC7_JNI_STRINGIFY(a)			__CC7_JNI_XSTRINGIFY(a)
+#define __CC7_JNI_XSTRINGIFY(a)         # a
+#define __CC7_JNI_STRINGIFY(a)          __CC7_JNI_XSTRINGIFY(a)
 
-#define __CC7_JNI_CONCAT3(a,b,c)		a ## b ## c
-#define __CC7_JNI_CONCAT4(a,b,c,d)		a ## b ## c ## d
-#define __CC7_JNI_CONCAT5(a,b,c,d,e)	a ## b ## c ## d ## e
-#define __CC7_JNI_CONCAT6(a,b,c,d,e,f)	a ## b ## c ## d ## e ## f
+#define __CC7_JNI_CONCAT3(a,b,c)        a ## b ## c
+#define __CC7_JNI_CONCAT4(a,b,c,d)      a ## b ## c ## d
+#define __CC7_JNI_CONCAT5(a,b,c,d,e)    a ## b ## c ## d ## e
+#define __CC7_JNI_CONCAT6(a,b,c,d,e,f)  a ## b ## c ## d ## e ## f
 
-#define __CC7_JNI_CONCAT_PATH(package, class, method)	__CC7_JNI_CONCAT6(Java_,package,_,class,_,method)
+#define __CC7_JNI_CONCAT_PATH(package, class, method)   __CC7_JNI_CONCAT6(Java_,package,_,class,_,method)
 
 // Defaul value for CC7_JNI_POINTER_FIELD
 #if !defined(CC7_JNI_POINTER_FIELD)
-	#define CC7_JNI_POINTER_FIELD "handle"
+    #define CC7_JNI_POINTER_FIELD "handle"
 #endif
 
 /**
  The result of this macro is full class path for given object name. 
  For example, CC7_JNI_MODULE_CLASS_PATH("YourJavaClass") creates "org/example/package/path/YourJavaClass" string.
  */
-#define CC7_JNI_MODULE_CLASS_PATH(object_name)			CC7_JNI_CLASS_PATH "/" object_name
+#define CC7_JNI_MODULE_CLASS_PATH(object_name)          CC7_JNI_CLASS_PATH "/" object_name
 
 /**
  The result of this macro is full class signature for given object name. 
  For example, CC7_JNI_MODULE_CLASS_PATH("YourJavaClass") creates "Lorg/example/package/path/YourJavaClass" string.
  */
-#define CC7_JNI_MODULE_CLASS_SIGNATURE(object_name)		"L" CC7_JNI_CLASS_PATH "/" object_name ";"
+#define CC7_JNI_MODULE_CLASS_SIGNATURE(object_name)     "L" CC7_JNI_CLASS_PATH "/" object_name ";"
 
 /**
  Returns jclass object for given object name. The object name is valid name from current package.
  */
-#define CC7_JNI_MODULE_FIND_CLASS(object_name)			env->FindClass(CC7_JNI_MODULE_CLASS_PATH(object_name))
+#define CC7_JNI_MODULE_FIND_CLASS(object_name)          env->FindClass(CC7_JNI_MODULE_CLASS_PATH(object_name))
 
 /**
  CC7_JNI_CLASS_BEGIN wraps subsequent code into the extern "C" block and creates a
  static method which returns jfieldID for handle in the native class.
  */
-#define CC7_JNI_MODULE_CLASS_BEGIN()																\
-																									\
-	extern "C" {																					\
-																									\
-	static jfieldID GetHandleFieldID(JNIEnv* env)													\
-	{																								\
-		static jfieldID s_HandleFieldID = 0;														\
-		if (s_HandleFieldID == 0) {																	\
-			jclass clazz = CC7_JNI_MODULE_FIND_CLASS(__CC7_JNI_STRINGIFY(CC7_JNI_JAVA_CLASS));		\
-			s_HandleFieldID = CC7_JNI_FIELD_LONG(clazz, CC7_JNI_POINTER_FIELD);						\
-		}																							\
-		return s_HandleFieldID;																		\
-	}
+#define CC7_JNI_MODULE_CLASS_BEGIN()                                                                \
+                                                                                                    \
+    extern "C" {                                                                                    \
+                                                                                                    \
+    static jfieldID GetHandleFieldID(JNIEnv* env)                                                   \
+    {                                                                                               \
+        static jfieldID s_HandleFieldID = 0;                                                        \
+        if (s_HandleFieldID == 0) {                                                                 \
+            jclass clazz = CC7_JNI_MODULE_FIND_CLASS(__CC7_JNI_STRINGIFY(CC7_JNI_JAVA_CLASS));      \
+            s_HandleFieldID = CC7_JNI_FIELD_LONG(clazz, CC7_JNI_POINTER_FIELD);                     \
+        }                                                                                           \
+        return s_HandleFieldID;                                                                     \
+    }
 
 /**
  CC7_JNI_MODULE_CLASS_END closes previously opened extern "C" block.
  */
-#define CC7_JNI_MODULE_CLASS_END()																			\
-	} // extern "C"
+#define CC7_JNI_MODULE_CLASS_END()                                                                          \
+    } // extern "C"
 
 /**
  Returns instance of CC7_JNI_CPP_CLASS retrieved from "thiz" object. You can typically use this macro at the beginning
@@ -108,10 +108,10 @@
  
  YourNativeClass * obj = CC7_THIS_OBJ();
  if (!obj) {
-	return;	// internal error, object was not initialized
+    return; // internal error, object was not initialized
  }
  */
-#define CC7_THIS_OBJ()	reinterpret_cast<CC7_JNI_CPP_CLASS*>(env->GetLongField(thiz, GetHandleFieldID(env)))
+#define CC7_THIS_OBJ()  reinterpret_cast<CC7_JNI_CPP_CLASS*>(env->GetLongField(thiz, GetHandleFieldID(env)))
 
 /**
  Declares a prototype for method which has no parameters. You can also use this macro in the actual method
@@ -119,24 +119,24 @@
  
  CC7_JNI_METHOD(jboolean, hasThisMightyFeature)
  {
-	YourJavaClass * obj = CC7_THIS_OBJ();
-	if (!obj) {
-		return (jboolean)false;
-	}
-	return obj->hasThisMightyFeature();
+    YourJavaClass * obj = CC7_THIS_OBJ();
+    if (!obj) {
+        return (jboolean)false;
+    }
+    return obj->hasThisMightyFeature();
  }
  
  CC7_JNI_METHOD(void, doVeryImportantStuff)
  {
-	YourJavaClass * obj = CC7_THIS_OBJ();
-	if (!obj) {
-		return;
-	}
-	obj->doVeryImportantStuff();
+    YourJavaClass * obj = CC7_THIS_OBJ();
+    if (!obj) {
+        return;
+    }
+    obj->doVeryImportantStuff();
  }
  */
-#define CC7_JNI_METHOD(return_type, name)															\
-	JNIEXPORT return_type JNICALL __CC7_JNI_CONCAT_PATH(CC7_JNI_CLASS_PACKAGE,CC7_JNI_JAVA_CLASS,name) (JNIEnv* env, jobject thiz)
+#define CC7_JNI_METHOD(return_type, name)                                                           \
+    JNIEXPORT return_type JNICALL __CC7_JNI_CONCAT_PATH(CC7_JNI_CLASS_PACKAGE,CC7_JNI_JAVA_CLASS,name) (JNIEnv* env, jobject thiz)
 
 /**
  Declares a prototype for method with parameters. You can also use this macro in the actual method
@@ -144,24 +144,24 @@
  
  CC7_JNI_METHOD_PARAMS(jint, calculateVeryImportantValue, jint input)
  {
-	YourJavaClass * obj = CC7_THIS_OBJ();
-	if (!obj) {
-		return -1;
-	}
-	return obj->calculateVeryImportantValue(input);
+    YourJavaClass * obj = CC7_THIS_OBJ();
+    if (!obj) {
+        return -1;
+    }
+    return obj->calculateVeryImportantValue(input);
  }
  
  CC7_JNI_METHOD_PARAMS(void, setThatMagnificentFlag, jboolean value)
  {
-	YourJavaClass * obj = CC7_THIS_OBJ();
-	if (!obj) {
-		return;
-	}
-	obj->setThatMagnificentFlag(value);
+    YourJavaClass * obj = CC7_THIS_OBJ();
+    if (!obj) {
+        return;
+    }
+    obj->setThatMagnificentFlag(value);
  }
  */
-#define CC7_JNI_METHOD_PARAMS(return_type, name, paramz...)											\
-	JNIEXPORT return_type JNICALL __CC7_JNI_CONCAT_PATH(CC7_JNI_CLASS_PACKAGE,CC7_JNI_JAVA_CLASS,name)(JNIEnv* env, jobject thiz, paramz)
+#define CC7_JNI_METHOD_PARAMS(return_type, name, paramz...)                                         \
+    JNIEXPORT return_type JNICALL __CC7_JNI_CONCAT_PATH(CC7_JNI_CLASS_PACKAGE,CC7_JNI_JAVA_CLASS,name)(JNIEnv* env, jobject thiz, paramz)
 
 
 

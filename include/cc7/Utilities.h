@@ -22,16 +22,16 @@ namespace cc7
 {
 namespace utilities
 {
-	template<size_t Align> size_t AlignValue(size_t value)
-	{
-		static_assert(Align > 0, "Align must be greater than 0");
-		static_assert((Align & (~Align + 1)) == Align, "Align must be power of 2");
-					  
-		if (value) {
-			return (value + (Align - 1)) & ~(Align - 1);
-		}
-		return Align;
-	}
+    template<size_t Align> size_t AlignValue(size_t value)
+    {
+        static_assert(Align > 0, "Align must be greater than 0");
+        static_assert((Align & (~Align + 1)) == Align, "Align must be power of 2");
+                      
+        if (value) {
+            return (value + (Align - 1)) & ~(Align - 1);
+        }
+        return Align;
+    }
 
 } // cc7::utilities
 } // cc7

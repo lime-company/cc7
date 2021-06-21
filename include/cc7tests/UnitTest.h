@@ -24,83 +24,83 @@ namespace cc7
 {
 namespace tests
 {
-	class TestLog;
-	class TestManager;
-	
-	/**
-	 The UnitTest is a base class for all unit tests in cc7tests framework.
-	 You can inherit your own unit test from this class.
-	 */
-	class UnitTest
-	{
-	public:
-		
-		/**
-		 Constructs a new base unit test. You should register all test methods
-		 in your derived test's constructor.
-		 */
-		UnitTest();
-		
-		/**
-		 Destructs unit test
-		 */
-		virtual ~UnitTest();
-		
-		
-		//
-		// Methods for overriding
-		//
-		
-		/**
-		 Called only once per test run, before the test execution.
-		 */
-		virtual void	instanceSetUp() { }
-		
-		/**
-		 Called only once per test run, after the test execution.
-		 */
-		virtual void	instanceTearDown() { }
-		
-		/**
-		 Called for each test method, before the method execution.
-		 */
-		virtual void	setUp() { }
-		
-		/**
-		 Called for each test method, after the method execution.
-		 */
-		virtual void	tearDown() { }
+    class TestLog;
+    class TestManager;
+    
+    /**
+     The UnitTest is a base class for all unit tests in cc7tests framework.
+     You can inherit your own unit test from this class.
+     */
+    class UnitTest
+    {
+    public:
+        
+        /**
+         Constructs a new base unit test. You should register all test methods
+         in your derived test's constructor.
+         */
+        UnitTest();
+        
+        /**
+         Destructs unit test
+         */
+        virtual ~UnitTest();
+        
+        
+        //
+        // Methods for overriding
+        //
+        
+        /**
+         Called only once per test run, before the test execution.
+         */
+        virtual void    instanceSetUp() { }
+        
+        /**
+         Called only once per test run, after the test execution.
+         */
+        virtual void    instanceTearDown() { }
+        
+        /**
+         Called for each test method, before the method execution.
+         */
+        virtual void    setUp() { }
+        
+        /**
+         Called for each test method, after the method execution.
+         */
+        virtual void    tearDown() { }
 
-		/**
-		 Returns associated test log.
-		 */
-		TestLog & tl();
-		TestLog & tl() const;
-		
-		/**
-		 Returns associated TestManager
-		 */
-		TestManager & testManager();
-		TestManager & testManager() const;
-		
-	protected:
-		
-		void registerTestMethod(std::function<void()> method, const char * description);
-		
-		
-	private:
-		
-		friend class TestManager;
-		
-		// Private methods
-		bool runTest(TestManager * manager, TestLog * log);
-		
-		// Members
-		TestLog * _log;
-		TestManager * _manager;
-		std::vector<std::tuple<std::function<void()>, std::string>>	_methods;
-	};
-	
-	
+        /**
+         Returns associated test log.
+         */
+        TestLog & tl();
+        TestLog & tl() const;
+        
+        /**
+         Returns associated TestManager
+         */
+        TestManager & testManager();
+        TestManager & testManager() const;
+        
+    protected:
+        
+        void registerTestMethod(std::function<void()> method, const char * description);
+        
+        
+    private:
+        
+        friend class TestManager;
+        
+        // Private methods
+        bool runTest(TestManager * manager, TestLog * log);
+        
+        // Members
+        TestLog * _log;
+        TestManager * _manager;
+        std::vector<std::tuple<std::function<void()>, std::string>> _methods;
+    };
+    
+    
 } // cc7::tests
 } // cc7

@@ -28,66 +28,66 @@ namespace cc7
 {
 namespace detail
 {
-	//
-	// MARK: Exceptions wrapper
-	//
+    //
+    // MARK: Exceptions wrapper
+    //
 
 #if defined(CC7_NO_EXCEPTIONS)
-	// Exceptions are disabled. All errors are treated as CC7_ASSERT() for this build.
-	#define __CC7_THROW_EXCEPTION(exception, text)		CC7_ASSERT(false, text)
-	#define __CC7_THROW_EXCEPTION_NOP(exception, text)	CC7_ASSERT(false, text)
+    // Exceptions are disabled. All errors are treated as CC7_ASSERT() for this build.
+    #define __CC7_THROW_EXCEPTION(exception, text)      CC7_ASSERT(false, text)
+    #define __CC7_THROW_EXCEPTION_NOP(exception, text)  CC7_ASSERT(false, text)
 #else
-	// Exeptions are enabled
-	#define __CC7_THROW_EXCEPTION(exception, text)		throw exception(text)
-	#define __CC7_THROW_EXCEPTION_NOP(exception, text)	throw exception()
+    // Exeptions are enabled
+    #define __CC7_THROW_EXCEPTION(exception, text)      throw exception(text)
+    #define __CC7_THROW_EXCEPTION_NOP(exception, text)  throw exception()
 #endif
 
-	
-	template <typename T> class ExceptionsWrapper {
-	public:
-		
-		static T & out_of_range()
-		{
-			__CC7_THROW_EXCEPTION(std::out_of_range, "out of range");
-			return _foo;
-		}
-		
-		static T & invalid_argument()
-		{
-			__CC7_THROW_EXCEPTION(std::invalid_argument, "invalid argument");
-			return _foo;
-		}
-		
-		static T & length_error()
-		{
-			__CC7_THROW_EXCEPTION(std::length_error, "length error");
-			return _foo;
-		}
-		
-		static T & allocation_error()
-		{
-			__CC7_THROW_EXCEPTION_NOP(std::bad_alloc, "not enough memory");
-			return _foo;
-		}
-		
-		static T & not_implemented()
-		{
-			__CC7_THROW_EXCEPTION(std::logic_error, "not implemented yet");
-			return _foo;
-		}
-		
-		static T & forbidden_value()
-		{
-			CC7_ASSERT(false, "Returning forbidden value.");
-			return _foo;
-		}
-		
-	private:
-		static T _foo;
-	};
-	
-	template <typename T> T ExceptionsWrapper<T>::_foo;
-	
-	
+    
+    template <typename T> class ExceptionsWrapper {
+    public:
+        
+        static T & out_of_range()
+        {
+            __CC7_THROW_EXCEPTION(std::out_of_range, "out of range");
+            return _foo;
+        }
+        
+        static T & invalid_argument()
+        {
+            __CC7_THROW_EXCEPTION(std::invalid_argument, "invalid argument");
+            return _foo;
+        }
+        
+        static T & length_error()
+        {
+            __CC7_THROW_EXCEPTION(std::length_error, "length error");
+            return _foo;
+        }
+        
+        static T & allocation_error()
+        {
+            __CC7_THROW_EXCEPTION_NOP(std::bad_alloc, "not enough memory");
+            return _foo;
+        }
+        
+        static T & not_implemented()
+        {
+            __CC7_THROW_EXCEPTION(std::logic_error, "not implemented yet");
+            return _foo;
+        }
+        
+        static T & forbidden_value()
+        {
+            CC7_ASSERT(false, "Returning forbidden value.");
+            return _foo;
+        }
+        
+    private:
+        static T _foo;
+    };
+    
+    template <typename T> T ExceptionsWrapper<T>::_foo;
+    
+    
 } // cc7::detail
 } // cc7

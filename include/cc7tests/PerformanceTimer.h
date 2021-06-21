@@ -23,28 +23,28 @@ namespace cc7
 {
 namespace tests
 {
-	
-	class PerformanceTimer
-	{
-	public:
-		PerformanceTimer();
-		
-		void	start();
-		double	elapsedTime();
-		double	measureBlock(std::function<void()> block);
-		
-		static std::string humanReadableTime(double time);
-		
-	private:
-		
-		cc7::U64 _base;
-	};
-	
-	
-	// Following two functions must have platform specific implementation.
-	
-	cc7::U64	Platform_GetCurrentTime();
-	double		Platform_GetTimeDiff(cc7::U64 start, cc7::U64 future);
-	
+    
+    class PerformanceTimer
+    {
+    public:
+        PerformanceTimer();
+        
+        void    start();
+        double  elapsedTime();
+        double  measureBlock(std::function<void()> block);
+        
+        static std::string humanReadableTime(double time);
+        
+    private:
+        
+        cc7::U64 _base;
+    };
+    
+    
+    // Following two functions must have platform specific implementation.
+    
+    cc7::U64    Platform_GetCurrentTime();
+    double      Platform_GetTimeDiff(cc7::U64 start, cc7::U64 future);
+    
 } // cc7::tests
 } // cc7

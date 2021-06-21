@@ -11,11 +11,17 @@ insert_final_newline = true
 # C++
 [*.{cpp,h}]
 charset = utf-8
-indent_style = tab
+indent_style = space
+indent_size = 4
+
+# ObjC/C++
+[*.{m,mm}]
+charset = utf-8
+indent_style = space
 indent_size = 4
 
 # Shell
 [*.sh]
 charset = utf-8
-indent_style = tab
+indent_style = space
 indent_size = 4

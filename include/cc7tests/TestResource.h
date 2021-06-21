@@ -22,22 +22,22 @@ namespace cc7
 {
 namespace tests
 {
-	class TestResource
-	{
-	public:
-		TestResource(const cc7::byte * data, size_t size, const char * name);
-		
-		const cc7::byte *	data() const { return _data; }
-		size_t				size() const { return _size; }
-		const char *		name() const { return _name; }
-		cc7::ByteRange		range() const { return cc7::ByteRange(_data, _size); }
-		
-	private:
-		
-		const cc7::byte *	_data;
-		size_t				_size;
-		const char *		_name;
-	};
-	
+    class TestResource
+    {
+    public:
+        TestResource(const cc7::byte * data, size_t size, const char * name);
+        
+        const cc7::byte *   data() const { return _data; }
+        size_t              size() const { return _size; }
+        const char *        name() const { return _name; }
+        cc7::ByteRange      range() const { return cc7::ByteRange(_data, _size); }
+        
+    private:
+        
+        const cc7::byte *   _data;
+        size_t              _size;
+        const char *        _name;
+    };
+    
 } // cc7::tests
 } // cc7

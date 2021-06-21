@@ -24,127 +24,127 @@ namespace cc7
 {
 namespace jni
 {
-	// Strings
-	
-	jstring CopyToJavaString(JNIEnv * env, const std::string & str)
-	{
-		return env->NewStringUTF(str.c_str());
-	}
-	
-	jstring CopyToJavaString(JNIEnv * env, const char * str)
-	{
-		if (!str) {
-			str = "";
-		}
-		return env->NewStringUTF(str);
-	}
-	
-	jstring CopyToNullableJavaString(JNIEnv * env, const std::string & str)
-	{
-		if (!str.empty()) {
-			return env->NewStringUTF(str.c_str());
-		}
-		return NULL;
-	}
-	
-	jstring CopyToNullableJavaString(JNIEnv * env, const char * str)
-	{
-		if (!str) {
-			return NULL;
-		}
-		if (0 == strlen(str)) {
-			return NULL;
-		}
-		return env->NewStringUTF(str);
-	}
-	
-	std::string CopyFromJavaString(JNIEnv * env, jstring str)
-	{
-		std::string result;
-		if (str && env) {
-			const char * str_ptr = env->GetStringUTFChars(str, 0);
-			if (str_ptr) {
-				result.assign(str_ptr);
-				env->ReleaseStringUTFChars(str, str_ptr);
-			}
-		}
-		return result;
-	}
-	
-	cc7::ByteArray CopyFromJavaStringToByteArray(JNIEnv * env, jstring str)
-	{
-		cc7::ByteArray result;
-		if (str && env) {
-			const char * str_ptr = env->GetStringUTFChars(str, 0);
-			if (str_ptr) {
-				result.assign(cc7::MakeRange(str_ptr));
-				env->ReleaseStringUTFChars(str, str_ptr);
-			}
-		}
-		return result;		
-	}
+    // Strings
+    
+    jstring CopyToJavaString(JNIEnv * env, const std::string & str)
+    {
+        return env->NewStringUTF(str.c_str());
+    }
+    
+    jstring CopyToJavaString(JNIEnv * env, const char * str)
+    {
+        if (!str) {
+            str = "";
+        }
+        return env->NewStringUTF(str);
+    }
+    
+    jstring CopyToNullableJavaString(JNIEnv * env, const std::string & str)
+    {
+        if (!str.empty()) {
+            return env->NewStringUTF(str.c_str());
+        }
+        return NULL;
+    }
+    
+    jstring CopyToNullableJavaString(JNIEnv * env, const char * str)
+    {
+        if (!str) {
+            return NULL;
+        }
+        if (0 == strlen(str)) {
+            return NULL;
+        }
+        return env->NewStringUTF(str);
+    }
+    
+    std::string CopyFromJavaString(JNIEnv * env, jstring str)
+    {
+        std::string result;
+        if (str && env) {
+            const char * str_ptr = env->GetStringUTFChars(str, 0);
+            if (str_ptr) {
+                result.assign(str_ptr);
+                env->ReleaseStringUTFChars(str, str_ptr);
+            }
+        }
+        return result;
+    }
+    
+    cc7::ByteArray CopyFromJavaStringToByteArray(JNIEnv * env, jstring str)
+    {
+        cc7::ByteArray result;
+        if (str && env) {
+            const char * str_ptr = env->GetStringUTFChars(str, 0);
+            if (str_ptr) {
+                result.assign(cc7::MakeRange(str_ptr));
+                env->ReleaseStringUTFChars(str, str_ptr);
+            }
+        }
+        return result;      
+    }
 
-	
-	// Byte array
-	
-	jbyteArray CopyToJavaByteArray(JNIEnv * env, const cc7::ByteRange & range)
-	{
-		jbyteArray array = env->NewByteArray(range.size());
-		env->SetByteArrayRegion (array, 0, range.size(), (const jbyte*)range.data());
-		return array;
-	}
-	
-	jbyteArray CopyToNullableJavaByteArray(JNIEnv * env, const cc7::ByteRange & range)
-	{
-		if (range.empty()) {
-			return NULL;
-		}
-		jbyteArray array = env->NewByteArray(range.size());
-		env->SetByteArrayRegion (array, 0, range.size(), (const jbyte*)range.data());
-		return array;
-	}
-	
-	cc7::ByteArray CopyFromJavaByteArray(JNIEnv * env, jbyteArray array)
-	{
-		cc7::ByteArray result;
-		if (env && array) {
-			jsize length = env->GetArrayLength(array);
-			if (length > 0) {
-				jbyte * bytes = env->GetByteArrayElements(array, 0);
-				if (CC7_CHECK(bytes != nullptr, "JNI: byteArray has no bytes but size greater than 0.")) {
-					result.assign(bytes, bytes + length);
-					env->ReleaseByteArrayElements(array, bytes, 0);
-				}
-			}
-		}
-		return result;
-	}
-	
-	
-	// Objects
-	
-	jobject CreateJavaObject(JNIEnv * env, const char * clazz, const char * ctr_signature, ...)
-	{
-		jclass result_class = env->FindClass(clazz);
-		if (result_class == nullptr) {
-			CC7_ASSERT(false, "JNI: Class: %s: Unknown class signature.", clazz);
-			return nullptr;
-		}
-		
-		jmethodID mid_constructor = env->GetMethodID(result_class, "<init>", ctr_signature);
-		if (mid_constructor == nullptr) {
-			CC7_ASSERT(false, "JNI: Class: %s: Unknown object constructor with signature '%s'", clazz, ctr_signature);
-			return NULL;
-		}
-		
-		va_list args;
-		va_start(args, ctr_signature);
-		CC7_LOG("JNI: Class: '%s': Creating a new object with arguments", clazz);
-		jobject result_object = env->NewObjectV(result_class, mid_constructor, args);
-		CC7_ASSERT(result_object != nullptr, "JNI: Class: %s: Object creation failed. Signature: '%s'", clazz, ctr_signature);
-		va_end(args);
-		return result_object;
-	}
+    
+    // Byte array
+    
+    jbyteArray CopyToJavaByteArray(JNIEnv * env, const cc7::ByteRange & range)
+    {
+        jbyteArray array = env->NewByteArray(range.size());
+        env->SetByteArrayRegion (array, 0, range.size(), (const jbyte*)range.data());
+        return array;
+    }
+    
+    jbyteArray CopyToNullableJavaByteArray(JNIEnv * env, const cc7::ByteRange & range)
+    {
+        if (range.empty()) {
+            return NULL;
+        }
+        jbyteArray array = env->NewByteArray(range.size());
+        env->SetByteArrayRegion (array, 0, range.size(), (const jbyte*)range.data());
+        return array;
+    }
+    
+    cc7::ByteArray CopyFromJavaByteArray(JNIEnv * env, jbyteArray array)
+    {
+        cc7::ByteArray result;
+        if (env && array) {
+            jsize length = env->GetArrayLength(array);
+            if (length > 0) {
+                jbyte * bytes = env->GetByteArrayElements(array, 0);
+                if (CC7_CHECK(bytes != nullptr, "JNI: byteArray has no bytes but size greater than 0.")) {
+                    result.assign(bytes, bytes + length);
+                    env->ReleaseByteArrayElements(array, bytes, 0);
+                }
+            }
+        }
+        return result;
+    }
+    
+    
+    // Objects
+    
+    jobject CreateJavaObject(JNIEnv * env, const char * clazz, const char * ctr_signature, ...)
+    {
+        jclass result_class = env->FindClass(clazz);
+        if (result_class == nullptr) {
+            CC7_ASSERT(false, "JNI: Class: %s: Unknown class signature.", clazz);
+            return nullptr;
+        }
+        
+        jmethodID mid_constructor = env->GetMethodID(result_class, "<init>", ctr_signature);
+        if (mid_constructor == nullptr) {
+            CC7_ASSERT(false, "JNI: Class: %s: Unknown object constructor with signature '%s'", clazz, ctr_signature);
+            return NULL;
+        }
+        
+        va_list args;
+        va_start(args, ctr_signature);
+        CC7_LOG("JNI: Class: '%s': Creating a new object with arguments", clazz);
+        jobject result_object = env->NewObjectV(result_class, mid_constructor, args);
+        CC7_ASSERT(result_object != nullptr, "JNI: Class: %s: Object creation failed. Signature: '%s'", clazz, ctr_signature);
+        va_end(args);
+        return result_object;
+    }
 
 } // cc7::jni
 } // cc7

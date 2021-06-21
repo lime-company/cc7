@@ -22,37 +22,37 @@ namespace cc7
 {
 namespace detail
 {
-	/**
-	 The CleanupAllocator is a special std::allocator, which only purpose
-	 is to secure clean the allocated memory, before the deallocation.
-	 */
-	template <class T> class CleanupAllocator : public std::allocator<T>
-	{
-	public :
-		
-		template <class U> struct rebind
-		{
-			typedef CleanupAllocator <U> other;
-		};
-		
-		CleanupAllocator() throw()
-		{
-		}
-		
-		CleanupAllocator(const CleanupAllocator &) throw()
-		{
-		}
-		
-		template <class U> CleanupAllocator(const CleanupAllocator <U> &) throw()
-		{
-		}
-		
-		void deallocate(T * p,  size_t n)
-		{
-			CC7_SecureClean(p, n * sizeof(T));
-			std::allocator <T>::deallocate(p, n);
-		}
-	};
-	
+    /**
+     The CleanupAllocator is a special std::allocator, which only purpose
+     is to secure clean the allocated memory, before the deallocation.
+     */
+    template <class T> class CleanupAllocator : public std::allocator<T>
+    {
+    public :
+        
+        template <class U> struct rebind
+        {
+            typedef CleanupAllocator <U> other;
+        };
+        
+        CleanupAllocator() throw()
+        {
+        }
+        
+        CleanupAllocator(const CleanupAllocator &) throw()
+        {
+        }
+        
+        template <class U> CleanupAllocator(const CleanupAllocator <U> &) throw()
+        {
+        }
+        
+        void deallocate(T * p,  size_t n)
+        {
+            CC7_SecureClean(p, n * sizeof(T));
+            std::allocator <T>::deallocate(p, n);
+        }
+    };
+    
 } // cc7::detail
 } // cc7

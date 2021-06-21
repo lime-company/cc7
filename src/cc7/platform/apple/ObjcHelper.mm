@@ -20,58 +20,58 @@ namespace cc7
 {
 namespace objc
 {
-	NSData * CopyToNSData(const cc7::ByteRange & range)
-	{
-		return [[NSData alloc] initWithBytes:range.data() length:range.size()];
-	}
-	
-	NSString * CopyToNSString(const std::string & string)
-	{
-		return [[NSString alloc] initWithUTF8String:string.c_str()];
-	}
-	
-	NSData * CopyToNullableNSData(const cc7::ByteRange & range)
-	{
-		if (!range.empty()) {
-			return [[NSData alloc] initWithBytes:range.data() length:range.size()];
-		}
-		return nil;
-	}
-	
-	NSString * CopyToNullableNSString(const std::string & string)
-	{
-		if (!string.empty()) {
-			return [[NSString alloc] initWithUTF8String:string.c_str()];
-		}
-		return nil;
-	}
-	
-	ByteArray CopyFromNSData(NSData * data)
-	{
-		ByteArray result;
-		if (data) {
-			result.assign(ByteRange(data.bytes, data.length));
-		}
-		return result;
-	}
-	
-	std::string CopyFromNSString(NSString * string)
-	{
-		std::string result;
-		if (string) {
-			result.assign(string.UTF8String);
-		}
-		return result;
-	}
-	
-	ByteArray CopyFromNSStringToByteArray(NSString * string)
-	{
-		ByteArray result;
-		if (string) {
-			result.assign(cc7::MakeRange(string.UTF8String));
-		}
-		return result;
-	}
-	
+    NSData * CopyToNSData(const cc7::ByteRange & range)
+    {
+        return [[NSData alloc] initWithBytes:range.data() length:range.size()];
+    }
+    
+    NSString * CopyToNSString(const std::string & string)
+    {
+        return [[NSString alloc] initWithUTF8String:string.c_str()];
+    }
+    
+    NSData * CopyToNullableNSData(const cc7::ByteRange & range)
+    {
+        if (!range.empty()) {
+            return [[NSData alloc] initWithBytes:range.data() length:range.size()];
+        }
+        return nil;
+    }
+    
+    NSString * CopyToNullableNSString(const std::string & string)
+    {
+        if (!string.empty()) {
+            return [[NSString alloc] initWithUTF8String:string.c_str()];
+        }
+        return nil;
+    }
+    
+    ByteArray CopyFromNSData(NSData * data)
+    {
+        ByteArray result;
+        if (data) {
+            result.assign(ByteRange(data.bytes, data.length));
+        }
+        return result;
+    }
+    
+    std::string CopyFromNSString(NSString * string)
+    {
+        std::string result;
+        if (string) {
+            result.assign(string.UTF8String);
+        }
+        return result;
+    }
+    
+    ByteArray CopyFromNSStringToByteArray(NSString * string)
+    {
+        ByteArray result;
+        if (string) {
+            result.assign(cc7::MakeRange(string.UTF8String));
+        }
+        return result;
+    }
+    
 } // cc7::objc
 } // cc7

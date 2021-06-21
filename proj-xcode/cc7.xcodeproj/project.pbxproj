@@ -560,7 +560,7 @@
 				BFFE8AD22449B5520032821F /* Frameworks */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 1;
+			usesTabs = 0;
 		};
 		BFB1A6B51CB5937800B2D172 /* Products */ = {
 			isa = PBXGroup;

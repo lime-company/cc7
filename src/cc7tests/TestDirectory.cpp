@@ -22,31 +22,31 @@ namespace cc7
 namespace tests
 {
 
-	TestDirectory::TestDirectory(std::initializer_list<TResource> il) :
-		_resources(il)
-	{
-	}
-	
-	TestDirectory::~TestDirectory()
-	{
-	}
-	
-	TestFile TestDirectory::findFile(const std::string &path) const
-	{
-		for (auto&& resource : _resources) {
-			if (path == resource->name()) {
-				return TestFile(resource);
-			}
-		}
-		throw std::invalid_argument("File '" + path + "' not found.");
-	}
-	
-	const TestDirectory::TResourceList & TestDirectory::allResources() const
-	{
-		return _resources;
-	}
-	
-	
+    TestDirectory::TestDirectory(std::initializer_list<TResource> il) :
+        _resources(il)
+    {
+    }
+    
+    TestDirectory::~TestDirectory()
+    {
+    }
+    
+    TestFile TestDirectory::findFile(const std::string &path) const
+    {
+        for (auto&& resource : _resources) {
+            if (path == resource->name()) {
+                return TestFile(resource);
+            }
+        }
+        throw std::invalid_argument("File '" + path + "' not found.");
+    }
+    
+    const TestDirectory::TResourceList & TestDirectory::allResources() const
+    {
+        return _resources;
+    }
+    
+    
 
 } // cc7::tests
 } // cc7

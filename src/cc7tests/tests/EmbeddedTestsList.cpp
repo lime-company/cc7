@@ -20,27 +20,27 @@ namespace cc7
 {
 namespace tests
 {
-	const UnitTestCreationInfoList _GetDefaultUnitTestCreationInfoList()
-	{
-		UnitTestCreationInfoList list;
-		
-		// cc7::tests framework tests
-		CC7_ADD_UNIT_TEST(tt7Testception, list);
-		CC7_ADD_UNIT_TEST(tt7JSONReaderTests, list);
-		
-		// cc7 framework tests
-		CC7_ADD_UNIT_TEST(cc7PlatformTests, list);
-		CC7_ADD_UNIT_TEST(cc7ByteArrayTests, list);
-		CC7_ADD_UNIT_TEST(cc7ByteRangeTests, list);
-		CC7_ADD_UNIT_TEST(cc7Base32Tests, list);
-		CC7_ADD_UNIT_TEST(cc7Base64Tests, list);
-		CC7_ADD_UNIT_TEST(cc7HexStringTests, list);
-		
-		// OpenSSL
-		CC7_ADD_UNIT_TEST(cc7OpenSSLIntegration, list);
-		
-		return list;
-	}
-	
+    const UnitTestCreationInfoList _GetDefaultUnitTestCreationInfoList()
+    {
+        UnitTestCreationInfoList list;
+        
+        // cc7::tests framework tests
+        CC7_ADD_UNIT_TEST(tt7Testception, list);
+        CC7_ADD_UNIT_TEST(tt7JSONReaderTests, list);
+        
+        // cc7 framework tests
+        CC7_ADD_UNIT_TEST(cc7PlatformTests, list);
+        CC7_ADD_UNIT_TEST(cc7ByteArrayTests, list);
+        CC7_ADD_UNIT_TEST(cc7ByteRangeTests, list);
+        CC7_ADD_UNIT_TEST(cc7Base32Tests, list);
+        CC7_ADD_UNIT_TEST(cc7Base64Tests, list);
+        CC7_ADD_UNIT_TEST(cc7HexStringTests, list);
+        
+        // OpenSSL
+        CC7_ADD_UNIT_TEST(cc7OpenSSLIntegration, list);
+        
+        return list;
+    }
+    
 } // cc7::tests
 } // cc7

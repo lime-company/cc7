@@ -22,42 +22,42 @@ namespace cc7
 {
 namespace tests
 {
-	/**
-	 Generates a required amount of random bytes.
-	 The function doesn't use OpenSSL as a PRNG.
-	 */
-	inline cc7::ByteArray getTestRandomData(size_t size)
-	{
-		cc7::ByteArray result;
-		result.reserve(size);
-		while (size > 0) {
-			result.push_back(random() & 0xFF);
-			--size;
-		}
-		return result;
-	}
-	
-	/**
-	 The TestByteVector is useful as an reference data
-	 storage.
-	 */
-	typedef std::vector<cc7::byte> TestByteVector;
-	
-	/**
-	 Like the getTestRandomData(), but result is stored
-	 to the TestByteVector instead of ByteArray.
-	 */
-	inline TestByteVector getTestRandomDataVector(size_t size)
-	{
-		TestByteVector result;
-		result.reserve(size);
-		while (size > 0) {
-			result.push_back(random() & 0xFF);
-			--size;
-		}
-		return result;
-	}
+    /**
+     Generates a required amount of random bytes.
+     The function doesn't use OpenSSL as a PRNG.
+     */
+    inline cc7::ByteArray getTestRandomData(size_t size)
+    {
+        cc7::ByteArray result;
+        result.reserve(size);
+        while (size > 0) {
+            result.push_back(random() & 0xFF);
+            --size;
+        }
+        return result;
+    }
+    
+    /**
+     The TestByteVector is useful as an reference data
+     storage.
+     */
+    typedef std::vector<cc7::byte> TestByteVector;
+    
+    /**
+     Like the getTestRandomData(), but result is stored
+     to the TestByteVector instead of ByteArray.
+     */
+    inline TestByteVector getTestRandomDataVector(size_t size)
+    {
+        TestByteVector result;
+        result.reserve(size);
+        while (size > 0) {
+            result.push_back(random() & 0xFF);
+            --size;
+        }
+        return result;
+    }
 
-	
+    
 } // cc7::tests
 } // cc7

@@ -22,23 +22,23 @@ namespace cc7
 {
 namespace tests
 {
-	class TestResource;
-	
-	class TestDirectory
-	{
-	public:
-		typedef const cc7::tests::TestResource* TResource;
-		typedef std::vector<TResource> TResourceList;
-		
-		TestDirectory(std::initializer_list<TResource> il);
-		~TestDirectory();
-		
-		TestFile findFile(const std::string & path) const;
-		const TResourceList & allResources() const;
-		
-	private:
-		TResourceList _resources;
-	};
-	
+    class TestResource;
+    
+    class TestDirectory
+    {
+    public:
+        typedef const cc7::tests::TestResource* TResource;
+        typedef std::vector<TResource> TResourceList;
+        
+        TestDirectory(std::initializer_list<TResource> il);
+        ~TestDirectory();
+        
+        TestFile findFile(const std::string & path) const;
+        const TResourceList & allResources() const;
+        
+    private:
+        TResourceList _resources;
+    };
+    
 } // cc7::tests
 } // cc7

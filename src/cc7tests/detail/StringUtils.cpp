@@ -25,48 +25,48 @@ namespace tests
 {
 namespace detail
 {
-	
-	std::string FormattedString(const char * format, ...)
-	{
-		va_list ap;
-		va_start(ap, format);
-		int expected_size = vsnprintf(NULL, 0, format, ap);
-		va_end(ap);
-		if (CC7_CHECK(expected_size >= 0, "vsnprintf() encoding error occured: %d", expected_size)) {
-			std::unique_ptr<char[]> buffer;
-			buffer.reset(new char[expected_size + 1]);
-			va_start(ap, format);
-			int processed_size = vsnprintf(&buffer[0], expected_size + 1, format, ap);
-			va_end(ap);
-			if (CC7_CHECK(expected_size == processed_size, "vsnprintf() different exp. and processed size: %d vs %d", expected_size, processed_size)) {
-				return std::string(buffer.get());
-			}
-		}
-		return std::string();
-	}
-	
+    
+    std::string FormattedString(const char * format, ...)
+    {
+        va_list ap;
+        va_start(ap, format);
+        int expected_size = vsnprintf(NULL, 0, format, ap);
+        va_end(ap);
+        if (CC7_CHECK(expected_size >= 0, "vsnprintf() encoding error occured: %d", expected_size)) {
+            std::unique_ptr<char[]> buffer;
+            buffer.reset(new char[expected_size + 1]);
+            va_start(ap, format);
+            int processed_size = vsnprintf(&buffer[0], expected_size + 1, format, ap);
+            va_end(ap);
+            if (CC7_CHECK(expected_size == processed_size, "vsnprintf() different exp. and processed size: %d vs %d", expected_size, processed_size)) {
+                return std::string(buffer.get());
+            }
+        }
+        return std::string();
+    }
+    
 
-	std::vector<std::string> & SplitString(const std::string & str, char delim, std::vector<std::string> & elems)
-	{
-		std::stringstream ss(str);
-		std::string item;
-		while (std::getline(ss, item, delim)) {
-			if (!item.empty()) {
-				elems.push_back(item);
-			}
-		}
-		return elems;
-	}
+    std::vector<std::string> & SplitString(const std::string & str, char delim, std::vector<std::string> & elems)
+    {
+        std::stringstream ss(str);
+        std::string item;
+        while (std::getline(ss, item, delim)) {
+            if (!item.empty()) {
+                elems.push_back(item);
+            }
+        }
+        return elems;
+    }
 
-	
-	std::vector<std::string> SplitString(const std::string & str, char delimiter)
-	{
-		std::vector<std::string> elements;
-		SplitString(str, delimiter, elements);
-		return elements;
-	}
+    
+    std::vector<std::string> SplitString(const std::string & str, char delimiter)
+    {
+        std::vector<std::string> elements;
+        SplitString(str, delimiter, elements);
+        return elements;
+    }
 
-	
+    
 } // cc7::tests::detail
 } // cc7::tests
 } // cc7

@@ -30,23 +30,23 @@ namespace cc7
 {
 namespace debug
 {
-	static void private_androidDumpToLog(void * foo, const char * file, int line, const char * message)
-	{
-		__android_log_write(ANDROID_LOG_ERROR, "CC7", message);
-		
-		// ...unlike ios, android has no SW breakpoint defined.
-	}
-	
-	AssertionHandlerSetup Platform_GetDefaultAssertionHandler()
-	{
-		static AssertionHandlerSetup s_default_setup = { private_androidDumpToLog, nullptr };
-		return s_default_setup;
-	}
-	
-	bool Platform_IsDefaultLogEnabled()
-	{
-		return true;
-	}
+    static void private_androidDumpToLog(void * foo, const char * file, int line, const char * message)
+    {
+        __android_log_write(ANDROID_LOG_ERROR, "CC7", message);
+        
+        // ...unlike ios, android has no SW breakpoint defined.
+    }
+    
+    AssertionHandlerSetup Platform_GetDefaultAssertionHandler()
+    {
+        static AssertionHandlerSetup s_default_setup = { private_androidDumpToLog, nullptr };
+        return s_default_setup;
+    }
+    
+    bool Platform_IsDefaultLogEnabled()
+    {
+        return true;
+    }
 } // cc7::debug
 } // cc7
 #endif //ENABLE_CC7_ASSERT
@@ -57,17 +57,17 @@ namespace cc7
 {
 namespace debug
 {
-	static void private_AndroidLogImpl(void * foo, const char * message)
-	{
-		__android_log_write(ANDROID_LOG_INFO, "CC7", message);
-	}
-	
-	LogHandlerSetup Platform_GetDefaultLogHandler()
-	{
-		static LogHandlerSetup s_default_setup = { private_AndroidLogImpl, nullptr };
-		return s_default_setup;
-	}
-	
+    static void private_AndroidLogImpl(void * foo, const char * message)
+    {
+        __android_log_write(ANDROID_LOG_INFO, "CC7", message);
+    }
+    
+    LogHandlerSetup Platform_GetDefaultLogHandler()
+    {
+        static LogHandlerSetup s_default_setup = { private_AndroidLogImpl, nullptr };
+        return s_default_setup;
+    }
+    
 } // cc7::debug
 } // cc7
 #endif //ENABLE_CC7_LOG

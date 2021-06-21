@@ -27,17 +27,17 @@
  
  The JNIEnv * env variable has to be available in the current scope.
  */
-#define CC7_JNI_FIELD_BOOL(clazz, fieldName)				env->GetFieldID(clazz, fieldName, "Z")
-#define CC7_JNI_FIELD_BYTE(clazz, fieldName)				env->GetFieldID(clazz, fieldName, "B")
-#define CC7_JNI_FIELD_CHAR(clazz, fieldName)				env->GetFieldID(clazz, fieldName, "C")
-#define CC7_JNI_FIELD_SHORT(clazz, fieldName)				env->GetFieldID(clazz, fieldName, "S")
-#define CC7_JNI_FIELD_INT(clazz, fieldName)					env->GetFieldID(clazz, fieldName, "I")
-#define CC7_JNI_FIELD_LONG(clazz, fieldName)				env->GetFieldID(clazz, fieldName, "J")
-#define CC7_JNI_FIELD_FLOAT(clazz, fieldName)				env->GetFieldID(clazz, fieldName, "F")
-#define CC7_JNI_FIELD_DOUBLE(clazz, fieldName)				env->GetFieldID(clazz, fieldName, "D")
-#define CC7_JNI_FIELD_STRING(clazz, fieldName)				env->GetFieldID(clazz, fieldName, "Ljava/lang/String;")
-#define CC7_JNI_FIELD_BYTEARRAY(clazz, fieldName)			env->GetFieldID(clazz, fieldName, "[B")
-#define CC7_JNI_FIELD_OBJECT(clazz, fieldName, signature)	env->GetFieldID(clazz, fieldName, signature)
+#define CC7_JNI_FIELD_BOOL(clazz, fieldName)                env->GetFieldID(clazz, fieldName, "Z")
+#define CC7_JNI_FIELD_BYTE(clazz, fieldName)                env->GetFieldID(clazz, fieldName, "B")
+#define CC7_JNI_FIELD_CHAR(clazz, fieldName)                env->GetFieldID(clazz, fieldName, "C")
+#define CC7_JNI_FIELD_SHORT(clazz, fieldName)               env->GetFieldID(clazz, fieldName, "S")
+#define CC7_JNI_FIELD_INT(clazz, fieldName)                 env->GetFieldID(clazz, fieldName, "I")
+#define CC7_JNI_FIELD_LONG(clazz, fieldName)                env->GetFieldID(clazz, fieldName, "J")
+#define CC7_JNI_FIELD_FLOAT(clazz, fieldName)               env->GetFieldID(clazz, fieldName, "F")
+#define CC7_JNI_FIELD_DOUBLE(clazz, fieldName)              env->GetFieldID(clazz, fieldName, "D")
+#define CC7_JNI_FIELD_STRING(clazz, fieldName)              env->GetFieldID(clazz, fieldName, "Ljava/lang/String;")
+#define CC7_JNI_FIELD_BYTEARRAY(clazz, fieldName)           env->GetFieldID(clazz, fieldName, "[B")
+#define CC7_JNI_FIELD_OBJECT(clazz, fieldName, signature)   env->GetFieldID(clazz, fieldName, signature)
 
 /*
  Field setters. You can simply set typed object to the instance of java object.
@@ -46,18 +46,18 @@
  
  The JNIEnv * env variable has to be available in the current scope.
  */
-#define CC7_JNI_SET_FIELD_BOOL(object, clazz, field_name, value)				env->SetBooleanField(object, CC7_JNI_FIELD_BOOL(clazz, field_name), value)
-#define CC7_JNI_SET_FIELD_BYTE(object, clazz, field_name, value)				env->SetByteField(object, CC7_JNI_FIELD_BYTE(clazz, field_name), value)
-#define CC7_JNI_SET_FIELD_CHAR(object, clazz, field_name, value)				env->SetCharField(object, CC7_JNI_FIELD_CHAR(clazz, field_name), value)
-#define CC7_JNI_SET_FIELD_SHORT(object, clazz, field_name, value)				env->SetShortField(object, CC7_JNI_FIELD_SHORT(clazz, field_name), value)
-#define CC7_JNI_SET_FIELD_INT(object, clazz, field_name, value)					env->SetIntField(object, CC7_JNI_FIELD_INT(clazz, field_name), value)
-#define CC7_JNI_SET_FIELD_LONG(object, clazz, field_name, value)				env->SetLongField(object, CC7_JNI_FIELD_LONG(clazz, field_name), value)
-#define CC7_JNI_SET_FIELD_FLOAT(object, clazz, field_name, value)				env->SetFloatField(object, CC7_JNI_FIELD_FLOAT(clazz, field_name), value)
-#define CC7_JNI_SET_FIELD_DOUBLE(object, clazz, field_name, value)				env->SetDoubleField(object, CC7_JNI_FIELD_DOUBLE(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_BOOL(object, clazz, field_name, value)                env->SetBooleanField(object, CC7_JNI_FIELD_BOOL(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_BYTE(object, clazz, field_name, value)                env->SetByteField(object, CC7_JNI_FIELD_BYTE(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_CHAR(object, clazz, field_name, value)                env->SetCharField(object, CC7_JNI_FIELD_CHAR(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_SHORT(object, clazz, field_name, value)               env->SetShortField(object, CC7_JNI_FIELD_SHORT(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_INT(object, clazz, field_name, value)                 env->SetIntField(object, CC7_JNI_FIELD_INT(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_LONG(object, clazz, field_name, value)                env->SetLongField(object, CC7_JNI_FIELD_LONG(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_FLOAT(object, clazz, field_name, value)               env->SetFloatField(object, CC7_JNI_FIELD_FLOAT(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_DOUBLE(object, clazz, field_name, value)              env->SetDoubleField(object, CC7_JNI_FIELD_DOUBLE(clazz, field_name), value)
 
-#define CC7_JNI_SET_FIELD_OBJECT(object, clazz, field_name, signature, value)	env->SetObjectField(object, CC7_JNI_FIELD_OBJECT(clazz, field_name, signature), value)
-#define CC7_JNI_SET_FIELD_STRING(object, clazz, field_name, value)				env->SetObjectField(object, CC7_JNI_FIELD_STRING(clazz, field_name), value)
-#define CC7_JNI_SET_FIELD_BYTEARRAY(object, clazz, field_name, value)			env->SetObjectField(object, CC7_JNI_FIELD_BYTEARRAY(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_OBJECT(object, clazz, field_name, signature, value)   env->SetObjectField(object, CC7_JNI_FIELD_OBJECT(clazz, field_name, signature), value)
+#define CC7_JNI_SET_FIELD_STRING(object, clazz, field_name, value)              env->SetObjectField(object, CC7_JNI_FIELD_STRING(clazz, field_name), value)
+#define CC7_JNI_SET_FIELD_BYTEARRAY(object, clazz, field_name, value)           env->SetObjectField(object, CC7_JNI_FIELD_BYTEARRAY(clazz, field_name), value)
 
 /*
  Field getters. You can simply get typed object from the instance of java object.
@@ -66,15 +66,15 @@
  
  The JNIEnv * env variable has to be available in the current scope.
  */
-#define CC7_JNI_GET_FIELD_BOOL(object, clazz, field_name)				env->GetBooleanField(object, CC7_JNI_FIELD_BOOL(clazz, field_name))
-#define CC7_JNI_GET_FIELD_BYTE(object, clazz, field_name)				env->GetByteField(object, CC7_JNI_FIELD_BYTE(clazz, field_name))
-#define CC7_JNI_GET_FIELD_CHAR(object, clazz, field_name)				env->GetCharField(object, CC7_JNI_FIELD_CHAR(clazz, field_name))
-#define CC7_JNI_GET_FIELD_SHORT(object, clazz, field_name)				env->GetShortField(object, CC7_JNI_FIELD_SHORT(clazz, field_name))
-#define CC7_JNI_GET_FIELD_INT(object, clazz, field_name)				env->GetIntField(object, CC7_JNI_FIELD_INT(clazz, field_name))
-#define CC7_JNI_GET_FIELD_LONG(object, clazz, field_name)				env->GetLongField(object, CC7_JNI_FIELD_LONG(clazz, field_name))
-#define CC7_JNI_GET_FIELD_FLOAT(object, clazz, field_name)				env->GetFloatField(object, CC7_JNI_FIELD_FLOAT(clazz, field_name))
-#define CC7_JNI_GET_FIELD_DOUBLE(object, clazz, field_name)				env->GetDoubleField(object, CC7_JNI_FIELD_DOUBLE(clazz, field_name))
+#define CC7_JNI_GET_FIELD_BOOL(object, clazz, field_name)               env->GetBooleanField(object, CC7_JNI_FIELD_BOOL(clazz, field_name))
+#define CC7_JNI_GET_FIELD_BYTE(object, clazz, field_name)               env->GetByteField(object, CC7_JNI_FIELD_BYTE(clazz, field_name))
+#define CC7_JNI_GET_FIELD_CHAR(object, clazz, field_name)               env->GetCharField(object, CC7_JNI_FIELD_CHAR(clazz, field_name))
+#define CC7_JNI_GET_FIELD_SHORT(object, clazz, field_name)              env->GetShortField(object, CC7_JNI_FIELD_SHORT(clazz, field_name))
+#define CC7_JNI_GET_FIELD_INT(object, clazz, field_name)                env->GetIntField(object, CC7_JNI_FIELD_INT(clazz, field_name))
+#define CC7_JNI_GET_FIELD_LONG(object, clazz, field_name)               env->GetLongField(object, CC7_JNI_FIELD_LONG(clazz, field_name))
+#define CC7_JNI_GET_FIELD_FLOAT(object, clazz, field_name)              env->GetFloatField(object, CC7_JNI_FIELD_FLOAT(clazz, field_name))
+#define CC7_JNI_GET_FIELD_DOUBLE(object, clazz, field_name)             env->GetDoubleField(object, CC7_JNI_FIELD_DOUBLE(clazz, field_name))
 
-#define CC7_JNI_GET_FIELD_OBJECT(object, clazz, field_name, signature)	env->GetObjectField(object, CC7_JNI_FIELD_OBJECT(clazz, field_name, signature))
-#define CC7_JNI_GET_FIELD_STRING(object, clazz, field_name)				(jstring)env->GetObjectField(object, CC7_JNI_FIELD_STRING(clazz, field_name))
-#define CC7_JNI_GET_FIELD_BYTEARRAY(object, clazz, field_name)			(jbyteArray)env->GetObjectField(object, CC7_JNI_FIELD_BYTEARRAY(clazz, field_name))
+#define CC7_JNI_GET_FIELD_OBJECT(object, clazz, field_name, signature)  env->GetObjectField(object, CC7_JNI_FIELD_OBJECT(clazz, field_name, signature))
+#define CC7_JNI_GET_FIELD_STRING(object, clazz, field_name)             (jstring)env->GetObjectField(object, CC7_JNI_FIELD_STRING(clazz, field_name))
+#define CC7_JNI_GET_FIELD_BYTEARRAY(object, clazz, field_name)          (jbyteArray)env->GetObjectField(object, CC7_JNI_FIELD_BYTEARRAY(clazz, field_name))

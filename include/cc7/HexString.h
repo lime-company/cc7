@@ -20,41 +20,41 @@
 
 namespace cc7
 {
-	/**
-	 Converts input byte range into hexadecimal upper, or lowercase string. 
-	 The function always returns true.
-	 */
-	bool HexString_Encode(const ByteRange & in_data, bool use_lowercase, std::string & out_string);
-	
-	/**
-	 Converts hexadecimal encoded string into ByteArray. Returns false if the
-	 input string is not a valid hexadecimal string.
-	 */
-	bool HexString_Decode(const std::string & in_string, ByteArray & out_data);
-	
-	/**
-	 Converts input byte range into hexadecimal upper, or lowercase string. 
-	 This variant of encoding function may be easier to use, but unlike 
-	 the HexString_Encode(), you are not able to determine whether the error
-	 occured or not.
-	 */
-	inline std::string ToHexString(const ByteRange & data, bool use_lowercase = false)
-	{
-		std::string result;
-		HexString_Encode(data, use_lowercase, result);
-		return result;
-	}
-	
-	/**
-	 Converts hexadecimal encoded string into ByteArray. This variant of decoding
-	 function may be easier to use, but unlike the HexString_Decode(), you are not
-	 able to determine whether the error occured or not.
-	 */
-	inline ByteArray FromHexString(const std::string & string)
-	{
-		ByteArray result;
-		HexString_Decode(string, result);
-		return result;
-	}
-	
+    /**
+     Converts input byte range into hexadecimal upper, or lowercase string. 
+     The function always returns true.
+     */
+    bool HexString_Encode(const ByteRange & in_data, bool use_lowercase, std::string & out_string);
+    
+    /**
+     Converts hexadecimal encoded string into ByteArray. Returns false if the
+     input string is not a valid hexadecimal string.
+     */
+    bool HexString_Decode(const std::string & in_string, ByteArray & out_data);
+    
+    /**
+     Converts input byte range into hexadecimal upper, or lowercase string. 
+     This variant of encoding function may be easier to use, but unlike 
+     the HexString_Encode(), you are not able to determine whether the error
+     occured or not.
+     */
+    inline std::string ToHexString(const ByteRange & data, bool use_lowercase = false)
+    {
+        std::string result;
+        HexString_Encode(data, use_lowercase, result);
+        return result;
+    }
+    
+    /**
+     Converts hexadecimal encoded string into ByteArray. This variant of decoding
+     function may be easier to use, but unlike the HexString_Decode(), you are not
+     able to determine whether the error occured or not.
+     */
+    inline ByteArray FromHexString(const std::string & string)
+    {
+        ByteArray result;
+        HexString_Decode(string, result);
+        return result;
+    }
+    
 } // cc7

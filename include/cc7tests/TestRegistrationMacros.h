@@ -39,17 +39,17 @@
  the class to a different namespace, but the namespace where's the macro used
  should match the one, where you're adding test to the list of tests.
  */
-#define CC7_CREATE_UNIT_TEST(TestClassName, TestTagsgOrNULL)					\
-	static cc7::tests::UnitTest * _cc7t_factory_##TestClassName()				\
-	{																			\
-		return new TestClassName();												\
-	}																			\
-	cc7::tests::detail::UnitTestDescriptor _cc7t_cinfo_##TestClassName =		\
-	{																			\
-		&_cc7t_factory_##TestClassName,											\
-		#TestClassName,															\
-		TestTagsgOrNULL															\
-	};																			\
+#define CC7_CREATE_UNIT_TEST(TestClassName, TestTagsgOrNULL)                    \
+    static cc7::tests::UnitTest * _cc7t_factory_##TestClassName()               \
+    {                                                                           \
+        return new TestClassName();                                             \
+    }                                                                           \
+    cc7::tests::detail::UnitTestDescriptor _cc7t_cinfo_##TestClassName =        \
+    {                                                                           \
+        &_cc7t_factory_##TestClassName,                                         \
+        #TestClassName,                                                         \
+        TestTagsgOrNULL                                                         \
+    };                                                                          \
 
 /**
  The CC7_USE_UNIT_TEST() makes previously created internal structure visible
@@ -59,8 +59,8 @@
  Normally you don't need to use this macro directly, because is used in the
  implementation of CC7_ADD_UNIT_TEST().
  */
-#define CC7_USE_UNIT_TEST(TestClassName)										\
-	extern cc7::tests::detail::UnitTestDescriptor _cc7t_cinfo_##TestClassName;
+#define CC7_USE_UNIT_TEST(TestClassName)                                        \
+    extern cc7::tests::detail::UnitTestDescriptor _cc7t_cinfo_##TestClassName;
 
 /**
  The CC7_GET_UNIT_TEST() returns pointer to an internal registration structure.
@@ -69,7 +69,7 @@
  Normally you don't need to use this macro directly, because is used in the
  implementation of CC7_ADD_UNIT_TEST().
  */
-#define CC7_GET_UNIT_TEST(TestClassName)	&_cc7t_cinfo_##TestClassName
+#define CC7_GET_UNIT_TEST(TestClassName)    &_cc7t_cinfo_##TestClassName
 
 
 /**
@@ -82,9 +82,9 @@
  the registration. For the simplification, it's recommended to put all test 
  classes and registration code to the cc7::tests namespace.
  */
-#define CC7_ADD_UNIT_TEST(TestClassName, list)									\
-	CC7_USE_UNIT_TEST(TestClassName);											\
-	list.push_back(CC7_GET_UNIT_TEST(TestClassName));
+#define CC7_ADD_UNIT_TEST(TestClassName, list)                                  \
+    CC7_USE_UNIT_TEST(TestClassName);                                           \
+    list.push_back(CC7_GET_UNIT_TEST(TestClassName));
 
 
 /**
@@ -94,5 +94,5 @@
  
  You should register at least one method in one particular unit test class.
  */
-#define CC7_REGISTER_TEST_METHOD(method_name)									\
-	this->registerTestMethod([this]() { this->method_name(); }, #method_name );
+#define CC7_REGISTER_TEST_METHOD(method_name)                                   \
+    this->registerTestMethod([this]() { this->method_name(); }, #method_name );

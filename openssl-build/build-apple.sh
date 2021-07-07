@@ -394,7 +394,7 @@ function BUILD_APPLE_SWIFT_PACKAGE
     
     PUSH_DIR "${OPENSSL_DEST_APPLE}"
     
-    zip -9rq "${ZIP_FILE}" "${LIB_NAME}.xcframework"
+    zip -9yrq "${ZIP_FILE}" "${LIB_NAME}.xcframework"
     
     POP_DIR
     
